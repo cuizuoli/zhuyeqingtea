@@ -22,7 +22,7 @@
 	<!-- Configures the @Controller programming model -->
 	<mvc:annotation-driven>
 		<mvc:argument-resolvers>
-			<bean class="org.springframework.mobile.device.DeviceWebArgumentResolver"></bean>
+			<bean class="org.springframework.mobile.device.DeviceWebArgumentResolver"/>
 		</mvc:argument-resolvers>
 	</mvc:annotation-driven>
 
@@ -34,14 +34,18 @@
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/**"/>
-			<bean class="org.springframework.mobile.device.DeviceResolverHandlerInterceptor"></bean>
+			<bean class="org.springframework.mobile.device.DeviceResolverHandlerInterceptor"/>
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/**"/>
+			<bean class="com.sinaapp.zhuyeqingtea.security.interceptor.WeiboAuthInterceptor"/>
 		</mvc:interceptor>
 	</mvc:interceptors>
 
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"></property>
-		<property name="prefix" value="/WEB-INF/jsp/"></property>
-		<property name="suffix" value=".jsp"></property>
+		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+		<property name="prefix" value="/WEB-INF/jsp/"/>
+		<property name="suffix" value=".jsp"/>
 	</bean>
 
 	<bean id="handlerAdapter" class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"></bean>
