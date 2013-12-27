@@ -14,10 +14,6 @@ body { width:760px;height:600px; }
 </style>
 </head>
 <body>
-<script type="text/javascript">
-$(document).ready(function() {
-	App.AuthDialog.show({client_id:'${appKey}',redirect_uri:'${redirectUri}',display:'apponweibo'});
-});
-</script>
+Main Page
 </body>
 </html>
