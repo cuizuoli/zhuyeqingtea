@@ -27,13 +27,13 @@ import com.sinaapp.zhuyeqingtea.security.interceptor.WeiboAuthInterceptor;
 @RequestMapping("/")
 public class IndexController {
 
-	@Value("#{weiboProperties['weibo.appKey']}")
+	@Value("#{weiboProperties['pro.weibo.appKey']}")
 	private String appKey;
 
-	@Value("#{weiboProperties['weibo.appSecret']}")
+	@Value("#{weiboProperties['pro.weibo.appSecret']}")
 	private String appSecret;
 
-	@Value("#{weiboProperties['weibo.redirectUri']}")
+	@Value("#{weiboProperties['pro.weibo.redirectUri']}")
 	private String redirectUri;
 
 	@RequestMapping("")
