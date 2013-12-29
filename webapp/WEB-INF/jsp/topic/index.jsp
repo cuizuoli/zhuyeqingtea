@@ -44,7 +44,7 @@
 
 <div class="gameArea" style="display:none;">
 <div class="game01">
-<p class="redPaper"><img src="img/img_redpaper01.jpg" alt="" /></p>
+<div class="redPaper"></div>
 <p class="gameTxt"><img src="img/txt_game01.gif" alt="您已成功参与“送成都一个红包活动”，是否愿意将活动分享给朋友？" /></p>
 <ul class="btnList">
 <li><a href="#"><img src="img/btn_share01.gif" alt="下次再分享" /></a></li>
@@ -86,13 +86,6 @@ $(document).ready(function() {
 		$('.gameArea .game02').hide();
 		$('.gameArea .success').hide();
 	});
-	$('.redPaper').click(function() {
-		$('.gameArea').show();
-		$('.gameArea .game01').show();
-		$('.gameArea .line').show();
-		$('.gameArea .game02').show();
-		$('.gameArea .success').hide();
-	});
 	$('.gameArea #shareBtn').click(function() {
 		$('.gameArea').show();
 		$('.gameArea .game01').hide();
@@ -103,7 +96,25 @@ $(document).ready(function() {
 	$('.gameArea #cancelShareBtn').click(function() {
 		$('.gameArea').hide();
 	});
-	
+	var sp = $('.gameArea .redPaper').wScratchPad({
+		'width': '376',
+		'height': '219',
+		'image': 'img/img_redpaper01.jpg',
+		'image2': null,
+		'color': '#336699',
+		'overlay': 'none',
+		'size': 10,
+		'scratchUp': function(e, percent) {
+			if (percent > 30) {
+				$('.gameArea').show();
+				$('.gameArea .game01').show();
+				$('.gameArea .line').show();
+				$('.gameArea .game02').show();
+				$('.gameArea .success').hide();
+			}
+		}
+	});
+	sp.reset();
 });
 </script>
 </body>
