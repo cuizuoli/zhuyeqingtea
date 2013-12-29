@@ -45,10 +45,10 @@
 <div class="gameArea" style="display:none;">
 <div class="game01">
 <div class="redPaper"></div>
-<p class="gameTxt"><img src="img/txt_game01.gif" alt="您已成功参与“送成都一个红包活动”，是否愿意将活动分享给朋友？" /></p>
-<ul class="btnList">
-<li><a href="#"><img src="img/btn_share01.gif" alt="下次再分享" /></a></li>
-<li><a href="#"><img src="img/btn_share02.gif" alt="马上分享" /></a></li>
+<p class="gameTxt" style="display:none;"><img src="img/txt_game01.gif" alt="您已成功参与“送成都一个红包活动”，是否愿意将活动分享给朋友？" /></p>
+<ul class="btnList" style="display:none;">
+<li><a id="laterShareBtn" href="#"><img src="img/btn_share01.gif" alt="下次再分享" /></a></li>
+<li><a id="nowShareBtn" href="#"><img src="img/btn_share02.gif" alt="马上分享" /></a></li>
 </ul>
 </div>
 
@@ -73,13 +73,35 @@
 <!--=========wrapper end=========-->
 <script type="text/javascript">
 $(document).ready(function() {
+	var sp = $('.gameArea .redPaper').wScratchPad({
+		'width': '370',
+		'height': '213',
+		'image': 'img/img_redpaper01.jpg',
+		'image2': null,
+		'color': '#888',
+		'overlay': 'lighter',
+		'size': 10,
+		'scratchUp': function(e, percent) {
+			if (percent > 30) {
+				$('.gameArea .redPaper').hide();
+				$('.gameTxt').show();
+				$('.btnList').show();
+			}
+		}
+	});
 	$('#introBtn').click(function() {
+		$('.gameArea').hide();
 		$('.introArea').show();
 	});
 	$('#closeIntroBtn').click(function() {
 		$('.introArea').hide();
 	});
 	$('#gameBtn').click(function() {
+		$('.introArea').hide();
+		$('.gameTxt').hide();
+		$('.btnList').hide();
+		$('.gameArea .redPaper').show();
+		sp.wScratchPad('reset');
 		$('.gameArea').show();
 		$('.gameArea .game01').show();
 		$('.gameArea .line').hide();
@@ -96,24 +118,15 @@ $(document).ready(function() {
 	$('.gameArea #cancelShareBtn').click(function() {
 		$('.gameArea').hide();
 	});
-	var sp = $('.gameArea .redPaper').wScratchPad({
-		'width': '376',
-		'height': '219',
-		'image': 'img/img_redpaper01.jpg',
-		'image2': null,
-		'color': '#336699',
-		'overlay': 'none',
-		'size': 10,
-		'scratchUp': function(e, percent) {
-			if (percent > 30) {
-				$('.gameArea').show();
-				$('.gameArea .game01').show();
-				$('.gameArea .line').show();
-				$('.gameArea .game02').show();
-				$('.gameArea .success').hide();
-			}
-		}
+	$('#laterShareBtn').click(function() {
+		$('.gameArea').hide();
+		
 	});
+	$('#nowShareBtn').click(function() {
+		$('.game02').show();
+		$('.line').show();
+	});
+	
 	sp.reset();
 });
 </script>
