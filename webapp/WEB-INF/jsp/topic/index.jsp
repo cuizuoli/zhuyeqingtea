@@ -52,18 +52,18 @@
 </ul>
 </div>
 
-<p class="line"></p>
+<p class="line" style="display:none;"></p>
 
-<div class="game02">
+<div class="game02" style="display:none;">
 <p class="gameTxt"><img src="img/txt_game02.gif" alt="#绿茶生活，远离烟花爆竹#" /></p>
 <p class="textCont"><textarea name="textCont" rows="2" cols="" id="textCont"></textarea></p>
 <ul class="btnList">
-<li><a href="#"><img src="img/btn_cancel.gif" alt="取消" /></a></li>
+<li><a id="cancelShareBtn" href="#"><img src="img/btn_cancel.gif" alt="取消" /></a></li>
 <li><a id="shareBtn" href="#"><img src="img/btn_confirm01.gif" alt="确定" /></a></li>
 </ul>
 </div>
 
-<p class="success"><img src="img/img_success.png" alt="分享成功!" /></p>
+<p class="success" style="display:none;"><img src="img/img_success.png" alt="分享成功!" /></p>
 </div>
 
 </div>
@@ -81,10 +81,29 @@ $(document).ready(function() {
 	});
 	$('#gameBtn').click(function() {
 		$('.gameArea').show();
+		$('.gameArea .game01').show();
+		$('.gameArea .line').hide();
+		$('.gameArea .game02').hide();
+		$('.gameArea .success').hide();
+	});
+	$('.redPaper').click(function() {
+		$('.gameArea').show();
+		$('.gameArea .game01').show();
+		$('.gameArea .line').show();
+		$('.gameArea .game02').show();
+		$('.gameArea .success').hide();
 	});
 	$('.gameArea #shareBtn').click(function() {
+		$('.gameArea').show();
+		$('.gameArea .game01').hide();
+		$('.gameArea .line').hide();
+		$('.gameArea .game02').hide();
+		$('.gameArea .success').show().fadeOut();
+	});
+	$('.gameArea #cancelShareBtn').click(function() {
 		$('.gameArea').hide();
 	});
+	
 });
 </script>
 </body>
