@@ -29,14 +29,14 @@
 <div id="contentsArea">
 <div class="counter">
 <ul>
-<li>0</li>
+<li><a id="wechatShare" href="#">0</a></li>
 <li>0</li>
 <li>0</li>
 <li>0</li>
 <li>1</li>
 </ul>
 </div>
-
+<div id="qrcode" style="display:none;position:absolute;left:75px;top:157px;"></div>
 <div class="introArea" style="display:none;">
 <p class="introTxt"><img src="img/txt_intro.gif" alt="“为成都送一个红包”，点击小游戏并参与活动,分享至微博，微信有机会获竹叶青茶春节定制红包等奖品。" /></p>
 <p class="introBtn"><a id="closeIntroBtn" href="javascript:void(0);"><img src="img/btn_confirm.gif" alt="确定" /></a></p>
@@ -73,6 +73,19 @@
 <!--=========wrapper end=========-->
 <script type="text/javascript">
 $(document).ready(function() {
+	function clearPopupDivs() {
+		$('.gameArea .redPaper').hide();
+		$('.gameArea').hide();
+		$('.introArea').hide();
+		$('.gameTxt').hide();
+		$('.btnList').hide();
+		$('.gameArea .game01').hide();
+		$('.gameArea .line').hide();
+		$('.gameArea .game02').hide();
+		$('.gameArea .success').hide();
+		$('#qrcode').html('');
+		$('#qrcode').hide();
+	}
 	var sp = $('.gameArea .redPaper').wScratchPad({
 		'width': '370',
 		'height': '213',
@@ -90,41 +103,40 @@ $(document).ready(function() {
 		}
 	});
 	$('#introBtn').click(function() {
-		$('.gameArea').hide();
+		clearPopupDivs();
 		$('.introArea').show();
 	});
 	$('#closeIntroBtn').click(function() {
-		$('.introArea').hide();
+		clearPopupDivs();
 	});
 	$('#gameBtn').click(function() {
-		$('.introArea').hide();
-		$('.gameTxt').hide();
-		$('.btnList').hide();
+		clearPopupDivs();
 		$('.gameArea .redPaper').show();
 		sp.wScratchPad('reset');
 		$('.gameArea').show();
 		$('.gameArea .game01').show();
-		$('.gameArea .line').hide();
-		$('.gameArea .game02').hide();
-		$('.gameArea .success').hide();
 	});
 	$('.gameArea #shareBtn').click(function() {
+		clearPopupDivs();
 		$('.gameArea').show();
-		$('.gameArea .game01').hide();
-		$('.gameArea .line').hide();
-		$('.gameArea .game02').hide();
-		$('.gameArea .success').show().fadeOut();
+		$('.gameArea .success').show().fadeOut(3000);
 	});
 	$('.gameArea #cancelShareBtn').click(function() {
-		$('.gameArea').hide();
+		clearPopupDivs();
 	});
 	$('#laterShareBtn').click(function() {
-		$('.gameArea').hide();
+		clearPopupDivs();
 		
 	});
 	$('#nowShareBtn').click(function() {
 		$('.game02').show();
 		$('.line').show();
+	});
+	
+	$('#wechatShare').click(function() {
+		clearPopupDivs();
+		$('#qrcode').qrcode(window.location.href);
+		$('#qrcode').show();
 	});
 	
 	sp.reset();
