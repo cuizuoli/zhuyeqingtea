@@ -7,8 +7,11 @@
 
 package com.sinaapp.zhuyeqingtea.controller;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +19,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.sinaapp.zhuyeqingtea.security.enums.AuthStatus;
 import com.sinaapp.zhuyeqingtea.security.interceptor.WeiboAuthInterceptor;
+import com.weibo.api.OAuth2;
+import com.weibo.model.ProfessionalTokenInfo;
 
 /**
  * DaLian Software zhuyeqingtea
@@ -36,26 +41,39 @@ public class IndexController {
 	@Value("#{weiboProperties['pro.weibo.redirectUri']}")
 	private String redirectUri;
 
+	@Resource
+	private OAuth2 oAuth2;
+
 	@RequestMapping("")
 	public ModelAndView index(HttpServletRequest request) {
 		AuthStatus authStatus = (AuthStatus)request.getAttribute(WeiboAuthInterceptor.AUTH_STATUS);
-		if (authStatus == AuthStatus.LOGIN) {
-			return new ModelAndView("redirect:/main");
-		} else {
-			return new ModelAndView("index")
-				.addObject("appKey", appKey)
-				.addObject("redirectUri", redirectUri);
+		if (authStatus == AuthStatus.LOGOUT) {
+			String cid = request.getParameter("cid");
+			String subAppkey = request.getParameter("sub_appkey");
+			String tokenString = request.getParameter("tokenString");
+			if (StringUtils.isBlank(subAppkey)) {
+				return new ModelAndView("redirect:" + redirectUri);
+			} else if (tokenString == null) {
+				return new ModelAndView("login")
+					.addObject("appKey", subAppkey)
+					.addObject("redirectUri", redirectUri);
+			} else {
+				ProfessionalTokenInfo tokenInfo = oAuth2.parseSignedRequest(tokenString, appSecret);
+				if (tokenInfo != null) {
+					String accessToken = tokenInfo.getOauthToken();
+					HttpSession session = request.getSession();
+					session.setAttribute(WeiboAuthInterceptor.USER_ID, cid);
+					session.setAttribute(WeiboAuthInterceptor.ACCESS_TOKEN, accessToken);
+					request.setAttribute(WeiboAuthInterceptor.USER_ID, cid);
+					request.setAttribute(WeiboAuthInterceptor.ACCESS_TOKEN, accessToken);
+					request.setAttribute(WeiboAuthInterceptor.AUTH_STATUS, AuthStatus.LOGIN);
+				} else {
+					return new ModelAndView("login")
+						.addObject("appKey", subAppkey)
+						.addObject("redirectUri", redirectUri);
+				}
+			}
 		}
+		return new ModelAndView("index");
 	}
-
-	@RequestMapping("main")
-	public ModelAndView main(HttpServletRequest request) {
-		AuthStatus authStatus = (AuthStatus)request.getAttribute(WeiboAuthInterceptor.AUTH_STATUS);
-		if (authStatus == AuthStatus.LOGIN) {
-			return new ModelAndView("main");
-		} else {
-			return new ModelAndView("redirect:/");
-		}
-	}
-
 }

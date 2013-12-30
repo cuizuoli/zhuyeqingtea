@@ -30,7 +30,7 @@ public class TopicIndexController {
 	public ModelAndView index(HttpServletRequest request) {
 		AuthStatus authStatus = (AuthStatus)request.getAttribute(WeiboAuthInterceptor.AUTH_STATUS);
 		if (authStatus == AuthStatus.LOGIN) {
-			return new ModelAndView("topic/index");
+			return new ModelAndView("index");
 		} else {
 			return new ModelAndView("redirect:/t/weibo/authorize");
 		}

@@ -1,6 +1,6 @@
 -- 用户表
-DROP TABLE IF EXISTS `user`;
-CREATE TABLE `user` (
+DROP TABLE IF EXISTS `weibo_user`;
+CREATE TABLE `weibo_user` (
   `user_id` varchar(20) NOT NULL COMMENT '用户ID',
   `user_name` varchar(150) NOT NULL COMMENT '用户昵称',
   `user_screen_name` varchar(150) NOT NULL COMMENT '用户网名',
@@ -25,14 +25,4 @@ CREATE TABLE `share` (
   `modify_time` datetime DEFAULT NULL COMMENT '修改时间',
   PRIMARY KEY (`weibo_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='分享表';
--- 微信分享表
-DROP TABLE IF EXISTS `weixin_share`;
-CREATE TABLE `weixin_share` (
-  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
-  `user_id` varchar(20) NOT NULL COMMENT '用户ID',
-  `click_yn` char(1) DEFAULT 'N' COMMENT '是否点击微信分享',
-  `click_time` datetime DEFAULT NULL COMMENT '点击时间',
-  `share_yn` char(1) DEFAULT 'N' COMMENT '是否访问微信分享',
-  `share_time` datetime DEFAULT NULL COMMENT '访问时间',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='微信分享表';
+
