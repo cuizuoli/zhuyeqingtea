@@ -16,7 +16,7 @@ CREATE TABLE `weibo_user` (
 -- 参与表
 DROP TABLE IF EXISTS `join_hist`;
 CREATE TABLE `join_hist` (
-  `join_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '参与ID',
+  `join_id` int(9) NOT NULL AUTO_INCREMENT COMMENT '参与ID',
   `user_id` varchar(20) NOT NULL COMMENT '用户ID',
   `join_time` datetime DEFAULT NULL COMMENT '参与时间',
   PRIMARY KEY (`join_id`)
@@ -24,7 +24,7 @@ CREATE TABLE `join_hist` (
 -- 商品表
 DROP TABLE IF EXISTS `item_info`;
 CREATE TABLE `item_info` (
-  `item_id` int(3) NOT NULL AUTO_INCREMENT COMMENT '商品ID',
+  `item_id` int(3) NOT NULL AUTO_INCREMENT COMMENT '商品ID, 100:竹叶青12月量的茶包, 101:空气净化器, 102:3M环保口罩, 103:竹叶青品饮小铁盒, 104:绿色植物盆栽',
   `item_level` int(1) NOT NULL COMMENT '0:特等, 1:1等奖, 2:2等奖, 3:3等奖, 4:爱心贡献奖',
   `item_name` varchar(20) DEFAULT NULL COMMENT '商品名称',
   `reward_rate` int(1) DEFAULT 0 COMMENT '中奖几率',
@@ -34,9 +34,9 @@ CREATE TABLE `item_info` (
 -- 奖赏表
 DROP TABLE IF EXISTS `reward_hist`;
 CREATE TABLE `reward_hist` (
-  `reward_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '奖赏ID',
+  `reward_id` int(9) NOT NULL AUTO_INCREMENT COMMENT '奖赏ID',
   `user_id` varchar(20) NOT NULL COMMENT '用户ID',
-  `item_id` int(3) DEFAULT NULL COMMENT '商品ID',
+  `item_id` int(3) DEFAULT 0 COMMENT '商品ID',
   `reward_time` datetime DEFAULT NULL COMMENT '奖赏时间',
   PRIMARY KEY (`reward_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='奖赏表';
