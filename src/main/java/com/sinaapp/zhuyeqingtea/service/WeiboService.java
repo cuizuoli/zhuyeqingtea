@@ -11,8 +11,8 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.sinaapp.zhuyeqingtea.repository.ShareRepository;
-import com.sinaapp.zhuyeqingtea.repository.UserRepository;
+import com.sinaapp.zhuyeqingtea.model.WeiboUser;
+import com.sinaapp.zhuyeqingtea.repository.WeiboUserRepository;
 import com.weibo.model.User;
 
 /**
@@ -25,17 +25,26 @@ import com.weibo.model.User;
 public class WeiboService {
 
 	@Resource
-	private UserRepository userRepository;
-
-	@Resource
-	private ShareRepository shareRepository;
+	private WeiboUserRepository weiboUserRepository;
 
 	/**
 	 * addUser
 	 * @param user
 	 */
 	public void addUser(User user) {
-		// TODO update and insert user table.<br/>
+		WeiboUser weiboUser = new WeiboUser();
+		weiboUser.setUserId(user.getId());
+		weiboUser.setUserName(user.getName());
+		weiboUser.setUserScreenName(user.getScreenName());
+		weiboUser.setProfileImageUrl(user.getProfileImageUrl());
+		weiboUser.setGender(user.getGender());
+		weiboUser.setProvince(String.valueOf(user.getProvince()));
+		weiboUser.setCity(String.valueOf(user.getCity()));
+		weiboUser.setLocation(user.getLocation());
+		int i = weiboUserRepository.update(weiboUser);
+		if (i == 0) {
+			weiboUserRepository.insert(weiboUser);
+		}
 	}
 
 }

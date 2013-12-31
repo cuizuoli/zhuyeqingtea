@@ -19,8 +19,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.sinaapp.zhuyeqingtea.security.enums.AuthStatus;
 import com.sinaapp.zhuyeqingtea.security.interceptor.WeiboAuthInterceptor;
+import com.sinaapp.zhuyeqingtea.service.WeiboService;
 import com.weibo.api.OAuth2;
+import com.weibo.api.Users;
 import com.weibo.model.ProfessionalTokenInfo;
+import com.weibo.model.User;
 
 /**
  * DaLian Software zhuyeqingtea
@@ -42,7 +45,13 @@ public class IndexController {
 	private String redirectUri;
 
 	@Resource
+	private WeiboService weiboService;
+
+	@Resource
 	private OAuth2 oAuth2;
+
+	@Resource
+	private Users users;
 
 	@RequestMapping("")
 	public ModelAndView index(HttpServletRequest request) {
@@ -61,12 +70,15 @@ public class IndexController {
 				ProfessionalTokenInfo tokenInfo = oAuth2.parseSignedRequest(tokenString, appSecret);
 				if (tokenInfo != null) {
 					String accessToken = tokenInfo.getOauthToken();
+					String uid = tokenInfo.getUserId();
 					HttpSession session = request.getSession();
 					session.setAttribute(WeiboAuthInterceptor.USER_ID, cid);
 					session.setAttribute(WeiboAuthInterceptor.ACCESS_TOKEN, accessToken);
 					request.setAttribute(WeiboAuthInterceptor.USER_ID, cid);
 					request.setAttribute(WeiboAuthInterceptor.ACCESS_TOKEN, accessToken);
 					request.setAttribute(WeiboAuthInterceptor.AUTH_STATUS, AuthStatus.LOGIN);
+					User user = users.show(uid, accessToken);
+					weiboService.addUser(user);
 				} else {
 					return new ModelAndView("login")
 						.addObject("appKey", subAppkey)

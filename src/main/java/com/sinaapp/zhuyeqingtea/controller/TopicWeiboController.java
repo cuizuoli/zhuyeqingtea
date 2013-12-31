@@ -16,10 +16,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.sinaapp.zhuyeqingtea.service.WeiboService;
 import com.weibo.api.OAuth2;
+import com.weibo.api.Users;
 import com.weibo.enums.Display;
 import com.weibo.enums.Scope;
 import com.weibo.model.AccessToken;
+import com.weibo.model.User;
 
 /**
  * DaLian Software zhuyeqingtea
@@ -43,7 +46,13 @@ public class TopicWeiboController {
 	private String redirectUri;
 
 	@Resource
+	private WeiboService weiboService;
+
+	@Resource
 	private OAuth2 oAuth2;
+
+	@Resource
+	private Users users;
 
 	@RequestMapping("authorize")
 	public ModelAndView authorize() {
@@ -57,6 +66,8 @@ public class TopicWeiboController {
 		String code = request.getParameter("code");
 		if (StringUtils.isNotBlank(state) && StringUtils.isNotBlank(code) && StringUtils.equals(DEFAULT_STATE, state)) {
 			AccessToken accessToken = oAuth2.accessToken(code);
+			User user = users.show(accessToken.getUid(), accessToken.getAccessToken());
+			weiboService.addUser(user);
 			return new ModelAndView("redirect:/t?access_token=" + accessToken.getAccessToken() + "&user_id="
 				+ accessToken.getUid());
 		} else {
