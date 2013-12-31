@@ -21,12 +21,13 @@ CREATE TABLE `join_hist` (
   `join_time` datetime DEFAULT NULL COMMENT '参与时间',
   PRIMARY KEY (`join_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='参与表';
--- 商品表
+-- 奖品表
 DROP TABLE IF EXISTS `item_info`;
 CREATE TABLE `item_info` (
   `item_id` int(3) NOT NULL AUTO_INCREMENT COMMENT '商品ID, 100:竹叶青12月量的茶包, 101:空气净化器, 102:3M环保口罩, 103:竹叶青品饮小铁盒, 104:绿色植物盆栽',
-  `item_level` int(1) NOT NULL COMMENT '0:特等, 1:1等奖, 2:2等奖, 3:3等奖, 4:爱心贡献奖',
   `item_name` varchar(20) DEFAULT NULL COMMENT '商品名称',
+  `item_total_count` int(3) NOT NULL COMMENT '奖品总数量',
+  `item_count` int(3) NOT NULL COMMENT '奖品剩余数量',
   `reward_rate` int(1) DEFAULT 0 COMMENT '中奖几率',
   `active_yn` boolean DEFAULT false COMMENT '是否启用',
   PRIMARY KEY (`item_id`)
