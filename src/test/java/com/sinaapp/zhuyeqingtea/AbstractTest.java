@@ -10,6 +10,7 @@ package com.sinaapp.zhuyeqingtea;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * nhn zhuyeqingtea
@@ -18,6 +19,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  * @date 2013年12月26日
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration({"classpath:context-service.xml"})
+@ContextConfiguration({"classpath:context-datasource.xml",
+	"classpath:context-mybatis.xml",
+	"classpath:context-service.xml"})
+@Transactional
 public abstract class AbstractTest {
 }

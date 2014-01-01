@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sinaapp.zhuyeqingtea.repository.PrizeRepository">
+	<select id="select" parameterType="int" resultType="Prize">
+		SELECT
+			prize_id AS prizeId,
+			prize_name AS prizeName,
+			total_count AS totalCount,
+			current_count AS currentCount,
+			probability AS probability,
+			active_yn AS activeYn
+		FROM prize
+		WHERE prize_id = #{prizeId}
+	</select>
+	<select id="selectList" resultType="Prize">
+		SELECT
+			prize_id AS prizeId,
+			prize_name AS prizeName,
+			total_count AS totalCount,
+			current_count AS currentCount,
+			probability AS probability,
+			active_yn AS activeYn
+		FROM prize
+	</select>
+	<insert id="insert" parameterType="Prize" useGeneratedKeys="true" keyProperty="prizeId">
+		INSERT INTO prize (
+			`prize_name`,
+			`total_count`,
+			`current_count`,
+			`probability`,
+			`active_yn`
+		) VALUES (
+			#{prizeName},
+			#{totalCount},
+			#{currentCount},
+			#{probability},
+			#{activeYn}
+		)
+	</insert>
+	<update id="update" parameterType="Prize">
+		UPDATE prize
+		SET prize_name = #{prizeName},
+			total_count = #{totalCount},
+			current_count = #{currentCount},
+			probability = #{probability},
+			active_yn = #{activeYn}
+		WHERE prize_id = #{prizeId}
+	</update>
+</mapper>

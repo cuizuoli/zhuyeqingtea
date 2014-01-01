@@ -1,15 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sinaapp.zhuyeqingtea.repository.RewardRepository">
-	<insert id="insert" parameterType="RewardHist">
-		INSERT INTO reward_hist (
+	<insert id="insert" parameterType="Reward" useGeneratedKeys="true" keyProperty="rewardId">
+		INSERT INTO reward (
 			user_id,
-			item_id,
+			prize_id,
 			reward_time
 		) VALUES (
 			#{userId},
-			#{itemId},
-			#{rewardTime}
+			#{prizeId},
+			NOW()
 		)
 	</insert>
+	<select id="select" resultType="Reward">
+		SELECT
+			u.user_id AS userId,
+			u.user_name AS userName,
+			p.prize_id AS prizeId,
+			p.prize_name AS prizeName,
+			COUNT(1) AS prizeCount
+		FROM reward r
+		INNER JOIN prize p
+		ON p.prize_id = r.prize_id
+		INNER JOIN weibo_user u
+		ON u.user_id = r.user_id
+		WHERE r.user_id = #{userId}
+	</select>
 </mapper>

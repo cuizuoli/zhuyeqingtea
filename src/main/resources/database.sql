@@ -22,22 +22,28 @@ CREATE TABLE `join_hist` (
   PRIMARY KEY (`join_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='参与表';
 -- 奖品表
-DROP TABLE IF EXISTS `item_info`;
-CREATE TABLE `item_info` (
-  `item_id` int(3) NOT NULL AUTO_INCREMENT COMMENT '商品ID, 100:竹叶青12月量的茶包, 101:空气净化器, 102:3M环保口罩, 103:竹叶青品饮小铁盒, 104:绿色植物盆栽',
-  `item_name` varchar(20) DEFAULT NULL COMMENT '商品名称',
-  `item_total_count` int(3) NOT NULL COMMENT '奖品总数量',
-  `item_count` int(3) NOT NULL COMMENT '奖品剩余数量',
-  `reward_rate` int(1) DEFAULT 0 COMMENT '中奖几率',
-  `active_yn` boolean DEFAULT false COMMENT '是否启用',
-  PRIMARY KEY (`item_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='商品表';
+DROP TABLE IF EXISTS `prize`;
+CREATE TABLE `prize` (
+  `prize_id` int(3) NOT NULL AUTO_INCREMENT COMMENT '商品ID, 100:竹叶青12月量的茶包, 101:空气净化器, 102:3M环保口罩, 103:竹叶青品饮小铁盒, 104:绿色植物盆栽',
+  `prize_name` varchar(20) DEFAULT NULL COMMENT '商品名称',
+  `total_count` int(3) NOT NULL COMMENT '奖品总数量',
+  `current_count` int(3) NOT NULL COMMENT '奖品当前数量',
+  `probability` double DEFAULT 0 COMMENT '中奖几率',
+  `active_yn` char(1) DEFAULT 'N' COMMENT '是否启用',
+  PRIMARY KEY (`prize_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='奖品表';
+INSERT INTO `prize` (`prize_id`,`prize_name`,`total_count`,`current_count`,`probability`,`active_yn`) VALUES (1,'竹叶青12月量茶包',2,2,0.01,'N');
+INSERT INTO `prize` (`prize_id`,`prize_name`,`total_count`,`current_count`,`probability`,`active_yn`) VALUES (2,'车载空气净化器',10,10,0.01,'N');
+INSERT INTO `prize` (`prize_id`,`prize_name`,`total_count`,`current_count`,`probability`,`active_yn`) VALUES (3,'3M环保口罩',2000,2000,0.01,'N');
+INSERT INTO `prize` (`prize_id`,`prize_name`,`total_count`,`current_count`,`probability`,`active_yn`) VALUES (4,'竹叶青品饮小铁盒',3000,3000,0.01,'N');
+INSERT INTO `prize` (`prize_id`,`prize_name`,`total_count`,`current_count`,`probability`,`active_yn`) VALUES (5,'绿色植物盆栽',5000,5000,0.01,'N');
+INSERT INTO `prize` (`prize_id`,`prize_name`,`total_count`,`current_count`,`probability`,`active_yn`) VALUES (100,'谢谢参与奖',10000,10000,0.5,'N');
 -- 奖赏表
-DROP TABLE IF EXISTS `reward_hist`;
-CREATE TABLE `reward_hist` (
+DROP TABLE IF EXISTS `reward`;
+CREATE TABLE `reward` (
   `reward_id` int(9) NOT NULL AUTO_INCREMENT COMMENT '奖赏ID',
   `user_id` varchar(20) NOT NULL COMMENT '用户ID',
-  `item_id` int(3) DEFAULT 0 COMMENT '商品ID',
+  `prize_id` int(3) DEFAULT 0 COMMENT '奖品ID',
   `reward_time` datetime DEFAULT NULL COMMENT '奖赏时间',
   PRIMARY KEY (`reward_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='奖赏表';

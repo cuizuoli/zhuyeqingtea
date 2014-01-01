@@ -158,18 +158,4 @@ public final class AliasMethod {
 		return coinToss ? column : alias[column];
 	}
 
-	public static void main(String[] args) {
-		List<Double> probabilities = new ArrayList<Double>();
-		probabilities.add(Double.valueOf("0.25"));
-		probabilities.add(Double.valueOf("0.2"));
-		probabilities.add(Double.valueOf("0.1"));
-		probabilities.add(Double.valueOf("0.05"));
-		probabilities.add(Double.valueOf("0.4"));
-		probabilities.add(Double.valueOf("0.8"));
-		AliasMethod aliasMethod = new AliasMethod(probabilities);
-		for (int i = 0; i < 30; i++) {
-			System.out.println(aliasMethod.next());
-		}
-	}
-
 }

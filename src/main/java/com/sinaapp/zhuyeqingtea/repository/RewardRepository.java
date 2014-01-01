@@ -9,7 +9,7 @@ package com.sinaapp.zhuyeqingtea.repository;
 
 import org.springframework.stereotype.Repository;
 
-import com.sinaapp.zhuyeqingtea.model.RewardHist;
+import com.sinaapp.zhuyeqingtea.model.Reward;
 
 /**
  * DaLian Software zhuyeqingtea
@@ -19,6 +19,16 @@ import com.sinaapp.zhuyeqingtea.model.RewardHist;
  */
 @Repository
 public interface RewardRepository {
+	/**
+	 * insert
+	 * @param reward
+	 */
+	void insert(Reward reward);
 
-	void insert(RewardHist rewardHist);
+	/**
+	 * select
+	 * @param userId
+	 * @return
+	 */
+	Reward select(String userId);
 }
