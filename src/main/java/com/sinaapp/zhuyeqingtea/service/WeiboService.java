@@ -47,4 +47,13 @@ public class WeiboService {
 		}
 	}
 
+	/**
+	 * getUser
+	 * @param userId
+	 * @return
+	 */
+	public WeiboUser getUser(String userId) {
+		return weiboUserRepository.select(userId);
+	}
+
 }

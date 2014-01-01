@@ -12,7 +12,10 @@ import javax.annotation.Resource;
 import org.junit.Test;
 
 import com.sinaapp.zhuyeqingtea.AbstractTest;
+import com.sinaapp.zhuyeqingtea.model.WeiboUser;
 import com.weibo.model.User;
+
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * DaLian Software zhuyeqingtea
@@ -20,6 +23,7 @@ import com.weibo.model.User;
  * @author cuizuoli
  * @date 2014年1月1日
  */
+@Slf4j
 public class WeiboServiceTest extends AbstractTest {
 
 	@Resource
@@ -37,6 +41,12 @@ public class WeiboServiceTest extends AbstractTest {
 		user.setCity(11);
 		user.setLocation("test");
 		weiboService.addUser(user);
+	}
+
+	@Test
+	public void getUser() {
+		WeiboUser weiboUser = weiboService.getUser("2139839683");
+		log.debug(weiboUser.toString());
 	}
 
 }

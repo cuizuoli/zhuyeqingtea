@@ -13,6 +13,17 @@
 		FROM prize
 		WHERE prize_id = #{prizeId}
 	</select>
+	<select id="selectAllList" resultType="Prize">
+		SELECT
+			prize_id AS prizeId,
+			prize_name AS prizeName,
+			total_count AS totalCount,
+			current_count AS currentCount,
+			min_join_count AS minJoinCount,
+			probability AS probability,
+			active_yn AS activeYn
+		FROM prize
+	</select>
 	<select id="selectList" resultType="Prize">
 		<![CDATA[
 		SELECT

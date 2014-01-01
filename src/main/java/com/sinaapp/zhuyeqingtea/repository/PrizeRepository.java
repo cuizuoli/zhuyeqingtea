@@ -29,6 +29,12 @@ public interface PrizeRepository {
 	Prize select(int prizeId);
 
 	/**
+	 * selectAllList
+	 * @return
+	 */
+	List<Prize> selectAllList();
+
+	/**
 	 * minJoinCount
 	 * @param minJoinCount
 	 * @return

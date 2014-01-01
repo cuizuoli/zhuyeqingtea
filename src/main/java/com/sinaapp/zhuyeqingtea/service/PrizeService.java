@@ -57,4 +57,12 @@ public class PrizeService {
 		return prizeList.get(i);
 	}
 
+	/**
+	 * getPrizeList
+	 * @return
+	 */
+	public List<Prize> getPrizeList() {
+		return prizeRepository.selectAllList();
+	}
+
 }

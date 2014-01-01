@@ -37,6 +37,11 @@ public class PrizeRepositoryTest extends AbstractTest {
 	}
 
 	@Test
+	public void selectAllList() {
+		prizeRepository.selectAllList();
+	}
+
+	@Test
 	public void selectList() {
 		List<Prize> prizeList = prizeRepository.selectList(0);
 		log.debug(prizeList.get(0).toString());

@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>竹叶青茶微博活动 - “绿茶生活，远离烟花”</title>
+<title>竹叶青茶微博活动 - “绿茶生活，远离雾霾，拒绝烟花”</title>
 <script type="text/javascript" src="/js/jquery-1.10.2.min.js"></script>
 <script type="text/javascript" src="http://js.t.sinajs.cn/t4/enterprise/js/public/appframe/appClient.js"></script>
 <link rel="stylesheet" type="text/css" href="/css/style.css"/>
