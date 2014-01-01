@@ -11,6 +11,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.lang.StringUtils;
 import org.junit.Test;
 
 import com.sinaapp.zhuyeqingtea.AbstractTest;
@@ -38,7 +39,7 @@ public class PrizeRepositoryTest extends AbstractTest {
 
 	@Test
 	public void selectList() {
-		List<Prize> prizeList = prizeRepository.selectList();
+		List<Prize> prizeList = prizeRepository.selectList(StringUtils.EMPTY);
 		log.debug(prizeList.get(0).toString());
 	}
 

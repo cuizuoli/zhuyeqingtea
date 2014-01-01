@@ -21,6 +21,9 @@
 			probability AS probability,
 			active_yn AS activeYn
 		FROM prize
+		<if test="activeYn != null and activeYn != ''">
+		WHERE active_yn = #{activeYn}
+		</if>
 	</select>
 	<insert id="insert" parameterType="Prize" useGeneratedKeys="true" keyProperty="prizeId">
 		INSERT INTO prize (
