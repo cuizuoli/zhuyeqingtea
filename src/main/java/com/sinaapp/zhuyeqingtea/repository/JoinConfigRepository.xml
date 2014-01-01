@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sinaapp.zhuyeqingtea.repository.JoinConfigRepository">
+	<select id="selectCount" resultType="int">
+		SELECT weibo_repost_count + weixin_share_count + qq_signature_count + other_join_count
+		FROM join_config
+	</select>
+	<select id="select" resultType="JoinConfig">
+		SELECT
+			weibo_repost_count AS weiboRepostCount,
+			weixin_share_count AS weixinShareCount,
+			qq_signature_count AS qqSignatureCount,
+			other_join_count AS otherJoinCount
+		FROM join_config
+		WHERE join_config_id = 1
+	</select>
+	<update id="update" parameterType="JoinConfig">
+		UPDATE join_config
+		SET weibo_repost_count = #{weiboRepostCount},
+			weixin_share_count = #{weixinShareCount},
+			qq_signature_count = #{qqSignatureCount},
+			other_join_count = #{otherJoinCount}
+		WHERE join_config_id = 1
+	</update>
+</mapper>

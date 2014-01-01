@@ -29,4 +29,14 @@ public class JoinHistRepositoryTest extends AbstractTest {
 		joinHistRepository.insert("test");
 	}
 
+	@Test
+	public void selectTodayCount() {
+		joinHistRepository.selectTodayCount("test");
+	}
+
+	@Test
+	public void selectCount() {
+		joinHistRepository.selectCount();
+	}
+
 }

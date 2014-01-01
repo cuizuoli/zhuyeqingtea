@@ -7,35 +7,40 @@
 			prize_name AS prizeName,
 			total_count AS totalCount,
 			current_count AS currentCount,
+			min_join_count AS minJoinCount,
 			probability AS probability,
 			active_yn AS activeYn
 		FROM prize
 		WHERE prize_id = #{prizeId}
 	</select>
 	<select id="selectList" resultType="Prize">
+		<![CDATA[
 		SELECT
 			prize_id AS prizeId,
 			prize_name AS prizeName,
 			total_count AS totalCount,
 			current_count AS currentCount,
+			min_join_count AS minJoinCount,
 			probability AS probability,
 			active_yn AS activeYn
 		FROM prize
-		<if test="activeYn != null and activeYn != ''">
-		WHERE active_yn = #{activeYn}
-		</if>
+		WHERE min_join_count <= #{minJoinCount}
+		AND active_yn = 'Y'
+		]]>
 	</select>
 	<insert id="insert" parameterType="Prize" useGeneratedKeys="true" keyProperty="prizeId">
 		INSERT INTO prize (
-			`prize_name`,
-			`total_count`,
-			`current_count`,
-			`probability`,
-			`active_yn`
+			prize_name,
+			total_count,
+			current_count,
+			min_join_count,
+			probability,
+			active_yn
 		) VALUES (
 			#{prizeName},
 			#{totalCount},
 			#{currentCount},
+			#{minJoinCount},
 			#{probability},
 			#{activeYn}
 		)
@@ -45,6 +50,7 @@
 		SET prize_name = #{prizeName},
 			total_count = #{totalCount},
 			current_count = #{currentCount},
+			min_join_count = #{minJoinCount},
 			probability = #{probability},
 			active_yn = #{activeYn}
 		WHERE prize_id = #{prizeId}

@@ -4,4 +4,15 @@
 	<insert id="insert" parameterType="string">
 		INSERT INTO join_hist (user_id,join_time) VALUES (#{userId},NOW())
 	</insert>
+	<select id="selectTodayCount" parameterType="string" resultType="int">
+		SELECT COUNT(1)
+		FROM join_hist
+		WHERE user_id = #{userId}
+		AND join_time BETWEEN DATE_FORMAT(NOW(),'%Y-%m-%d 00:00:00')
+		AND DATE_FORMAT(NOW(),'%Y-%m-%d 23:59:59')
+	</select>
+	<select id="selectCount" resultType="int">
+		SELECT COUNT(1)
+		FROM join_hist
+	</select>
 </mapper>

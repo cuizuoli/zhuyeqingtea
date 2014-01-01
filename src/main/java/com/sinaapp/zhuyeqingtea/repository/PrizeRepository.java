@@ -9,7 +9,6 @@ package com.sinaapp.zhuyeqingtea.repository;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import com.sinaapp.zhuyeqingtea.model.Prize;
@@ -30,11 +29,11 @@ public interface PrizeRepository {
 	Prize select(int prizeId);
 
 	/**
-	 * selectList
-	 * @param activeYn
+	 * minJoinCount
+	 * @param minJoinCount
 	 * @return
 	 */
-	List<Prize> selectList(@Param("activeYn") String activeYn);
+	List<Prize> selectList(int minJoinCount);
 
 	/**
 	 * insert

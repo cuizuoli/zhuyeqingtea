@@ -15,6 +15,8 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.sinaapp.zhuyeqingtea.model.Prize;
+import com.sinaapp.zhuyeqingtea.repository.JoinConfigRepository;
+import com.sinaapp.zhuyeqingtea.repository.JoinHistRepository;
 import com.sinaapp.zhuyeqingtea.repository.PrizeRepository;
 import com.sinaapp.zhuyeqingtea.utils.AliasMethod;
 
@@ -30,12 +32,22 @@ public class PrizeService {
 	@Resource
 	private PrizeRepository prizeRepository;
 
+	@Resource
+	private JoinConfigRepository joinConfigRepository;
+
+	@Resource
+	private JoinHistRepository joinHistRepository;
+
+	@Resource
+	private CounterService counterService;
+
 	/**
 	 * 根据机率随机抽奖
 	 * @return
 	 */
 	public Prize nextPrize() {
-		List<Prize> prizeList = prizeRepository.selectList(null);
+		int count = counterService.getCount();
+		List<Prize> prizeList = prizeRepository.selectList(count);
 		List<Double> probabilities = new ArrayList<Double>();
 		for (Prize prize : prizeList) {
 			probabilities.add(prize.getProbability());
