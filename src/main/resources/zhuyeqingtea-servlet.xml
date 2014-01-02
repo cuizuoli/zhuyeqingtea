@@ -35,6 +35,7 @@
 		<mvc:interceptor>
 			<mvc:mapping path="/**"/>
 			<mvc:exclude-mapping path="/g/**"/>
+			<mvc:exclude-mapping path="/c/**"/>
 			<bean class="org.springframework.mobile.device.DeviceResolverHandlerInterceptor"/>
 		</mvc:interceptor>
 		<mvc:interceptor>
@@ -42,7 +43,7 @@
 			<bean class="com.sinaapp.zhuyeqingtea.security.interceptor.WeiboAuthInterceptor"/>
 		</mvc:interceptor>
 	</mvc:interceptors>
-
+	
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
 		<property name="prefix" value="/WEB-INF/jsp/"/>

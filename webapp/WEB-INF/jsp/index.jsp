@@ -87,6 +87,7 @@
 			_this._bindEvent();
 			_this._initIndex();
 			_this._initContent();
+			_this._initCounter();
 		},
 		// 初始化首页
 		_initIndex : function() {
@@ -148,6 +149,7 @@
 								}
 							}
 						});
+						_this._initCounter();
 					}
 				}
 			});
@@ -208,6 +210,28 @@
 				_this._initIndex();
 				_this._initContent();
 				_this._bindIndexEvent();
+			});
+		},
+		_initCounter : function () {
+			$.ajax({
+				url: '/c',
+				type: 'get',
+				dataType: 'text',
+				success: function(data) {
+					if (data != null) {
+						$('.counter').html('');
+						var padZeroCnt = data;
+						if (data.length < 6) {
+							padZeroCnt = Array(6-(''+data).length+1).join(0)+data;
+						}
+						var countHtml = '<ul>';
+						var arrCnt = padZeroCnt.split('');
+						for (var i = 0; i < arrCnt.length; i++) {
+							countHtml += '<li>' + arrCnt[i] + '</li>';
+						}
+						$('.counter').append(countHtml + '</ul>');
+					}
+				}
 			});
 		}
 	});
