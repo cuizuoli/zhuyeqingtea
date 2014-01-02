@@ -46,7 +46,7 @@
 </div>
 
 <div class="gamePop04" style="display:none;">
-<p class="weChat"><img src="images/img_wechat.jpg" width="120" height="120" alt="" /></p>
+<p class="weChat"><span id="qrcode"></span></p>
 <p class="close"><a id="closeWeixinShareBtn" href="javascript:void(0);"><img src="images/btn_close.png" alt="" /></a></p>
 </div>
 </div>
@@ -191,10 +191,12 @@
 			});
 			// 弹出"分享到微信朋友圈"窗口
 			_this._contentsArea.find('.gamePop03 #weixinShareBtn').click(function() {
+				$('#qrcode').qrcode({width: 120,height: 120,text: window.location.href});
 				_this._contentsArea.find('.gamePop04').show();
 			});
 			// 关闭"分享到微信朋友圈"窗口
 			_this._contentsArea.find('.gamePop04 #closeWeixinShareBtn').click(function() {
+				$('#qrcode').html('');
 				_this._contentsArea.find('.gamePop04').hide();
 			});
 			// 下次再说
