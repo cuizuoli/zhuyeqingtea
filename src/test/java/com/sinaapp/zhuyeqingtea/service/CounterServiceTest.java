@@ -29,4 +29,9 @@ public class CounterServiceTest extends AbstractTest {
 		counterService.getCount();
 	}
 
+	@Test
+	public void getWeiboCount() {
+		counterService.getWeiboCount();
+	}
+
 }
