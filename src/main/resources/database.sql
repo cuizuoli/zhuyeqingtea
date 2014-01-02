@@ -35,7 +35,7 @@ CREATE TABLE `join_hist` (
 -- 奖品表
 DROP TABLE IF EXISTS `prize`;
 CREATE TABLE `prize` (
-  `prize_id` int(3) NOT NULL AUTO_INCREMENT COMMENT '商品ID, 100:竹叶青12月量的茶包, 101:空气净化器, 102:3M环保口罩, 103:竹叶青品饮小铁盒, 104:绿色植物盆栽',
+  `prize_id` int(3) NOT NULL AUTO_INCREMENT COMMENT '奖品ID',
   `prize_name` varchar(20) DEFAULT NULL COMMENT '商品名称',
   `total_count` int(3) NOT NULL COMMENT '奖品总数量',
   `current_count` int(3) NOT NULL COMMENT '奖品当前数量',
@@ -44,12 +44,12 @@ CREATE TABLE `prize` (
   `active_yn` char(1) DEFAULT 'N' COMMENT '是否启用',
   PRIMARY KEY (`prize_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='奖品表';
-INSERT INTO `prize` (`prize_id`,`prize_name`,`total_count`,`current_count`,`min_join_count`,`probability`,`active_yn`) VALUES (5,'竹叶青12月量茶包',2,2,50000,0.01,'N');
-INSERT INTO `prize` (`prize_id`,`prize_name`,`total_count`,`current_count`,`min_join_count`,`probability`,`active_yn`) VALUES (4,'车载空气净化器',10,10,40000,0.01,'N');
-INSERT INTO `prize` (`prize_id`,`prize_name`,`total_count`,`current_count`,`min_join_count`,`probability`,`active_yn`) VALUES (3,'3M环保口罩',2000,2000,30000,0.01,'N');
-INSERT INTO `prize` (`prize_id`,`prize_name`,`total_count`,`current_count`,`min_join_count`,`probability`,`active_yn`) VALUES (2,'竹叶青品饮小铁盒',3000,3000,20000,0.01,'N');
-INSERT INTO `prize` (`prize_id`,`prize_name`,`total_count`,`current_count`,`min_join_count`,`probability`,`active_yn`) VALUES (1,'绿色植物盆栽',5000,5000,10000,0.01,'N');
-INSERT INTO `prize` (`prize_id`,`prize_name`,`total_count`,`current_count`,`min_join_count`,`probability`,`active_yn`) VALUES (100,'谢谢参与奖',10000,10000,0,0.5,'N');
+INSERT INTO `prize` (`prize_id`,`prize_name`,`total_count`,`current_count`,`min_join_count`,`probability`,`active_yn`) VALUES (1,'竹叶青12月量茶包',2,2,150000,0.01,'N');
+INSERT INTO `prize` (`prize_id`,`prize_name`,`total_count`,`current_count`,`min_join_count`,`probability`,`active_yn`) VALUES (2,'车载空气净化器',10,10,100000,0.05,'N');
+INSERT INTO `prize` (`prize_id`,`prize_name`,`total_count`,`current_count`,`min_join_count`,`probability`,`active_yn`) VALUES (3,'3M环保口罩',2000,2000,30000,0.1,'N');
+INSERT INTO `prize` (`prize_id`,`prize_name`,`total_count`,`current_count`,`min_join_count`,`probability`,`active_yn`) VALUES (4,'竹叶青品饮小铁盒',3000,3000,20000,0.2,'N');
+INSERT INTO `prize` (`prize_id`,`prize_name`,`total_count`,`current_count`,`min_join_count`,`probability`,`active_yn`) VALUES (5,'绿色植物盆栽',5000,5000,10000,0.3,'N');
+INSERT INTO `prize` (`prize_id`,`prize_name`,`total_count`,`current_count`,`min_join_count`,`probability`,`active_yn`) VALUES (100,'谢谢参与奖',100000,100000,0,0.6,'N');
 -- 奖赏表
 DROP TABLE IF EXISTS `reward`;
 CREATE TABLE `reward` (
