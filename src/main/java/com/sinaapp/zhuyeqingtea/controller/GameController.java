@@ -60,7 +60,7 @@ public class GameController {
 		} else {
 			log.error("User not found!");
 		}
-		return null;
+		return new WeiboCount();
 	}
 
 	@RequestMapping("share")

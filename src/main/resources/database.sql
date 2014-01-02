@@ -44,8 +44,8 @@ CREATE TABLE `prize` (
   `active_yn` char(1) DEFAULT 'N' COMMENT '是否启用',
   PRIMARY KEY (`prize_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='奖品表';
-INSERT INTO `prize` (`prize_id`,`prize_name`,`total_count`,`current_count`,`min_join_count`,`probability`,`active_yn`) VALUES (5,'竹叶青12月量茶包',2,2,50000,0.01,'N');
-INSERT INTO `prize` (`prize_id`,`prize_name`,`total_count`,`current_count`,`min_join_count`,`probability`,`active_yn`) VALUES (4,'车载空气净化器',10,10,40000,0.01,'N');
+INSERT INTO `prize` (`prize_id`,`prize_name`,`total_count`,`current_count`,`min_join_count`,`probability`,`active_yn`) VALUES (5,'竹叶青12月量茶包',2,2,150000,0.01,'N');
+INSERT INTO `prize` (`prize_id`,`prize_name`,`total_count`,`current_count`,`min_join_count`,`probability`,`active_yn`) VALUES (4,'车载空气净化器',10,10,100000,0.01,'N');
 INSERT INTO `prize` (`prize_id`,`prize_name`,`total_count`,`current_count`,`min_join_count`,`probability`,`active_yn`) VALUES (3,'3M环保口罩',2000,2000,30000,0.01,'N');
 INSERT INTO `prize` (`prize_id`,`prize_name`,`total_count`,`current_count`,`min_join_count`,`probability`,`active_yn`) VALUES (2,'竹叶青品饮小铁盒',3000,3000,20000,0.01,'N');
 INSERT INTO `prize` (`prize_id`,`prize_name`,`total_count`,`current_count`,`min_join_count`,`probability`,`active_yn`) VALUES (1,'绿色植物盆栽',5000,5000,10000,0.01,'N');

@@ -138,13 +138,15 @@
 							type: 'post',
 							dataType: 'json',
 							success: function(data) {
-								console.log(data);
-								if (data != null) {
+								if (data.count == 0 && data.hongBaoCount == 0 && data.prizePoolLevel == 0) {
+									alert('每天只能参加五次活动！');
+									_this._initIndex();
+									_this._initContent();
+									_this._bindIndexEvent();
+								} else {
 									_this._contentsArea.find('.scratch').fadeOut(500);
 									// 弹出"你已经成功为成都送出一个红包"
 									_this._contentsArea.find('.gamePop01').show();
-								} else {
-									alert('每天只能参加五次活动！');
 								}
 							}
 						});
@@ -161,6 +163,7 @@
 					type: 'get',
 					dataType: 'json',
 					success: function(data) {
+						console.log(data);
 						_this._contentsArea.find('#textCont').text(data.weiboContent);
 						_this._contentsArea.find('.gamePop03').show();
 					}
