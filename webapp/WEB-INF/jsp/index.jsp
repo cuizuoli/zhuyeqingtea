@@ -37,7 +37,7 @@
 </div>
 
 <div class="gamePop03" style="display:none;">
-<p class="textCont"><textarea name="textCont" rows="2" cols="" id="textCont"></textarea></p>
+<p class="textCont"><textarea name="textCont" rows="2" cols="" id="textCont">我参与了@竹叶青茶 #绿茶生活 远离雾霾 拒绝烟花#活动，已为成都送出一个红包，还差xxx个红包，茶弈基金第x级奖池将被打开，快来和我一起给成都送一个红包，为清除成都雾霾尽一份力吧！</textarea></p>
 <ul class="btnList">
 <li><a id="shareConfirmBtn" href="javascript:void(0);"><img src="images/btn_share01.png" alt="分享到新浪微博" /></a></li>
 </ul>
@@ -113,7 +113,7 @@
 			_this._contentsArea.find('.gamePop02').hide();
 			_this._contentsArea.find('.gamePop03').hide();
 			_this._contentsArea.find('.gamePop04').hide();
-			_this._contentsArea.find('.success').fadeOut(3000);
+			_this._contentsArea.find('.success').hide();
 			_this._initWeiboEvent();
 			_this._sp.wScratchPad('reset');
 		},
