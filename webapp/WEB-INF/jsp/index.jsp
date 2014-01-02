@@ -84,7 +84,7 @@
 			_this._root = $(_this._options.id);
 			_this._contentsArea = _this._root.find('#contentsArea');
 			_this._headerArea = _this._root.find('#headerArea');
-			_this._initGameEvent();
+			_this._bindEvent();
 			_this._initIndex();
 			_this._initContent();
 		},
@@ -92,20 +92,10 @@
 		_initIndex : function() {
 			var _this = this;
 			_this._headerArea.show();
-			_this._headerArea.find('.scratch').show();
+			_this._headerArea.find('.explan').show();
 			_this._contentsArea.hide();
-			_this._bindIndexEvent();
 		},
-		// 绑定活动介绍事件
-		_bindIndexEvent : function() {
-			var _this = this;
-			_this._root.mousemove(function(e) {
-				_this._root.unbind('mousemove');
-				_this._headerArea.find('.explan').fadeOut(4000);
-				_this._contentsArea.fadeIn(1000);
-			});
-		},
-		// 实始化内容页
+		// 初始化内容页
 		_initContent : function() {
 			var _this = this;
 			_this._contentsArea.find('.scratch').show();
@@ -114,10 +104,26 @@
 			_this._contentsArea.find('.gamePop03').hide();
 			_this._contentsArea.find('.gamePop04').hide();
 			_this._contentsArea.find('.success').hide();
-			_this._initWeiboEvent();
 			_this._sp.wScratchPad('reset');
 		},
-		_initGameEvent : function() {
+		// 绑定事件
+		_bindEvent : function() {
+			var _this = this;
+			_this._bindIndexEvent();
+			_this._bindGameEvent();
+			_this._bindWeiboEvent();
+		},
+		// 绑定活动介绍事件
+		_bindIndexEvent : function() {
+			var _this = this;
+			_this._root.mousemove(function(e) {
+				console.log(e);
+				_this._root.unbind('mousemove');
+				_this._headerArea.find('.explan').fadeOut(4000);
+				_this._contentsArea.fadeIn(1000);
+			});
+		},
+		_bindGameEvent : function() {
 			var _this = this;
 			_this._sp = _this._contentsArea.find('.scratch').wScratchPad({
 				width: 486,
@@ -135,7 +141,7 @@
 				}
 			});
 		},
-		_initWeiboEvent : function() {
+		_bindWeiboEvent : function() {
 			var _this = this;
 			// 弹出"分享到新浪微博"窗口
 			_this._contentsArea.find('.gamePop01 #shareBtn').click(function() {
@@ -146,6 +152,7 @@
 				_this._contentsArea.find('.success').fadeIn(500, function() {
 					_this._initIndex();
 					_this._initContent();
+					_this._bindIndexEvent();
 				});
 			});
 			// 关闭"分享到新浪微博"窗口
@@ -168,6 +175,7 @@
 			_this._contentsArea.find('.gamePop02 #nextShareConfirmBtn').click(function() {
 				_this._initIndex();
 				_this._initContent();
+				_this._bindIndexEvent();
 			});
 		}
 	});
