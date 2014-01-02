@@ -148,10 +148,10 @@
 									_this._contentsArea.find('.scratch').fadeOut(500);
 									// 弹出"你已经成功为成都送出一个红包"
 									_this._contentsArea.find('.gamePop01').show();
+									_this._initCounter();
 								}
 							}
 						});
-						_this._initCounter();
 					}
 				}
 			});
