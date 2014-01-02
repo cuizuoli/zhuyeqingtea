@@ -37,7 +37,7 @@
 </div>
 
 <div class="gamePop03" style="display:none;">
-<p class="textCont"><textarea name="textCont" rows="2" cols="" id="textCont">我参与了@竹叶青茶 #绿茶生活 远离雾霾 拒绝烟花#活动，已为成都送出一个红包，还差xxx个红包，茶弈基金第x级奖池将被打开，快来和我一起给成都送一个红包，为清除成都雾霾尽一份力吧！</textarea></p>
+<p class="textCont"><textarea name="textCont" rows="2" cols="" id="textCont"></textarea></p>
 <ul class="btnList">
 <li><a id="shareConfirmBtn" href="javascript:void(0);"><img src="images/btn_share01.png" alt="分享到新浪微博" /></a></li>
 </ul>
@@ -117,7 +117,6 @@
 		_bindIndexEvent : function() {
 			var _this = this;
 			_this._root.mousemove(function(e) {
-				console.log(e);
 				_this._root.unbind('mousemove');
 				_this._headerArea.find('.explan').fadeOut(4000);
 				_this._contentsArea.fadeIn(1000);
@@ -133,10 +132,22 @@
 				overlay: 'none',
 				size: 50,
 				scratchUp: function(e, percent) {
-					if (percent > 50) {
-						_this._contentsArea.find('.scratch').fadeOut(500);
-						// 弹出"你已经成功为成都送出一个红包"
-						_this._contentsArea.find('.gamePop01').show();
+					if (percent > 30) {
+						$.ajax({
+							url: '/g/join',
+							type: 'post',
+							dataType: 'json',
+							success: function(data) {
+								console.log(data);
+								if (data != null) {
+									_this._contentsArea.find('.scratch').fadeOut(500);
+									// 弹出"你已经成功为成都送出一个红包"
+									_this._contentsArea.find('.gamePop01').show();
+								} else {
+									alert('每天只能参加五次活动！');
+								}
+							}
+						});
 					}
 				}
 			});
@@ -145,14 +156,33 @@
 			var _this = this;
 			// 弹出"分享到新浪微博"窗口
 			_this._contentsArea.find('.gamePop01 #shareBtn').click(function() {
-				_this._contentsArea.find('.gamePop03').show();
+				$.ajax({
+					url: '/g/wb_cont',
+					type: 'get',
+					dataType: 'json',
+					success: function(data) {
+						_this._contentsArea.find('#textCont').text(data.weiboContent);
+						_this._contentsArea.find('.gamePop03').show();
+					}
+				});
 			});
 			// "分享到新浪微博"确认事件
 			_this._contentsArea.find('.gamePop03 #shareConfirmBtn').click(function() {
-				_this._contentsArea.find('.success').fadeIn(500, function() {
-					_this._initIndex();
-					_this._initContent();
-					_this._bindIndexEvent();
+				$.ajax({
+					url: '/g/share',
+					type: 'post',
+					data: {'text':_this._contentsArea.find('#textCont').text()},
+					dataType: 'json',
+					success: function() {
+						_this._contentsArea.find('.success').fadeIn(500, function() {
+							_this._initIndex();
+							_this._initContent();
+							_this._bindIndexEvent();
+						});
+					},
+					error: function(jqXhr, textStatus, errorThrown) {
+						alert('请稍候再试！');
+					}
 				});
 			});
 			// 关闭"分享到新浪微博"窗口

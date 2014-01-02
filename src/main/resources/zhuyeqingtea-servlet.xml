@@ -49,6 +49,6 @@
 		<property name="suffix" value=".jsp"/>
 	</bean>
 
-	<bean id="handlerAdapter" class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"></bean>
+	<bean id="handlerAdapter" class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"/>
 
 </beans>
