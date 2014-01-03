@@ -14,6 +14,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.sinaapp.zhuyeqingtea.enums.PrizePool;
 import com.sinaapp.zhuyeqingtea.model.WeiboCount;
 import com.sinaapp.zhuyeqingtea.repository.JoinConfigRepository;
 import com.sinaapp.zhuyeqingtea.repository.JoinHistRepository;
@@ -68,7 +69,34 @@ public class CounterService {
 	 * @return
 	 */
 	public WeiboCount getWeiboCount() {
+		int count = getCount();
+		int hongBaoCount = 0;
+		int prizePoolLevel = 0;
+		if (count > 0
+			&& count <= PrizePool.FIRST.getMinJoinCount()) {
+			hongBaoCount = PrizePool.FIRST.getMinJoinCount() - count;
+			prizePoolLevel = 1;
+		} else if (count > PrizePool.FIFTH.getMinJoinCount()
+			&& count < PrizePool.SECOND.getMinJoinCount()) {
+			hongBaoCount = PrizePool.SECOND.getMinJoinCount() - count;
+			prizePoolLevel = 2;
+		} else if (count > PrizePool.SECOND.getMinJoinCount()
+			&& count < PrizePool.THIRD.getMinJoinCount()) {
+			hongBaoCount = PrizePool.THIRD.getMinJoinCount() - count;
+			prizePoolLevel = 3;
+		} else if (count > PrizePool.THIRD.getMinJoinCount()
+			&& count < PrizePool.FOURTH.getMinJoinCount()) {
+			hongBaoCount = PrizePool.FOURTH.getMinJoinCount() - count;
+			prizePoolLevel = 4;
+		} else if (count > PrizePool.FOURTH.getMinJoinCount()
+			&& count < PrizePool.FIFTH.getMinJoinCount()) {
+			hongBaoCount = PrizePool.FIFTH.getMinJoinCount() - count;
+			prizePoolLevel = 5;
+		}
 		WeiboCount weiboCount = new WeiboCount();
+		weiboCount.setCount(count);
+		weiboCount.setHongBaoCount(hongBaoCount);
+		weiboCount.setPrizePoolLevel(prizePoolLevel);
 		weiboCount.setWeiboContent(nextWeiboCount());
 		return weiboCount;
 	}
