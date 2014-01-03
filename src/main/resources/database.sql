@@ -37,7 +37,7 @@ CREATE TABLE `join_hist` (
 DROP TABLE IF EXISTS `prize`;
 CREATE TABLE `prize` (
   `prize_id` int(3) NOT NULL AUTO_INCREMENT COMMENT '奖品ID',
-  `prize_name` varchar(100) DEFAULT NULL COMMENT '商品名称',
+  `prize_name` varchar(100) DEFAULT NULL COMMENT '奖品名称',
   `total_count` int(3) NOT NULL COMMENT '奖品总数量',
   `current_count` int(3) NOT NULL COMMENT '奖品当前数量',
   `min_join_count` int(5) NOT NULL COMMENT '最少的参与人数',
