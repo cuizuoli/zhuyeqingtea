@@ -37,6 +37,7 @@
 			province,
 			city,
 			location,
+			prize_chance,
 			create_time,
 			modify_time
 		) VALUES (
@@ -48,6 +49,7 @@
 			#{province},
 			#{city},
 			#{location},
+			0,
 			NOW(),
 			NOW()
 		)
@@ -62,6 +64,7 @@
 			province AS province,
 			city AS city,
 			location AS location,
+			prize_chance AS prizeChance,
 			create_time AS createTime,
 			modify_time AS modifyTime
 		FROM weibo_user
@@ -77,6 +80,7 @@
 			province AS province,
 			city AS city,
 			location AS location,
+			prize_chance AS prizeChance,
 			create_time AS createTime,
 			modify_time AS modifyTime
 		FROM weibo_user

@@ -140,17 +140,11 @@
 							type: 'post',
 							dataType: 'json',
 							success: function(data) {
-								if (data.count == 0 && data.hongBaoCount == 0 && data.prizePoolLevel == 0) {
-									alert('每天只能参加五次活动！');
-									_this._initIndex();
-									_this._initContent();
-									_this._bindIndexEvent();
-								} else {
-									_this._contentsArea.find('.scratch').fadeOut(500);
-									// 弹出"你已经成功为成都送出一个红包"
-									_this._contentsArea.find('.gamePop01').show();
-									_this._initCounter();
-								}
+								console.log(data);
+								_this._contentsArea.find('.scratch').fadeOut(500);
+								// 弹出"你已经成功为成都送出一个红包"
+								_this._contentsArea.find('.gamePop01').show();
+								_this._initCounter();
 							}
 						});
 					}
