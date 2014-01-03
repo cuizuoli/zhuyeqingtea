@@ -33,4 +33,5 @@ public class CounterController {
 	public int index(HttpServletRequest request) {
 		return counterService.getCount();
 	}
+
 }

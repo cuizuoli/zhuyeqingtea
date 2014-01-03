@@ -53,10 +53,8 @@ public class GameController {
 		HttpSession session = request.getSession();
 		String userId = (String)session.getAttribute(WeiboAuthInterceptor.USER_ID);
 		if (StringUtils.isNotBlank(userId)) {
-			boolean isJoinGame = gameService.joinGame(userId);
-			if (isJoinGame) {
-				return counterService.getWeiboCount();
-			}
+			gameService.joinGame(userId);
+			return counterService.getWeiboCount();
 		} else {
 			log.error("User not found!");
 		}

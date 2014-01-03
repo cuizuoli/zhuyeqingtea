@@ -27,6 +27,7 @@ public class WeiboUser {
 	private String province;
 	private String city;
 	private String location;
+	private int prizeChance;
 	private Date createTime;
 	private Date modifyTime;
 }

@@ -13,6 +13,20 @@
 			modify_time = NOW()
 		WHERE user_id = #{userId}
 	</update>
+	<select id="selectPrizeChance" resultType="int">
+		SELECT prize_chance FROM weibo_user WHERE user_id = #{userId}
+	</select>
+	<update id="plusPrizeChance">
+		UPDATE weibo_user
+		SET prize_chance = prize_chance + 1
+		WHERE user_id = #{userId}
+	</update>
+	<update id="minusPrizeChance">
+		UPDATE weibo_user
+		SET prize_chance = prize_chance - 1
+		WHERE user_id = #{userId}
+		AND prize_chance > 0
+	</update>
 	<insert id="insert" parameterType="WeiboUser">
 		INSERT INTO weibo_user (
 			user_id,

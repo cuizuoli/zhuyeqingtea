@@ -25,5 +25,7 @@
 		INNER JOIN weibo_user u
 		ON u.user_id = r.user_id
 		WHERE r.user_id = #{userId}
+		AND r.reward_time BETWEEN DATE_FORMAT(NOW(),'%Y-%m-%d 00:00:00')
+		AND DATE_FORMAT(NOW(),'%Y-%m-%d 23:59:59')
 	</select>
 </mapper>
