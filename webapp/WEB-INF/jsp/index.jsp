@@ -166,7 +166,6 @@
 					type: 'get',
 					dataType: 'json',
 					success: function(data) {
-						console.log(data);
 						_this._contentsArea.find('#textCont').text(data.weiboContent);
 						_this._contentsArea.find('.gamePop03').show();
 					}

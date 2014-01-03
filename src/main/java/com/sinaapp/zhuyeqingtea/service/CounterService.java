@@ -7,14 +7,17 @@
 
 package com.sinaapp.zhuyeqingtea.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.sinaapp.zhuyeqingtea.enums.PrizePool;
 import com.sinaapp.zhuyeqingtea.model.WeiboCount;
 import com.sinaapp.zhuyeqingtea.repository.JoinConfigRepository;
 import com.sinaapp.zhuyeqingtea.repository.JoinHistRepository;
+import com.sinaapp.zhuyeqingtea.utils.AliasMethod;
 
 /**
  * DaLian Software zhuyeqingtea
@@ -24,8 +27,6 @@ import com.sinaapp.zhuyeqingtea.repository.JoinHistRepository;
  */
 @Service
 public class CounterService {
-
-	private final static String WEIBO_CONTENT_FORMAT = "我参与了@竹叶青茶 #绿茶生活 远离雾霾 拒绝烟花#活动，已为成都送出一个红包，还差%s个红包，茶弈基金第%s级奖池将被打开，快来和我一起给成都送一个红包，为清除成都雾霾尽一份力吧！";
 
 	@Resource
 	private JoinConfigRepository joinConfigRepository;
@@ -43,41 +44,33 @@ public class CounterService {
 		return configCount + count;
 	}
 
+	private String nextWeiboCount() {
+		String[] weiboContents = new String[]{
+			"#绿茶生活 远离雾霾 拒绝烟花#众人拾材火焰高，简单的贡献也能汇聚成强大的力量。送成都一个红包，低碳生活，从拒放烟花开始！http://t.cn/8kDDATh",
+			"#绿茶生活 远离雾霾 拒绝烟花#漫天雾霾让人无处可逃，爆表的PM2.5侵害你我的健康，保护环境，从新年拒放烟花开始，赶快来加入我们吧，为成都环保送出一个红包！http://t.cn/8kDDATh",
+			"#绿茶生活 远离雾霾 拒绝烟花#不要让晨练成为历史教材，让防毒面罩变成了户外必须。我们可以不放烟花，但不能不呼吸空气。送成都一个红包，环保从新年做起！http://t.cn/8kDDATh",
+			"#绿茶生活 远离雾霾 拒绝烟花#烟花虽美，却只是昙花一现；红包虽小，代表的是公益之心。送成都一个红包，环保从我做起！http://t.cn/8kDDATh",
+			"#绿茶生活 远离雾霾 拒绝烟花#红包诚可贵，空气价更高，不要爆表的pm2.5，我要蓝天白云！送成都一个红包，过一个低碳环保年！http://t.cn/8kDDATh"
+		};
+		List<Double> probabilities = new ArrayList<Double>();
+		probabilities.add(Double.valueOf("0.2"));
+		probabilities.add(Double.valueOf("0.2"));
+		probabilities.add(Double.valueOf("0.2"));
+		probabilities.add(Double.valueOf("0.2"));
+		probabilities.add(Double.valueOf("0.2"));
+		AliasMethod aliasMethod = new AliasMethod(probabilities);
+		int i = aliasMethod.next();
+		return weiboContents[i];
+	}
+
 	/**
 	 * getWeiboCount
 	 * @return
 	 */
 	public WeiboCount getWeiboCount() {
-		int count = getCount();
-		int hongBaoCount = 0;
-		int prizePoolLevel = 0;
-		if (count > 0
-			&& count <= PrizePool.FIRST.getMinJoinCount()) {
-			hongBaoCount = PrizePool.FIRST.getMinJoinCount() - count;
-			prizePoolLevel = 1;
-		} else if (count > PrizePool.FIFTH.getMinJoinCount()
-			&& count < PrizePool.SECOND.getMinJoinCount()) {
-			hongBaoCount = PrizePool.SECOND.getMinJoinCount() - count;
-			prizePoolLevel = 2;
-		} else if (count > PrizePool.SECOND.getMinJoinCount()
-			&& count < PrizePool.THIRD.getMinJoinCount()) {
-			hongBaoCount = PrizePool.THIRD.getMinJoinCount() - count;
-			prizePoolLevel = 3;
-		} else if (count > PrizePool.THIRD.getMinJoinCount()
-			&& count < PrizePool.FOURTH.getMinJoinCount()) {
-			hongBaoCount = PrizePool.FOURTH.getMinJoinCount() - count;
-			prizePoolLevel = 4;
-		} else if (count > PrizePool.FOURTH.getMinJoinCount()
-			&& count < PrizePool.FIFTH.getMinJoinCount()) {
-			hongBaoCount = PrizePool.FIFTH.getMinJoinCount() - count;
-			prizePoolLevel = 5;
-		}
-		String weiboContent = String.format(WEIBO_CONTENT_FORMAT, hongBaoCount, prizePoolLevel);
 		WeiboCount weiboCount = new WeiboCount();
-		weiboCount.setCount(count);
-		weiboCount.setHongBaoCount(hongBaoCount);
-		weiboCount.setPrizePoolLevel(prizePoolLevel);
-		weiboCount.setWeiboContent(weiboContent);
+		weiboCount.setWeiboContent(nextWeiboCount());
 		return weiboCount;
 	}
+
 }
