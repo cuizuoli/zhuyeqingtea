@@ -20,5 +20,6 @@ public class WeiboCount {
 	private int count;
 	private int hongBaoCount;
 	private int prizePoolLevel;
+	private double percent;
 	private String weiboContent;
 }

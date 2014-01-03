@@ -7,6 +7,8 @@
 
 package com.sinaapp.zhuyeqingtea.service;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -76,33 +78,39 @@ public class CounterService {
 		int count = getCount();
 		int hongBaoCount = 0;
 		int prizePoolLevel = 0;
+		double percent = 0;
 		if (count > 0
 			&& count <= PrizePool.FIRST.getMinJoinCount()) {
 			hongBaoCount = PrizePool.FIRST.getMinJoinCount() - count;
 			prizePoolLevel = 1;
+			percent = BigDecimal.valueOf(count).divide(BigDecimal.valueOf(PrizePool.FIRST.getMinJoinCount()), 2, RoundingMode.DOWN).doubleValue();
 		} else if (count > PrizePool.FIFTH.getMinJoinCount()
 			&& count < PrizePool.SECOND.getMinJoinCount()) {
 			hongBaoCount = PrizePool.SECOND.getMinJoinCount() - count;
 			prizePoolLevel = 2;
+			percent = BigDecimal.valueOf(count).divide(BigDecimal.valueOf(PrizePool.SECOND.getMinJoinCount()), 2, RoundingMode.DOWN).doubleValue();
 		} else if (count > PrizePool.SECOND.getMinJoinCount()
 			&& count < PrizePool.THIRD.getMinJoinCount()) {
 			hongBaoCount = PrizePool.THIRD.getMinJoinCount() - count;
 			prizePoolLevel = 3;
+			percent = BigDecimal.valueOf(count).divide(BigDecimal.valueOf(PrizePool.THIRD.getMinJoinCount()), 2, RoundingMode.DOWN).doubleValue();
 		} else if (count > PrizePool.THIRD.getMinJoinCount()
 			&& count < PrizePool.FOURTH.getMinJoinCount()) {
 			hongBaoCount = PrizePool.FOURTH.getMinJoinCount() - count;
 			prizePoolLevel = 4;
+			percent = BigDecimal.valueOf(count).divide(BigDecimal.valueOf(PrizePool.FOURTH.getMinJoinCount()), 2, RoundingMode.DOWN).doubleValue();
 		} else if (count > PrizePool.FOURTH.getMinJoinCount()
 			&& count < PrizePool.FIFTH.getMinJoinCount()) {
 			hongBaoCount = PrizePool.FIFTH.getMinJoinCount() - count;
 			prizePoolLevel = 5;
+			percent = BigDecimal.valueOf(count).divide(BigDecimal.valueOf(PrizePool.FIFTH.getMinJoinCount()), 2, RoundingMode.DOWN).doubleValue();
 		}
 		WeiboCount weiboCount = new WeiboCount();
 		weiboCount.setCount(count);
 		weiboCount.setHongBaoCount(hongBaoCount);
 		weiboCount.setPrizePoolLevel(prizePoolLevel);
+		weiboCount.setPercent(percent);
 		weiboCount.setWeiboContent(nextWeiboCount());
 		return weiboCount;
 	}
-
 }

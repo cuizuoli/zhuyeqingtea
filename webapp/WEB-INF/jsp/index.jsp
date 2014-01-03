@@ -159,6 +159,7 @@
 					url: '/g/wb_cont',
 					type: 'get',
 					dataType: 'json',
+					cache: false,
 					success: function(data) {
 						_this._contentsArea.find('#textCont').text(data.weiboContent);
 						_this._contentsArea.find('.gamePop03').show();
