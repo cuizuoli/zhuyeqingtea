@@ -9,7 +9,7 @@ CREATE TABLE `weibo_user` (
   `province` varchar(20) DEFAULT NULL COMMENT '省份',
   `city` varchar(20) DEFAULT NULL COMMENT '城市',
   `location` varchar(150) DEFAULT NULL COMMENT '地点',
-  `prize_chance` int(3) NOT NULL COMMENT '抽奖机会',
+  `prize_chance` int(5) DEFAULT 0 COMMENT '抽奖机会',
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
   `modify_time` datetime DEFAULT NULL COMMENT '修改时间',
   PRIMARY KEY (`user_id`)
