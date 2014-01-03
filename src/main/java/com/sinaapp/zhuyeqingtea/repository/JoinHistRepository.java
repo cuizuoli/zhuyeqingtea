@@ -25,13 +25,6 @@ public interface JoinHistRepository {
 	void insert(@Param("userId") String userId);
 
 	/**
-	 * selectTodayCount
-	 * @param userId
-	 * @return
-	 */
-	int selectTodayCount(@Param("userId") String userId);
-
-	/**
 	 * selectCount
 	 * @return
 	 */

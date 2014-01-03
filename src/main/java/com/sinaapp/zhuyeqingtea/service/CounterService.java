@@ -45,6 +45,10 @@ public class CounterService {
 		return configCount + count;
 	}
 
+	/**
+	 * 随机取得微博内容
+	 * @return
+	 */
 	private String nextWeiboCount() {
 		String[] weiboContents = new String[]{
 			"#绿茶生活 远离雾霾 拒绝烟花#众人拾材火焰高，简单的贡献也能汇聚成强大的力量。送成都一个红包，低碳生活，从拒放烟花开始！http://t.cn/8kDDATh",
