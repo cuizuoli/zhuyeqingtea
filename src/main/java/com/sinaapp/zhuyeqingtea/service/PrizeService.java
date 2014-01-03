@@ -13,6 +13,7 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.sinaapp.zhuyeqingtea.model.Prize;
 import com.sinaapp.zhuyeqingtea.model.Reward;
@@ -72,6 +73,7 @@ public class PrizeService {
 	 * 减少抽奖机会
 	 * @param userId
 	 */
+	@Transactional
 	public void minusPrizeChance(String userId) {
 		weiboUserRepository.minusPrizeChance(userId);
 	}
@@ -80,7 +82,8 @@ public class PrizeService {
 	 * 根据机率随机抽奖
 	 * @return
 	 */
-	public synchronized Prize nextPrize() {
+	@Transactional
+	public synchronized Prize nextPrize(String userId) {
 		int count = counterService.getCount();
 		List<Prize> prizeList = prizeRepository.selectList(count);
 		List<Double> probabilities = new ArrayList<Double>();
@@ -89,7 +92,15 @@ public class PrizeService {
 		}
 		AliasMethod aliasMethod = new AliasMethod(probabilities);
 		int i = aliasMethod.next();
-		return prizeList.get(i);
+		Prize prize = prizeList.get(i);
+		// 插入获奖数据
+		Reward reward = new Reward();
+		reward.setUserId(userId);
+		reward.setPrizeId(prize.getPrizeId());
+		rewardRepository.insert(reward);
+		// 减少抽奖机会
+		weiboUserRepository.minusPrizeChance(userId);
+		return prize;
 	}
 
 	/**

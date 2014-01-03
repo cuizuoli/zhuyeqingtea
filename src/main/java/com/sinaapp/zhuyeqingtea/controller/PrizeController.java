@@ -43,17 +43,35 @@ public class PrizeController {
 		return prizeService.getPrizeList();
 	}
 
-	@RequestMapping("n")
+	/**
+	 * 恭喜你获得绿色植物盆载
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping("p")
 	@ResponseBody
-	public Prize nextPrize(HttpServletRequest request) {
+	public Prize prize(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		String userId = (String)session.getAttribute(WeiboAuthInterceptor.USER_ID);
 		Reward reward = prizeService.getRewardCount(userId);
+		Prize prize = new Prize();
 		if (reward.getPrizeCount() < MAX_NEXT_PRIZE) {
-			prizeService.minusPrizeChance(userId);
-			return prizeService.nextPrize();
+			prize = prizeService.nextPrize(userId);
 		}
-		return new Prize();
+		return prize;
+	}
+
+	/**
+	 * 您还剩x次抽奖机会
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping("c")
+	@ResponseBody
+	public int chance(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		String userId = (String)session.getAttribute(WeiboAuthInterceptor.USER_ID);
+		return prizeService.getPrizeChance(userId);
 	}
 
 }

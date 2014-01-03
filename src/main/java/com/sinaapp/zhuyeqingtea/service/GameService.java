@@ -10,6 +10,7 @@ package com.sinaapp.zhuyeqingtea.service;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.sinaapp.zhuyeqingtea.repository.JoinHistRepository;
 import com.sinaapp.zhuyeqingtea.repository.WeiboUserRepository;
@@ -38,6 +39,7 @@ public class GameService {
 	 * 记录参与活动的用户
 	 * @param userId
 	 */
+	@Transactional
 	public void joinGame(String userId) {
 		joinHistRepository.insert(userId);
 		weiboUserRepository.plusPrizeChance(userId);
