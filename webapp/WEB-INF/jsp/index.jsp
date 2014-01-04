@@ -84,8 +84,8 @@
 <div class="notWin" style="display:none;">
 <p class="notwinTxt"><img src="images/txt_notwin.gif" alt="" /></p>
 <ul class="btnList">
-<li><a href="#"><img src="images/btn_next.gif" alt="下次吧" /></a></li>
-<li><a href="#"><img src="images/btn_again.gif" alt="再来一次" /></a></li>
+<li><a id="nextBtn" href="#"><img src="images/btn_next.gif" alt="下次吧" /></a></li>
+<li><a id="" href="#"><img src="images/btn_again.gif" alt="再来一次" /></a></li>
 </ul>
 
 <div class="again" style="display:none;">
@@ -368,12 +368,13 @@
 									imgUrl = 'images/txt_win05.gif';
 								}
 								_this._contentsArea.find('.lottery .win .winTxt img').attr('src',imgUrl);
+								_this._contentsArea.find('.lottery .win').show();
 							}
 						}
 					}
 				});
 			});
-			_this._contentsArea.find('.lottery .btnList li:first').click(function() {
+			_this._contentsArea.find('.lottery .btnList #nextBtn').click(function() {
 				_this._contentsArea.find('.lottery .notWin').hide();
 			});
 			_this._contentsArea.find('.close').click(function() {
