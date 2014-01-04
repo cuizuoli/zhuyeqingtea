@@ -22,8 +22,8 @@
 <div class="gamePop01">
 <p class="gameTxt">
 <img src="images/txt_game01.png" alt="你已经成功为成都送出一个红包，感谢您的参与!再为成都送出XXX个红包即可打开茶弈基金第一关。是否邀请朋友继续参与活动或将活动分享到朋友圈" />
-<span class="num01">100</span>
-<span class="num02">5</span>
+<span class="num01"></span>
+<span class="num02"></span>
 </p>
 <ul class="btnList">
 <li><a id="nextShareBtn" href="#"><img src="images/btn_no.png" alt="下次再说" /></a></li>
@@ -89,7 +89,7 @@
 </ul>
 
 <div class="again" style="display:none;">
-<p class="againTxt"><img src="images/txt_again.gif" alt="" /><span class="num">1</span></p>
+<p class="againTxt"><img src="images/txt_again.gif" alt="" /><span class="num"></span></p>
 <ul class="btnList">
 <li><a id="againConfirmBtn" href="#"><img src="images/btn_confirm02.gif" alt="确定" /></a></li>
 </ul>
