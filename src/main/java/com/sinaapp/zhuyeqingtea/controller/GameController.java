@@ -66,7 +66,8 @@ public class GameController {
 	public boolean share(HttpServletRequest request, @RequestParam String text) {
 		HttpSession session = request.getSession();
 		String accessToken = (String)session.getAttribute(WeiboAuthInterceptor.ACCESS_TOKEN);
-		gameService.shareWeibo(text, accessToken);
+		String userId = (String)session.getAttribute(WeiboAuthInterceptor.USER_ID);
+		gameService.shareWeibo(userId, text, accessToken);
 		return true;
 	}
 
