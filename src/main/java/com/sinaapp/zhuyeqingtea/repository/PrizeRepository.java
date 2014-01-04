@@ -9,6 +9,7 @@ package com.sinaapp.zhuyeqingtea.repository;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import com.sinaapp.zhuyeqingtea.model.Prize;
@@ -52,4 +53,10 @@ public interface PrizeRepository {
 	 * @param prize
 	 */
 	void update(Prize prize);
+
+	/**
+	 * minusPrizeCount
+	 * @param prizeId
+	 */
+	void minusPrizeCount(@Param("prizeId") int prizeId);
 }

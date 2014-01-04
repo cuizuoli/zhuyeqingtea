@@ -37,6 +37,7 @@
 		FROM prize
 		WHERE min_join_count <= #{minJoinCount}
 		AND active_yn = 'Y'
+		AND current_count > 0
 		]]>
 	</select>
 	<insert id="insert" parameterType="Prize" useGeneratedKeys="true" keyProperty="prizeId">
@@ -65,5 +66,11 @@
 			probability = #{probability},
 			active_yn = #{activeYn}
 		WHERE prize_id = #{prizeId}
+	</update>
+	<update id="minusPrizeCount">
+		UPDATE prize
+		SET current_count = current_count - 1
+		WHERE prize_id = #{prizeId}
+		AND current_count > 0
 	</update>
 </mapper>

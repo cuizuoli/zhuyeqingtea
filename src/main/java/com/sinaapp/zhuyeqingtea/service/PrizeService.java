@@ -98,6 +98,7 @@ public class PrizeService {
 		reward.setUserId(userId);
 		reward.setPrizeId(prize.getPrizeId());
 		rewardRepository.insert(reward);
+		prizeRepository.minusPrizeCount(prize.getPrizeId());
 		// 减少抽奖机会
 		weiboUserRepository.minusPrizeChance(userId);
 		return prize;
