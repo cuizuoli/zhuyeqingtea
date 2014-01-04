@@ -355,6 +355,7 @@
 			});
 			_this._contentsArea.find('.close').click(function() {
 				_this._initIndex();
+				_this._bindIndexEvent();
 			});
 		},
 		// 绑定奖池事件
