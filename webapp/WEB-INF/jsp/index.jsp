@@ -377,7 +377,10 @@
 			_this._contentsArea.find('.lottery .btnList #nextBtn').click(function() {
 				_this._contentsArea.find('.lottery .notWin').hide();
 			});
-			_this._contentsArea.find('.close').click(function() {
+			_this._contentsArea.find('.lottery .btnList a').click(function() {
+				_this._initPrizePool();
+			});
+			_this._contentsArea.find('.lottery .close').click(function() {
 				_this._initIndex();
 				_this._bindIndexEvent();
 			});
@@ -386,6 +389,10 @@
 		_bindPrizePoolEvent : function() {
 			var _this = this;
 			
+			_this._contentsArea.find('.prizePool .close').click(function() {
+				_this._initIndex();
+				_this._bindIndexEvent();
+			});
 		},
 		// 初始化记数器
 		_initCounter : function () {
