@@ -57,7 +57,6 @@ public class IndexController {
 	public ModelAndView index(HttpServletRequest request) {
 		AuthStatus authStatus = (AuthStatus)request.getAttribute(WeiboAuthInterceptor.AUTH_STATUS);
 		if (authStatus == AuthStatus.LOGOUT) {
-			String cid = request.getParameter("cid");
 			String subAppkey = request.getParameter("sub_appkey");
 			String tokenString = request.getParameter("tokenString");
 			if (StringUtils.isBlank(subAppkey)) {
@@ -72,9 +71,9 @@ public class IndexController {
 					String accessToken = tokenInfo.getOauthToken();
 					String uid = tokenInfo.getUserId();
 					HttpSession session = request.getSession();
-					session.setAttribute(WeiboAuthInterceptor.USER_ID, cid);
+					session.setAttribute(WeiboAuthInterceptor.USER_ID, uid);
 					session.setAttribute(WeiboAuthInterceptor.ACCESS_TOKEN, accessToken);
-					request.setAttribute(WeiboAuthInterceptor.USER_ID, cid);
+					request.setAttribute(WeiboAuthInterceptor.USER_ID, uid);
 					request.setAttribute(WeiboAuthInterceptor.ACCESS_TOKEN, accessToken);
 					request.setAttribute(WeiboAuthInterceptor.AUTH_STATUS, AuthStatus.LOGIN);
 					User user = users.show(uid, accessToken);
