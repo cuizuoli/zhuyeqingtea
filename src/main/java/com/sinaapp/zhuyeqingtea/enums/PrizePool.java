@@ -15,8 +15,8 @@ package com.sinaapp.zhuyeqingtea.enums;
  */
 public enum PrizePool {
 	FIRST(10000),
-	SECOND(20000),
-	THIRD(30000),
+	SECOND(30000),
+	THIRD(50000),
 	FOURTH(100000),
 	FIFTH(150000);
 	private final int minJoinCount;

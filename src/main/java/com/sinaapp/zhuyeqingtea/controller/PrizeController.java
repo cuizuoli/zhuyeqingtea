@@ -20,7 +20,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sinaapp.zhuyeqingtea.model.Prize;
 import com.sinaapp.zhuyeqingtea.model.Reward;
+import com.sinaapp.zhuyeqingtea.model.WeiboCount;
 import com.sinaapp.zhuyeqingtea.security.interceptor.WeiboAuthInterceptor;
+import com.sinaapp.zhuyeqingtea.service.CounterService;
 import com.sinaapp.zhuyeqingtea.service.PrizeService;
 
 /**
@@ -37,6 +39,9 @@ public class PrizeController {
 
 	@Resource
 	private PrizeService prizeService;
+
+	@Resource
+	private CounterService counterService;
 
 	@RequestMapping("l")
 	@ResponseBody
@@ -75,6 +80,12 @@ public class PrizeController {
 		HttpSession session = request.getSession();
 		String userId = (String)session.getAttribute(WeiboAuthInterceptor.USER_ID);
 		return prizeService.getPrizeChance(userId);
+	}
+
+	@RequestMapping("pp")
+	@ResponseBody
+	public WeiboCount prizePool(HttpServletRequest request) {
+		return counterService.getWeiboCount();
 	}
 
 }

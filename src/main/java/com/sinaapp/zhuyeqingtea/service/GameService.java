@@ -51,7 +51,7 @@ public class GameService {
 	 */
 	public void shareWeibo(String userId, String text, String accessToken) {
 		weiboUserRepository.plusPrizeChance(userId);
-		statuses.update(text, accessToken);
+		//statuses.update(text, accessToken);
 	}
 
 }

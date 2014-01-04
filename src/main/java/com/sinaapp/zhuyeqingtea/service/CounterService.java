@@ -84,7 +84,7 @@ public class CounterService {
 			hongBaoCount = PrizePool.FIRST.getMinJoinCount() - count;
 			prizePoolLevel = 1;
 			percent = BigDecimal.valueOf(count).divide(BigDecimal.valueOf(PrizePool.FIRST.getMinJoinCount()), 2, RoundingMode.DOWN).doubleValue();
-		} else if (count > PrizePool.FIFTH.getMinJoinCount()
+		} else if (count > PrizePool.FIRST.getMinJoinCount()
 			&& count < PrizePool.SECOND.getMinJoinCount()) {
 			hongBaoCount = PrizePool.SECOND.getMinJoinCount() - count;
 			prizePoolLevel = 2;

@@ -77,7 +77,7 @@
 <div class="win" style="display:none;">
 <p class="winTxt"><img src="images/txt_win01.gif" alt="" /></p>
 <ul class="btnList">
-<li><a href="#"><img src="images/btn_win.gif" alt="领取奖品" /></a></li>
+<li><a id="prizeBtn" href="#"><img src="images/btn_win.gif" alt="领取奖品" /></a></li>
 </ul>
 </div>
 
@@ -85,13 +85,13 @@
 <p class="notwinTxt"><img src="images/txt_notwin.gif" alt="" /></p>
 <ul class="btnList">
 <li><a id="nextBtn" href="#"><img src="images/btn_next.gif" alt="下次吧" /></a></li>
-<li><a id="" href="#"><img src="images/btn_again.gif" alt="再来一次" /></a></li>
+<li><a id="againBtn" href="#"><img src="images/btn_again.gif" alt="再来一次" /></a></li>
 </ul>
 
 <div class="again" style="display:none;">
 <p class="againTxt"><img src="images/txt_again.gif" alt="" /><span class="num">1</span></p>
 <ul class="btnList">
-<li><a href="#"><img src="images/btn_confirm02.gif" alt="确定" /></a></li>
+<li><a id="againConfirmBtn" href="#"><img src="images/btn_confirm02.gif" alt="确定" /></a></li>
 </ul>
 </div>
 </div>
@@ -228,6 +228,7 @@
 			var _this = this;
 			_this._destroyGame();
 			_this._destroyLottery();
+			_this._loadPrizePool();
 			_this._contentsArea.find('.prizePool').show();
 		},
 		// 销毁奖池页
@@ -377,7 +378,23 @@
 			_this._contentsArea.find('.lottery .btnList #nextBtn').click(function() {
 				_this._contentsArea.find('.lottery .notWin').hide();
 			});
-			_this._contentsArea.find('.lottery .btnList a').click(function() {
+			_this._contentsArea.find('.lottery .btnList #againBtn').click(function() {
+				_this._contentsArea.find('.num').html('');
+				$.ajax({
+					url: '/p/c',
+					type: 'get',
+					dataType: 'text',
+					cache: false,
+					success: function(data) {
+						_this._contentsArea.find('.num').html(data);
+					}
+				});
+				_this._contentsArea.find('.again').show();
+			});
+			_this._contentsArea.find('.again .btnList #againConfirmBtn').click(function() {
+				_this._initLottery();
+			});
+			_this._contentsArea.find('.win .btnList #prizeBtn').click(function() {
 				_this._initPrizePool();
 			});
 			_this._contentsArea.find('.lottery .close').click(function() {
@@ -388,10 +405,47 @@
 		// 绑定奖池事件
 		_bindPrizePoolEvent : function() {
 			var _this = this;
-			
+			_this._contentsArea.find('.search').click(function() {
+				_this._initPrizePool();
+			});
 			_this._contentsArea.find('.prizePool .close').click(function() {
 				_this._initIndex();
 				_this._bindIndexEvent();
+			});
+		},
+		_loadPrizePool : function() {
+			var _this = this;
+			$.ajax({
+				url: '/p/pp',
+				type: 'get',
+				dataType: 'json',
+				success: function(data) {
+					var percent = data.percent * 100 + '%';
+					console.log(percent);
+					_this._contentsArea.find('.prizePool li').addClass('on');
+					_this._contentsArea.find('.prizePool li .bar img').css('width',0);
+					if (data.prizePoolLevel == 5) {
+						_this._contentsArea.find('.prizePool li.rating05 .bar img').css('width',percent);
+					} else if (data.prizePoolLevel == 4) {
+						_this._contentsArea.find('.prizePool li.rating05').removeClass('on');
+						_this._contentsArea.find('.prizePool li.rating04 .bar img').css('width',percent);
+					} else if (data.prizePoolLevel == 3) {
+						_this._contentsArea.find('.prizePool li.rating04').removeClass('on');
+						_this._contentsArea.find('.prizePool li.rating05').removeClass('on');
+						_this._contentsArea.find('.prizePool li.rating03 .bar img').css('width',percent);
+					} else if (data.prizePoolLevel == 2) {
+						_this._contentsArea.find('.prizePool li.rating03').removeClass('on');
+						_this._contentsArea.find('.prizePool li.rating04').removeClass('on');
+						_this._contentsArea.find('.prizePool li.rating05').removeClass('on');
+						_this._contentsArea.find('.prizePool li.rating02 .bar img').css('width',percent);
+					} else if (data.prizePoolLevel == 1) {
+						_this._contentsArea.find('.prizePool li.rating02').removeClass('on');
+						_this._contentsArea.find('.prizePool li.rating03').removeClass('on');
+						_this._contentsArea.find('.prizePool li.rating04').removeClass('on');
+						_this._contentsArea.find('.prizePool li.rating05').removeClass('on');
+						_this._contentsArea.find('.prizePool li.rating01 .bar img').css('width',percent);
+					}
+				}
 			});
 		},
 		// 初始化记数器
