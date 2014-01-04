@@ -64,7 +64,11 @@ public class PrizeController {
 			Reward reward = prizeService.getRewardCount(userId);
 			if (reward.getPrizeCount() < MAX_NEXT_PRIZE) {
 				prize = prizeService.nextPrize(userId);
+			} else {
+				prize.setActiveYn("Y");
 			}
+		} else {
+			prize.setActiveYn("N");
 		}
 		return prize;
 	}

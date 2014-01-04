@@ -350,8 +350,10 @@
 					type: 'get',
 					dataType: 'json',
 					success: function(data) {
-						if (data.prizeName == null) {
+						if (data.prizeName == null && data.activeYn == 'N') {
 							alert('请刷新页面，重新登录！');
+						} else if(data.prizeName == null && data.activeYn == 'Y') {
+							alert('每人每天有5次抽奖机会！');
 						} else {
 							if (data.prizeId == 100) {
 								_this._contentsArea.find('.lottery .notWin').show();
