@@ -271,6 +271,7 @@
 							success: function(data) {
 								_this._contentsArea.find('.scratch').hide();
 								// 弹出"你已经成功为成都送出一个红包"
+								_this._showWeiboCount();
 								_this._contentsArea.find('.gamePop01').show();
 								_this._initCounter();
 							}
@@ -342,13 +343,26 @@
 		// 绑定抽奖事件
 		_bindLotteryEvent : function() {
 			var _this = this;
-			
+			_this._contentsArea.find('.lottery .redPaper li').click(function() {
+				$.ajax({
+					url: '/p/p',
+					type: 'get',
+					dataType: 'json',
+					success: function(data) {
+						console.log(data);
+					}
+				});
+			});
+			_this._contentsArea.find('.close').click(function() {
+				_this._initIndex();
+			});
 		},
 		// 绑定奖池事件
 		_bindPrizePoolEvent : function() {
 			var _this = this;
 			
 		},
+		// 初始化记数器
 		_initCounter : function () {
 			$.ajax({
 				url: '/c',
@@ -367,6 +381,21 @@
 							countHtml += '<li>' + arrCnt[i] + '</li>';
 						}
 						$('.counter').append(countHtml + '</ul>');
+					}
+				}
+			});
+		},
+		_showWeiboCount : function () {
+			$.ajax({
+				url: '/g/wb_cont',
+				type: 'get',
+				dataType: 'json',
+				success: function(data) {
+					$('.num01').html('');
+					$('.num02').html('');
+					if (data != null) {
+						$('.num01').html(data.hongBaoCount);
+						$('.num02').html(data.prizePoolLevel);
 					}
 				}
 			});
