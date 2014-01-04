@@ -77,7 +77,7 @@
 <div class="win" style="display:none;">
 <p class="winTxt"><img src="images/txt_win01.gif" alt="" /></p>
 <ul class="btnList">
-<li><a href="#"><img src="images/btn_win.gif" alt="领取奖品" /></a></li>
+<li><a id="prizeBtn" href="#"><img src="images/btn_win.gif" alt="领取奖品" /></a></li>
 </ul>
 </div>
 
@@ -85,13 +85,13 @@
 <p class="notwinTxt"><img src="images/txt_notwin.gif" alt="" /></p>
 <ul class="btnList">
 <li><a id="nextBtn" href="#"><img src="images/btn_next.gif" alt="下次吧" /></a></li>
-<li><a id="" href="#"><img src="images/btn_again.gif" alt="再来一次" /></a></li>
+<li><a id="againBtn" href="#"><img src="images/btn_again.gif" alt="再来一次" /></a></li>
 </ul>
 
 <div class="again" style="display:none;">
 <p class="againTxt"><img src="images/txt_again.gif" alt="" /><span class="num">1</span></p>
 <ul class="btnList">
-<li><a href="#"><img src="images/btn_confirm02.gif" alt="确定" /></a></li>
+<li><a id="againConfirmBtn" href="#"><img src="images/btn_confirm02.gif" alt="确定" /></a></li>
 </ul>
 </div>
 </div>
@@ -377,7 +377,23 @@
 			_this._contentsArea.find('.lottery .btnList #nextBtn').click(function() {
 				_this._contentsArea.find('.lottery .notWin').hide();
 			});
-			_this._contentsArea.find('.lottery .btnList a').click(function() {
+			_this._contentsArea.find('.lottery .btnList #againBtn').click(function() {
+				_this._contentsArea.find('.num').html('');
+				$.ajax({
+					url: '/p/c',
+					type: 'get',
+					dataType: 'text',
+					cache: false,
+					success: function(data) {
+						_this._contentsArea.find('.num').html(data);
+					}
+				});
+				_this._contentsArea.find('.again').show();
+			});
+			_this._contentsArea.find('.again .btnList #againConfirmBtn').click(function() {
+				_this._initLottery();
+			});
+			_this._contentsArea.find('.win .btnList #prizeBtn').click(function() {
 				_this._initPrizePool();
 			});
 			_this._contentsArea.find('.lottery .close').click(function() {
