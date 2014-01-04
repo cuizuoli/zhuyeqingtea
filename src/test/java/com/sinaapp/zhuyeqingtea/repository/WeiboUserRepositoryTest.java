@@ -45,6 +45,21 @@ public class WeiboUserRepositoryTest extends AbstractTest {
 	}
 
 	@Test
+	public void selectPrizeChance() {
+		weiboUserRepository.selectPrizeChance("test");
+	}
+
+	@Test
+	public void plusPrizeChance() {
+		weiboUserRepository.plusPrizeChance("test");
+	}
+
+	@Test
+	public void minusPrizeChance() {
+		weiboUserRepository.minusPrizeChance("test");
+	}
+
+	@Test
 	public void insert() {
 		WeiboUser weiboUser = new WeiboUser();
 		weiboUser.setUserId("test");

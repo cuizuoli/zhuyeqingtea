@@ -5,6 +5,7 @@
 <meta charset="UTF-8">
 <title>竹叶青茶微博活动 - “绿茶生活，远离雾霾，拒绝烟花”</title>
 <script type="text/javascript" src="/js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="/js/jquery.class.support.js"></script>
 <script type="text/javascript" src="/js/jquery.qrcode.min.js"></script>
 <script type="text/javascript" src="/js/wScratchPad.js"></script>
 <link rel="stylesheet" type="text/css" href="/css/style.css"/>
@@ -12,135 +13,228 @@
 <body>
 <!--=========wrapper=========-->
 <div id="wrapper">
-<!--====headerArea====-->
-<div id="headerArea">
-<h1><a href="http://zhuyeqingtea.sinaapp.com/t"><img src="img/logo.png" alt="竹叶青茶微博活动 - “绿茶生活，远离烟花”" /></a></h1>
-
-<div class="globalNav">
-<ul>
-<li class="nav01"><a id="introBtn" href="javascript:void(0);"><img src="img/img_nav01.gif" alt="活动介绍" /></a></li>
-<li class="nav02"><a id="gameBtn" href="javascript:void(0);"><img src="img/img_nav02.gif" alt="小游戏" /></a></li>
-<li class="nav03"><a href="javascript:void(0);"><img src="img/img_nav03.gif" alt="抽奖活动" /></a></li>
+<!--====contentsArea====-->
+<div id="contentsArea" class="haze" style="display:none;">
+<div class="scratch">
+<p><img src="images/img_scratch02.png" alt="" /></p>
+<p><img src="images/img_scratch01.png" alt="" /></p>
+</div>
+<div class="gamePop01" style="display:none;">
+<p class="gameTxt"><img src="images/txt_game01.png" alt="你已经成功为成都送出一个红包，感谢您的参与!再为成都送出XXX个红包即可打开茶弈基金第一关。是否邀请朋友继续参与活动或将活动分享到朋友圈" /></p>
+<ul class="btnList">
+<li><a id="nextShareBtn" href="javascript:void(0);"><img src="images/btn_no.png" alt="下次再说" /></a></li>
+<li><a id="shareBtn" href="javascript:void(0);"><img src="images/btn_yes.png" alt="是" /></a></li>
 </ul>
 </div>
+
+<p class="success" style="display:none;"><img src="images/img_success.png" alt="分享成功!" /></p>
+
+<div class="gamePop02" style="display:none;">
+<p class="gameTxt"><img src="images/txt_game02.gif" alt="绿茶生活，远离雾霾，拒绝烟花 2014新年快乐" /></p>
+<ul class="btnList">
+<li><a id="nextShareConfirmBtn" href="javascript:void(0);"><img src="images/btn_confirm.gif" alt="确定" /></a></li>
+</ul>
 </div>
-<!--====headerArea end====-->
-<!--====contentsArea====-->
-<div id="contentsArea">
+
+<div class="gamePop03" style="display:none;">
+<p class="textCont"><textarea name="textCont" rows="2" cols="" id="textCont"></textarea></p>
+<ul class="btnList">
+<li><a id="shareConfirmBtn" href="javascript:void(0);"><img src="images/btn_share01.png" alt="分享到新浪微博" /></a></li>
+</ul>
+<p class="weChat"><a id="weixinShareBtn" href="javascript:void(0);"><img src="images/btn_wechat.png" alt="" /></a></p>
+<p class="close"><a id="closeShareBtn" href="javascript:void(0);"><img src="images/btn_close.png" alt="" /></a></p>
+</div>
+
+<div class="gamePop04" style="display:none;">
+<p class="weChat"><span id="qrcode"></span></p>
+<p class="close"><a id="closeWeixinShareBtn" href="javascript:void(0);"><img src="images/btn_close.png" alt="" /></a></p>
+</div>
+</div>
+<!--====contentsArea end====-->
+<!--====headerArea====-->
+<div id="headerArea" style="display:none;">
+<h1><img src="images/title.png" alt="绿茶生活，远离雾霾，拒绝烟花" /></h1>
+<div class="explan">
+<p>【活动内容】 活动参与人数达到即定人数参与，<br />即可打开竹叶青茶茶弈基金.</p>
+<p>【活动时间】 1月10日-1月20日</p>
+<p>【活动参与方式】 以竹叶青LOGO光标涂抹雾霾页面，<br />即算参与成功。同时，计数器自动增加数量。</p>
+</div>
 <div class="counter">
 <ul>
-<li><a id="wechatShare" href="#">0</a></li>
+<li>0</li>
+<li>0</li>
 <li>0</li>
 <li>0</li>
 <li>0</li>
 <li>1</li>
 </ul>
 </div>
-<div id="qrcode" style="display:none;position:absolute;left:75px;top:157px;"></div>
-<div class="introArea" style="display:none;">
-<p class="introTxt"><img src="img/txt_intro.gif" alt="“为成都送一个红包”，点击小游戏并参与活动,分享至微博，微信有机会获竹叶青茶春节定制红包等奖品。" /></p>
-<p class="introBtn"><a id="closeIntroBtn" href="javascript:void(0);"><img src="img/btn_confirm.gif" alt="确定" /></a></p>
 </div>
-
-<div class="gameArea" style="display:none;">
-<div class="game01">
-<div class="redPaper"></div>
-<p class="gameTxt" style="display:none;"><img src="img/txt_game01.gif" alt="您已成功参与“送成都一个红包活动”，是否愿意将活动分享给朋友？" /></p>
-<ul class="btnList" style="display:none;">
-<li><a id="laterShareBtn" href="#"><img src="img/btn_share01.gif" alt="下次再分享" /></a></li>
-<li><a id="nowShareBtn" href="#"><img src="img/btn_share02.gif" alt="马上分享" /></a></li>
-</ul>
-</div>
-
-<p class="line" style="display:none;"></p>
-
-<div class="game02" style="display:none;">
-<p class="gameTxt"><img src="img/txt_game02.gif" alt="#绿茶生活，远离烟花爆竹#" /></p>
-<p class="textCont"><textarea name="textCont" rows="2" cols="" id="textCont"></textarea></p>
-<ul class="btnList">
-<li><a id="cancelShareBtn" href="#"><img src="img/btn_cancel.gif" alt="取消" /></a></li>
-<li><a id="shareBtn" href="#"><img src="img/btn_confirm01.gif" alt="确定" /></a></li>
-</ul>
-</div>
-
-<p class="success" style="display:none;"><img src="img/img_success.png" alt="分享成功!" /></p>
-</div>
-
-</div>
-<!--====contentsArea end====-->
-
+<!--====headerArea end====-->
 </div>
 <!--=========wrapper end=========-->
 <script type="text/javascript">
-$(document).ready(function() {
-	function clearPopupDivs() {
-		$('.gameArea .redPaper').hide();
-		$('.gameArea').hide();
-		$('.introArea').hide();
-		$('.gameTxt').hide();
-		$('.btnList').hide();
-		$('.gameArea .game01').hide();
-		$('.gameArea .line').hide();
-		$('.gameArea .game02').hide();
-		$('.gameArea .success').hide();
-		$('#qrcode').html('');
-		$('#qrcode').hide();
-	}
-	var sp = $('.gameArea .redPaper').wScratchPad({
-		'width': '370',
-		'height': '213',
-		'image': 'img/img_redpaper01.jpg',
-		'image2': null,
-		'color': '#888',
-		'overlay': 'lighter',
-		'size': 10,
-		'scratchUp': function(e, percent) {
-			if (percent > 30) {
-				$('.gameArea .redPaper').hide();
-				$('.gameTxt').show();
-				$('.btnList').show();
-			}
+(function($) {
+	Class('com.sinaapp.zhuyeqingtea.Index', {
+		init : function(options) {
+			var _this = this;
+			_this._options = $.extend({
+				id : '#wrapper'
+			}, options);
+			_this._root = $(_this._options.id);
+			_this._contentsArea = _this._root.find('#contentsArea');
+			_this._headerArea = _this._root.find('#headerArea');
+			_this._bindEvent();
+			_this._initIndex();
+			_this._initContent();
+			_this._initCounter();
+		},
+		// 初始化首页
+		_initIndex : function() {
+			var _this = this;
+			_this._headerArea.show();
+			_this._headerArea.find('.explan').show();
+			_this._contentsArea.hide();
+		},
+		// 初始化内容页
+		_initContent : function() {
+			var _this = this;
+			_this._contentsArea.find('.scratch').show();
+			_this._contentsArea.find('.gamePop01').hide();
+			_this._contentsArea.find('.gamePop02').hide();
+			_this._contentsArea.find('.gamePop03').hide();
+			_this._contentsArea.find('.gamePop04').hide();
+			_this._contentsArea.find('.success').hide();
+			_this._sp.wScratchPad('reset');
+		},
+		// 绑定事件
+		_bindEvent : function() {
+			var _this = this;
+			_this._bindIndexEvent();
+			_this._bindGameEvent();
+			_this._bindWeiboEvent();
+		},
+		// 绑定活动介绍事件
+		_bindIndexEvent : function() {
+			var _this = this;
+			_this._root.mousemove(function(e) {
+				_this._root.unbind('mousemove');
+				_this._headerArea.find('.explan').fadeOut(4000);
+				_this._contentsArea.fadeIn(1000);
+			});
+		},
+		_bindGameEvent : function() {
+			var _this = this;
+			_this._sp = _this._contentsArea.find('.scratch').wScratchPad({
+				width: 486,
+				height: 364,
+				image: 'images/img_scratch02.png',
+				image2: 'images/img_scratch01.png',
+				cursor: 'images/logo.ico',
+				overlay: 'none',
+				size: 50,
+				scratchUp: function(e, percent) {
+					if (percent > 30) {
+						$.ajax({
+							url: '/g/join',
+							type: 'post',
+							dataType: 'json',
+							success: function(data) {
+								console.log(data);
+								_this._contentsArea.find('.scratch').fadeOut(500);
+								// 弹出"你已经成功为成都送出一个红包"
+								_this._contentsArea.find('.gamePop01').show();
+								_this._initCounter();
+							}
+						});
+					}
+				}
+			});
+		},
+		_bindWeiboEvent : function() {
+			var _this = this;
+			// 弹出"分享到新浪微博"窗口
+			_this._contentsArea.find('.gamePop01 #shareBtn').click(function() {
+				$.ajax({
+					url: '/g/wb_cont',
+					type: 'get',
+					dataType: 'json',
+					cache: false,
+					success: function(data) {
+						_this._contentsArea.find('#textCont').text(data.weiboContent);
+						_this._contentsArea.find('.gamePop03').show();
+					}
+				});
+			});
+			// "分享到新浪微博"确认事件
+			_this._contentsArea.find('.gamePop03 #shareConfirmBtn').click(function() {
+				$.ajax({
+					url: '/g/share',
+					type: 'post',
+					data: {'text':_this._contentsArea.find('#textCont').text()},
+					dataType: 'json',
+					success: function() {
+						_this._contentsArea.find('.success').fadeIn(500, function() {
+							_this._initIndex();
+							_this._initContent();
+							_this._bindIndexEvent();
+						});
+					},
+					error: function(jqXhr, textStatus, errorThrown) {
+						alert('请稍候再试！');
+					}
+				});
+			});
+			// 关闭"分享到新浪微博"窗口
+			_this._contentsArea.find('.gamePop03 #closeShareBtn').click(function() {
+				_this._contentsArea.find('.gamePop03').hide();
+			});
+			// 弹出"分享到微信朋友圈"窗口
+			_this._contentsArea.find('.gamePop03 #weixinShareBtn').click(function() {
+				$('#qrcode').qrcode({width: 120,height: 120,text: window.location.href});
+				_this._contentsArea.find('.gamePop04').show();
+			});
+			// 关闭"分享到微信朋友圈"窗口
+			_this._contentsArea.find('.gamePop04 #closeWeixinShareBtn').click(function() {
+				$('#qrcode').html('');
+				_this._contentsArea.find('.gamePop04').hide();
+			});
+			// 下次再说
+			_this._contentsArea.find('.gamePop01 #nextShareBtn').click(function() {
+				_this._contentsArea.find('.gamePop02').show();
+			});
+			// "绿茶生活，远离雾霾，拒绝烟花，2014新年快乐"确认事件
+			_this._contentsArea.find('.gamePop02 #nextShareConfirmBtn').click(function() {
+				_this._initIndex();
+				_this._initContent();
+				_this._bindIndexEvent();
+			});
+		},
+		_initCounter : function () {
+			$.ajax({
+				url: '/c',
+				type: 'get',
+				dataType: 'text',
+				success: function(data) {
+					if (data != null) {
+						$('.counter').html('');
+						var padZeroCnt = data;
+						if (data.length < 6) {
+							padZeroCnt = Array(6-(''+data).length+1).join(0)+data;
+						}
+						var countHtml = '<ul>';
+						var arrCnt = padZeroCnt.split('');
+						for (var i = 0; i < arrCnt.length; i++) {
+							countHtml += '<li>' + arrCnt[i] + '</li>';
+						}
+						$('.counter').append(countHtml + '</ul>');
+					}
+				}
+			});
 		}
 	});
-	$('#introBtn').click(function() {
-		clearPopupDivs();
-		$('.introArea').show();
-	});
-	$('#closeIntroBtn').click(function() {
-		clearPopupDivs();
-	});
-	$('#gameBtn').click(function() {
-		clearPopupDivs();
-		$('.gameArea .redPaper').show();
-		sp.wScratchPad('reset');
-		$('.gameArea').show();
-		$('.gameArea .game01').show();
-	});
-	$('.gameArea #shareBtn').click(function() {
-		clearPopupDivs();
-		$('.gameArea').show();
-		$('.gameArea .success').show().fadeOut(3000);
-	});
-	$('.gameArea #cancelShareBtn').click(function() {
-		clearPopupDivs();
-	});
-	$('#laterShareBtn').click(function() {
-		clearPopupDivs();
-		
-	});
-	$('#nowShareBtn').click(function() {
-		$('.game02').show();
-		$('.line').show();
-	});
-	
-	$('#wechatShare').click(function() {
-		clearPopupDivs();
-		$('#qrcode').qrcode(window.location.href);
-		$('#qrcode').show();
-	});
-	
-	sp.reset();
-});
+})(jQuery);
+new com.sinaapp.zhuyeqingtea.Index();
 </script>
 </body>
 </html>

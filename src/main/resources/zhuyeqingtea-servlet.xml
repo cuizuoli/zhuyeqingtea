@@ -29,12 +29,14 @@
 	<mvc:resources location="/css/" mapping="/css/**"/>
 	<mvc:resources location="/fonts/" mapping="/fonts/**"/>
 	<mvc:resources location="/js/" mapping="/js/**"/>
-	<mvc:resources location="/img/" mapping="/img/**"/>
+	<mvc:resources location="/images/" mapping="/images/**"/>
 
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/**"/>
 			<mvc:exclude-mapping path="/g/**"/>
+			<mvc:exclude-mapping path="/c/**"/>
+			<mvc:exclude-mapping path="/p/**"/>
 			<bean class="org.springframework.mobile.device.DeviceResolverHandlerInterceptor"/>
 		</mvc:interceptor>
 		<mvc:interceptor>
@@ -42,13 +44,13 @@
 			<bean class="com.sinaapp.zhuyeqingtea.security.interceptor.WeiboAuthInterceptor"/>
 		</mvc:interceptor>
 	</mvc:interceptors>
-
+	
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
 		<property name="prefix" value="/WEB-INF/jsp/"/>
 		<property name="suffix" value=".jsp"/>
 	</bean>
 
-	<bean id="handlerAdapter" class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"></bean>
+	<bean id="handlerAdapter" class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"/>
 
 </beans>

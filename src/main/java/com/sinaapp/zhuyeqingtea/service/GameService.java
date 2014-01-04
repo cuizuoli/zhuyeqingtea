@@ -10,8 +10,10 @@ package com.sinaapp.zhuyeqingtea.service;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.sinaapp.zhuyeqingtea.repository.JoinHistRepository;
+import com.sinaapp.zhuyeqingtea.repository.WeiboUserRepository;
 import com.weibo.api.Statuses;
 
 /**
@@ -23,27 +25,24 @@ import com.weibo.api.Statuses;
 @Service
 public class GameService {
 
-	private final static int MAX_DAILY_COUNT = 5;
-
 	@Resource
 	private JoinHistRepository joinHistRepository;
+
+	@Resource
+	private WeiboUserRepository weiboUserRepository;
 
 	@Resource
 	private Statuses statuses;
 
 	/**
 	 * joinGame
-	 * 记录参与活动的用户（每天最多可抽奖5次）
+	 * 记录参与活动的用户
 	 * @param userId
 	 */
-	public boolean joinGame(String userId) {
-		int i = joinHistRepository.selectTodayCount(userId);
-		if (i < MAX_DAILY_COUNT) {
-			joinHistRepository.insert(userId);
-			return true;
-		} else {
-			return false;
-		}
+	@Transactional
+	public void joinGame(String userId) {
+		joinHistRepository.insert(userId);
+		weiboUserRepository.plusPrizeChance(userId);
 	}
 
 	/**

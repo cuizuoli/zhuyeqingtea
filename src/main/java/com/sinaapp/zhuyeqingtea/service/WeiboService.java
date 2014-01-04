@@ -10,6 +10,7 @@ package com.sinaapp.zhuyeqingtea.service;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.sinaapp.zhuyeqingtea.model.WeiboUser;
 import com.sinaapp.zhuyeqingtea.repository.WeiboUserRepository;
@@ -31,6 +32,7 @@ public class WeiboService {
 	 * addUser
 	 * @param user
 	 */
+	@Transactional
 	public void addUser(User user) {
 		WeiboUser weiboUser = new WeiboUser();
 		weiboUser.setUserId(user.getId());

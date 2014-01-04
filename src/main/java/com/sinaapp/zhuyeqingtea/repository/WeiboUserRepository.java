@@ -30,6 +30,27 @@ public interface WeiboUserRepository {
 	int update(WeiboUser weiboUser);
 
 	/**
+	 * 查询用户抽奖机会
+	 * @param userId
+	 * @return
+	 */
+	int selectPrizeChance(@Param("userId") String userId);
+
+	/**
+	 * 增加用户抽奖机会
+	 * @param userId
+	 * @return
+	 */
+	int plusPrizeChance(@Param("userId") String userId);
+
+	/**
+	 * 减少用户抽奖机会
+	 * @param userId
+	 * @return
+	 */
+	int minusPrizeChance(@Param("userId") String userId);
+
+	/**
 	 * insert
 	 * @param weiboUser
 	 */

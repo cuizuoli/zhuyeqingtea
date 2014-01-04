@@ -31,7 +31,7 @@ public class PrizeServiceTest extends AbstractTest {
 	@Test
 	public void nextPrize() {
 		for (int i = 0; i < 50; i++) {
-			Prize prize = prizeService.nextPrize();
+			Prize prize = prizeService.nextPrize("test");
 			log.debug(prize.getPrizeName());
 		}
 	}

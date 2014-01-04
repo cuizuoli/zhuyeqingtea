@@ -13,11 +13,15 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.sinaapp.zhuyeqingtea.model.Prize;
+import com.sinaapp.zhuyeqingtea.model.Reward;
 import com.sinaapp.zhuyeqingtea.repository.JoinConfigRepository;
 import com.sinaapp.zhuyeqingtea.repository.JoinHistRepository;
 import com.sinaapp.zhuyeqingtea.repository.PrizeRepository;
+import com.sinaapp.zhuyeqingtea.repository.RewardRepository;
+import com.sinaapp.zhuyeqingtea.repository.WeiboUserRepository;
 import com.sinaapp.zhuyeqingtea.utils.AliasMethod;
 
 /**
@@ -33,19 +37,53 @@ public class PrizeService {
 	private PrizeRepository prizeRepository;
 
 	@Resource
+	private RewardRepository rewardRepository;
+
+	@Resource
 	private JoinConfigRepository joinConfigRepository;
 
 	@Resource
 	private JoinHistRepository joinHistRepository;
 
 	@Resource
+	private WeiboUserRepository weiboUserRepository;
+
+	@Resource
 	private CounterService counterService;
+
+	/**
+	 * getRewardCount
+	 * @param userId
+	 * @return
+	 */
+	public Reward getRewardCount(String userId) {
+		return rewardRepository.select(userId);
+	}
+
+	/**
+	 * 查询抽奖机会
+	 * @param userId
+	 * @return
+	 */
+	public int getPrizeChance(String userId) {
+		return weiboUserRepository.selectPrizeChance(userId);
+	}
+
+	/**
+	 * 减少抽奖机会
+	 * @param userId
+	 */
+	@Transactional
+	public void minusPrizeChance(String userId) {
+		weiboUserRepository.minusPrizeChance(userId);
+	}
 
 	/**
 	 * 根据机率随机抽奖
 	 * @return
 	 */
-	public Prize nextPrize() {
+	@Transactional
+	public synchronized Prize nextPrize(String userId) {
 		int count = counterService.getCount();
 		List<Prize> prizeList = prizeRepository.selectList(count);
 		List<Double> probabilities = new ArrayList<Double>();
@@ -54,7 +92,15 @@ public class PrizeService {
 		}
 		AliasMethod aliasMethod = new AliasMethod(probabilities);
 		int i = aliasMethod.next();
-		return prizeList.get(i);
+		Prize prize = prizeList.get(i);
+		// 插入获奖数据
+		Reward reward = new Reward();
+		reward.setUserId(userId);
+		reward.setPrizeId(prize.getPrizeId());
+		rewardRepository.insert(reward);
+		// 减少抽奖机会
+		weiboUserRepository.minusPrizeChance(userId);
+		return prize;
 	}
 
 	/**

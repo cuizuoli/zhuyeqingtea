@@ -30,11 +30,6 @@ public class JoinHistRepositoryTest extends AbstractTest {
 	}
 
 	@Test
-	public void selectTodayCount() {
-		joinHistRepository.selectTodayCount("test");
-	}
-
-	@Test
 	public void selectCount() {
 		joinHistRepository.selectCount();
 	}
