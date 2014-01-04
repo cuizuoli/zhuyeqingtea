@@ -42,7 +42,6 @@ public class GameService {
 	@Transactional
 	public void joinGame(String userId) {
 		joinHistRepository.insert(userId);
-		weiboUserRepository.plusPrizeChance(userId);
 	}
 
 	/**
@@ -50,7 +49,8 @@ public class GameService {
 	 * @param text
 	 * @param accessToken
 	 */
-	public void shareWeibo(String text, String accessToken) {
+	public void shareWeibo(String userId, String text, String accessToken) {
+		weiboUserRepository.plusPrizeChance(userId);
 		statuses.update(text, accessToken);
 	}
 
