@@ -485,20 +485,24 @@
 					cache: false,
 					success: function(data) {
 						var prizeInfo = '';
-						var isFirst = true;
-						$(data).each(function(i,e) {
-							if (isFirst) {
-								prizeInfo += ('恭喜您已获得' + e.prizeName + '奖品' + e.prizeCount + '份，\n');
-								isFirst = false;
-							} else {
-								prizeInfo += (e.prizeName + '奖品' + e.prizeCount + '份，\n');
-							}
-						});
-						prizeInfo += '请前往竹叶青茶指定店铺领取奖品。\n';
-						prizeInfo += '我们将通过\n';
-						prizeInfo += '1、您的获奖截图；\n';
-						prizeInfo += '2、中奖查询页面。\n';
-						prizeInfo += '来核实您的获奖信息。';
+						if ($(data).length > 0) {
+							var isFirst = true;
+							$(data).each(function(i,e) {
+								if (isFirst) {
+									prizeInfo += ('恭喜您已获得' + e.prizeName + '奖品' + e.prizeCount + '份，\n');
+									isFirst = false;
+								} else {
+									prizeInfo += (e.prizeName + '奖品' + e.prizeCount + '份，\n');
+								}
+							});
+							prizeInfo += '请前往竹叶青茶指定店铺领取奖品。\n';
+							prizeInfo += '我们将通过\n';
+							prizeInfo += '1、您的获奖截图；\n';
+							prizeInfo += '2、中奖查询页面。\n';
+							prizeInfo += '来核实您的获奖信息。';
+						} else {
+							prizeInfo = '未查到您的获奖信息。'
+						}
 						alert(prizeInfo);
 					}
 				});
