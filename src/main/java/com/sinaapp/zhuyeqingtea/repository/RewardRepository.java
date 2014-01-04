@@ -7,6 +7,7 @@
 
 package com.sinaapp.zhuyeqingtea.repository;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import com.sinaapp.zhuyeqingtea.model.Reward;
@@ -30,5 +31,5 @@ public interface RewardRepository {
 	 * @param userId
 	 * @return
 	 */
-	Reward select(String userId);
+	Reward select(@Param("userId") String userId);
 }

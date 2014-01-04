@@ -349,9 +349,32 @@
 					type: 'get',
 					dataType: 'json',
 					success: function(data) {
-						console.log(data);
+						if (data.prizeName == null) {
+							alert('请刷新页面，重新登录！');
+						} else {
+							if (data.prizeId == 100) {
+								_this._contentsArea.find('.lottery .notWin').show();
+							} else {
+								var imgUrl = '';
+								if (data.prizeId == 1) {
+									imgUrl = 'images/txt_win01.gif';
+								} else if (data.prizeId == 2) {
+									imgUrl = 'images/txt_win02.gif';
+								} else if (data.prizeId == 3) {
+									imgUrl = 'images/txt_win03.gif';
+								} else if (data.prizeId == 4) {
+									imgUrl = 'images/txt_win04.gif';
+								} else if (data.prizeId == 5) {
+									imgUrl = 'images/txt_win05.gif';
+								}
+								_this._contentsArea.find('.lottery .win .winTxt img').attr('src',imgUrl);
+							}
+						}
 					}
 				});
+			});
+			_this._contentsArea.find('.lottery .btnList li:first').click(function() {
+				_this._contentsArea.find('.lottery .notWin').hide();
 			});
 			_this._contentsArea.find('.close').click(function() {
 				_this._initIndex();

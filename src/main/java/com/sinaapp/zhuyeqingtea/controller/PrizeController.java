@@ -13,6 +13,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -53,10 +54,12 @@ public class PrizeController {
 	public Prize prize(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		String userId = (String)session.getAttribute(WeiboAuthInterceptor.USER_ID);
-		Reward reward = prizeService.getRewardCount(userId);
 		Prize prize = new Prize();
-		if (reward.getPrizeCount() < MAX_NEXT_PRIZE) {
-			prize = prizeService.nextPrize(userId);
+		if (StringUtils.isNotBlank(userId)) {
+			Reward reward = prizeService.getRewardCount(userId);
+			if (reward.getPrizeCount() < MAX_NEXT_PRIZE) {
+				prize = prizeService.nextPrize(userId);
+			}
 		}
 		return prize;
 	}
