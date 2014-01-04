@@ -240,7 +240,8 @@
 			var _this = this;
 			_this._bindIndexEvent();
 			_this._bindGameEvent();
-			_this._bindWeiboEvent();
+			_this._bindLotteryEvent();
+			_this._bindPrizePoolEvent();
 		},
 		// 绑定活动介绍事件
 		_bindIndexEvent : function() {
@@ -250,6 +251,7 @@
 				_this._destroyIndex();
 			});
 		},
+		// 绑定游戏事件
 		_bindGameEvent : function() {
 			var _this = this;
 			_this._sp = _this._contentsArea.find('.scratch').wScratchPad({
@@ -267,8 +269,7 @@
 							type: 'post',
 							dataType: 'json',
 							success: function(data) {
-								console.log(data);
-								_this._contentsArea.find('.scratch').fadeOut(500);
+								_this._contentsArea.find('.scratch').hide();
 								// 弹出"你已经成功为成都送出一个红包"
 								_this._contentsArea.find('.gamePop01').show();
 								_this._initCounter();
@@ -277,9 +278,6 @@
 					}
 				}
 			});
-		},
-		_bindWeiboEvent : function() {
-			var _this = this;
 			// 弹出"分享到新浪微博"窗口
 			_this._contentsArea.find('.gamePop01 #shareBtn').click(function() {
 				$.ajax({
@@ -314,7 +312,7 @@
 			});
 			// 弹出"分享到微信朋友圈"窗口
 			_this._contentsArea.find('.gamePop03 #weixinShareBtn').click(function() {
-				$('#qrcode').qrcode({width: 120,height: 120,text: window.location.href});
+				$('#qrcode').qrcode({width:120,height:120,text:window.location.href});
 				_this._contentsArea.find('.gamePop04').show();
 			});
 			// 关闭"分享到微信朋友圈"窗口
@@ -329,21 +327,27 @@
 			// "绿茶生活，远离雾霾，拒绝烟花，2014新年快乐"确认事件
 			_this._contentsArea.find('.gamePop02 #nextShareConfirmBtn').click(function() {
 				_this._initIndex();
-				_this._initContent();
 				_this._bindIndexEvent();
 			});
 			// "分享成功!您已获得一次抽奖机会，现在抽奖？"取消事件
 			_this._contentsArea.find('.success #lotteryCancelBtn').click(function() {
 				_this._initIndex();
-				_this._initContent();
 				_this._bindIndexEvent();
 			});
 			// "分享成功!您已获得一次抽奖机会，现在抽奖？"确认事件
 			_this._contentsArea.find('.success #lotteryOkBtn').click(function() {
-				_this._initIndex();
-				_this._initContent();
-				_this._bindIndexEvent();
+				_this._initLottery();
 			});
+		},
+		// 绑定抽奖事件
+		_bindLotteryEvent : function() {
+			var _this = this;
+			
+		},
+		// 绑定奖池事件
+		_bindPrizePoolEvent : function() {
+			var _this = this;
+			
 		},
 		_initCounter : function () {
 			$.ajax({
