@@ -243,6 +243,7 @@
 			_this._bindGameEvent();
 			_this._bindLotteryEvent();
 			_this._bindPrizePoolEvent();
+			_this._bindSearchPrizeEvent();
 		},
 		// 绑定活动介绍事件
 		_bindIndexEvent : function() {
@@ -349,6 +350,7 @@
 					url: '/p/p',
 					type: 'get',
 					dataType: 'json',
+					cache: false,
 					success: function(data) {
 						if (data.prizeName == null && data.activeYn == 'N') {
 							alert('请刷新页面，重新登录！');
@@ -407,9 +409,6 @@
 		// 绑定奖池事件
 		_bindPrizePoolEvent : function() {
 			var _this = this;
-			_this._contentsArea.find('.search').click(function() {
-				_this._initPrizePool();
-			});
 			_this._contentsArea.find('.prizePool .close').click(function() {
 				_this._initIndex();
 				_this._bindIndexEvent();
@@ -421,6 +420,7 @@
 				url: '/p/pp',
 				type: 'get',
 				dataType: 'json',
+				cache: false,
 				success: function(data) {
 					var percent = data.percent * 100 + '%';
 					console.log(percent);
@@ -456,6 +456,7 @@
 				url: '/c',
 				type: 'get',
 				dataType: 'text',
+				cache: false,
 				success: function(data) {
 					if (data != null) {
 						$('.counter').html('');
@@ -473,11 +474,42 @@
 				}
 			});
 		},
+		// 绑定查询奖品事件
+		_bindSearchPrizeEvent : function() {
+			var _this = this;
+			_this._contentsArea.find('.search').click(function() {
+				$.ajax({
+					url: '/p/rpl',
+					type: 'get',
+					dataType: 'json',
+					cache: false,
+					success: function(data) {
+						var prizeInfo = '';
+						var isFirst = true;
+						$(data).each(function(i,e) {
+							if (isFirst) {
+								prizeInfo += ('恭喜您已获得' + e.prizeName + '奖品' + e.prizeCount + '份，\n');
+								isFirst = false;
+							} else {
+								prizeInfo += (e.prizeName + '奖品' + e.prizeCount + '份，\n');
+							}
+						});
+						prizeInfo += '请前往竹叶青茶指定店铺领取奖品。\n';
+						prizeInfo += '我们将通过\n';
+						prizeInfo += '1、您的获奖截图；\n';
+						prizeInfo += '2、中奖查询页面。\n';
+						prizeInfo += '来核实您的获奖信息。';
+						alert(prizeInfo);
+					}
+				});
+			});
+		},
 		_showWeiboCount : function () {
 			$.ajax({
 				url: '/g/wb_cont',
 				type: 'get',
 				dataType: 'json',
+				cache: false,
 				success: function(data) {
 					$('.num01').html('');
 					$('.num02').html('');

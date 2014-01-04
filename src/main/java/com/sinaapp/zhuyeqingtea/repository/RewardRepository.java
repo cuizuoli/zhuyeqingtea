@@ -7,6 +7,8 @@
 
 package com.sinaapp.zhuyeqingtea.repository;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -25,6 +27,13 @@ public interface RewardRepository {
 	 * @param reward
 	 */
 	void insert(Reward reward);
+
+	/**
+	 * selectPrizeList
+	 * @param userId
+	 * @return
+	 */
+	List<Reward> selectPrizeList(@Param("userId") String userId);
 
 	/**
 	 * select

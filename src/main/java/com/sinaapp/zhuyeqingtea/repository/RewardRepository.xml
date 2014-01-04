@@ -12,6 +12,22 @@
 			NOW()
 		)
 	</insert>
+	<select id="selectPrizeList" resultType="Reward">
+		SELECT
+			u.user_id AS userId,
+			u.user_name AS userName,
+			p.prize_id AS prizeId,
+			p.prize_name AS prizeName,
+			COUNT(1) AS prizeCount
+		FROM reward r
+		INNER JOIN prize p
+		ON p.prize_id = r.prize_id
+		AND p.prize_id != 100
+		INNER JOIN weibo_user u
+		ON u.user_id = r.user_id
+		WHERE r.user_id = #{userId}
+		GROUP BY u.user_id,p.prize_id
+	</select>
 	<select id="select" resultType="Reward">
 		SELECT
 			u.user_id AS userId,

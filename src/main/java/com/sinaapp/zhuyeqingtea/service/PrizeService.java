@@ -105,6 +105,15 @@ public class PrizeService {
 	}
 
 	/**
+	 * 取得指定用户的奖品列表
+	 * @param userId
+	 * @return
+	 */
+	public List<Reward> getPrizeList(String userId) {
+		return rewardRepository.selectPrizeList(userId);
+	}
+
+	/**
 	 * getPrizeList
 	 * @return
 	 */

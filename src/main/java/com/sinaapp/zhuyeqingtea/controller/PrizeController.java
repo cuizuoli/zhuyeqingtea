@@ -86,10 +86,28 @@ public class PrizeController {
 		return prizeService.getPrizeChance(userId);
 	}
 
+	/**
+	 * 查询奖池信息
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping("pp")
 	@ResponseBody
 	public WeiboCount prizePool(HttpServletRequest request) {
 		return counterService.getWeiboCount();
+	}
+
+	/**
+	 * 取得指定用户的奖品列表
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping("rpl")
+	@ResponseBody
+	public List<Reward> getRewardPrizeList(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		String userId = (String)session.getAttribute(WeiboAuthInterceptor.USER_ID);
+		return prizeService.getPrizeList(userId);
 	}
 
 }

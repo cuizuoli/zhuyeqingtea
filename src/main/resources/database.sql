@@ -45,12 +45,12 @@ CREATE TABLE `prize` (
   `active_yn` char(1) DEFAULT 'N' COMMENT '是否启用',
   PRIMARY KEY (`prize_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='奖品表';
-INSERT INTO `prize` (`prize_id`,`prize_name`,`total_count`,`current_count`,`min_join_count`,`probability`,`active_yn`) VALUES (5,'恭喜你获得竹叶青12月量茶包。',2,2,150000,0.01,'Y');
-INSERT INTO `prize` (`prize_id`,`prize_name`,`total_count`,`current_count`,`min_join_count`,`probability`,`active_yn`) VALUES (4,'恭喜你获得车载空气净化器。',10,10,100000,0.05,'Y');
-INSERT INTO `prize` (`prize_id`,`prize_name`,`total_count`,`current_count`,`min_join_count`,`probability`,`active_yn`) VALUES (3,'恭喜你获得3M环保口罩。',2000,2000,50000,0.1,'Y');
-INSERT INTO `prize` (`prize_id`,`prize_name`,`total_count`,`current_count`,`min_join_count`,`probability`,`active_yn`) VALUES (2,'恭喜你获得竹叶青品饮小铁盒。',3000,3000,30000,0.2,'Y');
-INSERT INTO `prize` (`prize_id`,`prize_name`,`total_count`,`current_count`,`min_join_count`,`probability`,`active_yn`) VALUES (1,'恭喜你获得绿色植物盆栽。',5000,5000,10000,0.3,'Y');
-INSERT INTO `prize` (`prize_id`,`prize_name`,`total_count`,`current_count`,`min_join_count`,`probability`,`active_yn`) VALUES (100,'感谢您参与#绿茶生活，远离雾霾，拒绝烟花# 点击【再来一次】重新抽奖。',100000,100000,0,0.6,'Y');
+INSERT INTO `prize` (`prize_id`,`prize_name`,`total_count`,`current_count`,`min_join_count`,`probability`,`active_yn`) VALUES (5,'竹叶青12月量茶包',2,2,150000,0.1,'Y');
+INSERT INTO `prize` (`prize_id`,`prize_name`,`total_count`,`current_count`,`min_join_count`,`probability`,`active_yn`) VALUES (4,'车载空气净化器',10,10,100000,0.2,'Y');
+INSERT INTO `prize` (`prize_id`,`prize_name`,`total_count`,`current_count`,`min_join_count`,`probability`,`active_yn`) VALUES (3,'3M环保口罩',2000,2000,50000,0.3,'Y');
+INSERT INTO `prize` (`prize_id`,`prize_name`,`total_count`,`current_count`,`min_join_count`,`probability`,`active_yn`) VALUES (2,'竹叶青品饮小铁盒',3000,3000,30000,0.4,'Y');
+INSERT INTO `prize` (`prize_id`,`prize_name`,`total_count`,`current_count`,`min_join_count`,`probability`,`active_yn`) VALUES (1,'绿色植物盆栽',5000,5000,10000,0.5,'Y');
+INSERT INTO `prize` (`prize_id`,`prize_name`,`total_count`,`current_count`,`min_join_count`,`probability`,`active_yn`) VALUES (100,'感谢您参与#绿茶生活，远离雾霾，拒绝烟花# 点击【再来一次】重新抽奖。',100000,100000,0,0.5,'Y');
 -- 奖赏表
 DROP TABLE IF EXISTS `reward`;
 CREATE TABLE `reward` (
