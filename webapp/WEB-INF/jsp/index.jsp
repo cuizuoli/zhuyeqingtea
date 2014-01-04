@@ -99,27 +99,27 @@
 
 <div class="prizePool" style="display:none;">
 <ul class="rating">
-<li class="rating01 on">
+<li class="rating01">
 <p class="ratingTtl"><img src="images/ttl_rating01.png" alt="" /></p>
 <p class="bar"><img src="images/img_bar.png" alt="" /></p>
 <p class="icon"><img src="images/icon01.png" alt="" /></p>
 </li>
-<li class="rating02 on">
+<li class="rating02">
 <p class="ratingTtl"><img src="images/ttl_rating02.png" alt="" /></p>
 <p class="bar"><img src="images/img_bar.png" alt="" /></p>
 <p class="icon"><img src="images/icon02.png" alt="" /></p>
 </li>
-<li class="rating03 on">
+<li class="rating03">
 <p class="ratingTtl"><img src="images/ttl_rating03.png" alt="" /></p>
 <p class="bar"><img src="images/img_bar.png" alt="" /></p>
 <p class="icon"><img src="images/icon03.png" alt="" /></p>
 </li>
-<li class="rating04 on">
+<li class="rating04">
 <p class="ratingTtl"><img src="images/ttl_rating04.png" alt="" /></p>
 <p class="bar"><img src="images/img_bar.png" alt="" /></p>
 <p class="icon"><img src="images/icon04.png" alt="" /></p>
 </li>
-<li class="rating05 on">
+<li class="rating05">
 <p class="ratingTtl"><img src="images/ttl_rating05.png" alt="" /></p>
 <p class="bar"><img src="images/img_bar.png" alt="" /></p>
 <p class="icon"><img src="images/icon05.png" alt="" /></p>
@@ -165,7 +165,6 @@
 			_this._headerArea = _this._root.find('#headerArea');
 			_this._bindEvent();
 			_this._initIndex();
-			_this._initContent();
 			_this._initCounter();
 		},
 		// 初始化首页
@@ -175,9 +174,18 @@
 			_this._headerArea.find('.explan').show();
 			_this._contentsArea.hide();
 		},
-		// 初始化内容页
-		_initContent : function() {
+		// 销毁首页，初始化内容页
+		_destroyIndex : function() {
 			var _this = this;
+			_this._headerArea.find('.explan').fadeOut(4000);
+			_this._initGame();
+			_this._contentsArea.fadeIn(1000);
+		},
+		// 初始化游戏页
+		_initGame : function() {
+			var _this = this;
+			_this._destroyLottery();
+			_this._destroyPrizePool();
 			_this._contentsArea.find('.scratch').show();
 			_this._contentsArea.find('.gamePop01').hide();
 			_this._contentsArea.find('.gamePop02').hide();
@@ -185,6 +193,47 @@
 			_this._contentsArea.find('.gamePop04').hide();
 			_this._contentsArea.find('.success').hide();
 			_this._sp.wScratchPad('reset');
+		},
+		// 销毁游戏页
+		_destroyGame : function() {
+			var _this = this;
+			_this._contentsArea.find('.scratch').hide();
+			_this._contentsArea.find('.gamePop01').hide();
+			_this._contentsArea.find('.gamePop02').hide();
+			_this._contentsArea.find('.gamePop03').hide();
+			_this._contentsArea.find('.gamePop04').hide();
+			_this._contentsArea.find('.success').hide();
+		},
+		// 初始化抽奖页
+		_initLottery : function() {
+			var _this = this;
+			_this._destroyGame();
+			_this._destroyPrizePool();
+			_this._contentsArea.find('.lottery').show();
+			_this._contentsArea.find('.lottery .win').hide();
+			_this._contentsArea.find('.lottery .notWin').hide();
+			_this._contentsArea.find('.lottery .again').hide();
+		},
+		// 销毁抽奖页
+		_destroyLottery : function() {
+			var _this = this;
+			_this._destroyGame();
+			_this._contentsArea.find('.lottery').hide();
+			_this._contentsArea.find('.lottery .win').hide();
+			_this._contentsArea.find('.lottery .notWin').hide();
+			_this._contentsArea.find('.lottery .again').hide();
+		},
+		// 初始化奖池页
+		_initPrizePool : function() {
+			var _this = this;
+			_this._destroyGame();
+			_this._destroyLottery();
+			_this._contentsArea.find('.prizePool').show();
+		},
+		// 销毁奖池页
+		_destroyPrizePool : function() {
+			var _this = this;
+			_this._contentsArea.find('.prizePool').hide();
 		},
 		// 绑定事件
 		_bindEvent : function() {
@@ -198,8 +247,7 @@
 			var _this = this;
 			_this._root.mousemove(function(e) {
 				_this._root.unbind('mousemove');
-				_this._headerArea.find('.explan').fadeOut(4000);
-				_this._contentsArea.fadeIn(1000);
+				_this._destroyIndex();
 			});
 		},
 		_bindGameEvent : function() {
