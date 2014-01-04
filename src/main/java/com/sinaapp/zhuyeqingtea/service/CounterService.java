@@ -104,6 +104,10 @@ public class CounterService {
 			hongBaoCount = PrizePool.FIFTH.getMinJoinCount() - count;
 			prizePoolLevel = 5;
 			percent = BigDecimal.valueOf(count).divide(BigDecimal.valueOf(PrizePool.FIFTH.getMinJoinCount()), 2, RoundingMode.DOWN).doubleValue();
+		} else {
+			hongBaoCount = 0;
+			prizePoolLevel = 5;
+			percent = 0;
 		}
 		WeiboCount weiboCount = new WeiboCount();
 		weiboCount.setCount(count);
