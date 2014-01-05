@@ -62,7 +62,10 @@ public class PrizeController {
 		Prize prize = new Prize();
 		if (StringUtils.isNotBlank(userId)) {
 			Reward reward = prizeService.getRewardCount(userId);
-			if (reward.getPrizeCount() < MAX_NEXT_PRIZE) {
+			int prizeChance = reward.getPrizeChance();
+			if (prizeChance == 0) {
+				prize.setActiveYn("O");
+			} else if (reward.getPrizeCount() < MAX_NEXT_PRIZE) {
 				prize = prizeService.nextPrize(userId);
 			} else {
 				prize.setActiveYn("Y");

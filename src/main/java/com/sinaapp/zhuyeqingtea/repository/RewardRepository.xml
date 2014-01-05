@@ -16,6 +16,7 @@
 		SELECT
 			u.user_id AS userId,
 			u.user_name AS userName,
+			u.prize_chance AS prizeChance,
 			p.prize_id AS prizeId,
 			p.prize_name AS prizeName,
 			COUNT(1) AS prizeCount
@@ -32,6 +33,7 @@
 		SELECT
 			u.user_id AS userId,
 			u.user_name AS userName,
+			u.prize_chance AS prizeChance,
 			p.prize_id AS prizeId,
 			p.prize_name AS prizeName,
 			COUNT(1) AS prizeCount

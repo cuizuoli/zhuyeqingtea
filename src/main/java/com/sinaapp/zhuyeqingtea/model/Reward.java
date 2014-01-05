@@ -22,6 +22,7 @@ public class Reward {
 	private int rewardId;
 	private String userId;
 	private String userName;
+	private int prizeChance;
 	private int prizeId;
 	private String prizeName;
 	private int prizeCount;

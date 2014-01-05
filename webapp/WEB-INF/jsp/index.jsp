@@ -356,6 +356,10 @@
 							alert('请刷新页面，重新登录！');
 						} else if(data.prizeName == null && data.activeYn == 'Y') {
 							alert('每人每天有5次抽奖机会！');
+							_this._initPrizePool();
+						} else if(data.prizeName == null && data.activeYn == 'O') {
+							alert('你的抽奖机会不足，快去做游戏获得红包吧！');
+							_this._initGame();
 						} else {
 							if (data.prizeId == 100) {
 								_this._contentsArea.find('.lottery .notWin').show();
