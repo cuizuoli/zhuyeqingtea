@@ -27,10 +27,6 @@ $(document).ready(function() {
 
 <!--====headerArea====-->
 <div id="headerArea">
-<h1><img src="images/title.gif" alt="绿茶生活，拒绝雾霾，远离烟花" /></h1>
-<div class="explan">
-<p><img src="images/txt_info.gif" alt="" /></p>
-</div>
 </div>
 <!--====headerArea end====-->
 </div>
