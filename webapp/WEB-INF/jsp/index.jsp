@@ -418,6 +418,7 @@
 				_this._bindIndexEvent();
 			});
 		},
+		// 奖池的进度条以及背景
 		_loadPrizePool : function() {
 			var _this = this;
 			$.ajax({
@@ -427,29 +428,34 @@
 				cache: false,
 				success: function(data) {
 					var percent = data.percent * 100 + '%';
-					console.log(percent);
+					console.log(data);
 					_this._contentsArea.find('.prizePool li').addClass('on');
 					_this._contentsArea.find('.prizePool li .bar img').css('width',0);
 					if (data.prizePoolLevel == 5) {
 						_this._contentsArea.find('.prizePool li.rating05 .bar img').css('width',percent);
+						_this._contentsArea.find('.prizePool li.rating02').attr('title','奖品：2份竹叶青12月量茶包。');
 					} else if (data.prizePoolLevel == 4) {
 						_this._contentsArea.find('.prizePool li.rating05').removeClass('on');
 						_this._contentsArea.find('.prizePool li.rating04 .bar img').css('width',percent);
+						_this._contentsArea.find('.prizePool li.rating02').attr('title','奖品：10台车载净化器，还差' + data.nextHongBaoCount + '人可打开下级奖池；未解锁第五级，2份竹叶青12月量茶包。');
 					} else if (data.prizePoolLevel == 3) {
 						_this._contentsArea.find('.prizePool li.rating04').removeClass('on');
 						_this._contentsArea.find('.prizePool li.rating05').removeClass('on');
 						_this._contentsArea.find('.prizePool li.rating03 .bar img').css('width',percent);
+						_this._contentsArea.find('.prizePool li.rating02').attr('title','奖品：2000个3M环保口罩，还差' + data.nextHongBaoCount + '人可打开下级奖池；未解锁第四级，奖品为10台车载净化器。');
 					} else if (data.prizePoolLevel == 2) {
 						_this._contentsArea.find('.prizePool li.rating03').removeClass('on');
 						_this._contentsArea.find('.prizePool li.rating04').removeClass('on');
 						_this._contentsArea.find('.prizePool li.rating05').removeClass('on');
 						_this._contentsArea.find('.prizePool li.rating02 .bar img').css('width',percent);
+						_this._contentsArea.find('.prizePool li.rating02').attr('title','奖品：3000份竹叶青品饮小铁盒，还差' + data.nextHongBaoCount + '人可打开下级奖池；未解锁第三级，奖品为2000个3M环保口罩。');
 					} else if (data.prizePoolLevel == 1) {
 						_this._contentsArea.find('.prizePool li.rating02').removeClass('on');
 						_this._contentsArea.find('.prizePool li.rating03').removeClass('on');
 						_this._contentsArea.find('.prizePool li.rating04').removeClass('on');
 						_this._contentsArea.find('.prizePool li.rating05').removeClass('on');
 						_this._contentsArea.find('.prizePool li.rating01 .bar img').css('width',percent);
+						_this._contentsArea.find('.prizePool li.rating02').attr('title','奖品：5000份绿色植物盆栽，还差' + data.nextHongBaoCount + '人可打开下级奖池；未解锁第二级，奖品为3000份竹叶青品饮小铁盒。');
 					}
 				}
 			});
