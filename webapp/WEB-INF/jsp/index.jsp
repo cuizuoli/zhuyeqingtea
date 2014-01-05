@@ -309,7 +309,7 @@
 			});
 			// 弹出"分享到微信朋友圈"窗口
 			_this._contentsArea.find('.gamePop03 #weixinShareBtn').click(function() {
-				$('#qrcode').qrcode({width:120,height:120,text:window.location.href});
+				$('#qrcode').qrcode({width:120,height:120,text:'http://zhuyeqingtea.sinaapp.com/t'});
 				_this._contentsArea.find('.gamePop04').show();
 			});
 			// 关闭"分享到微信朋友圈"窗口
