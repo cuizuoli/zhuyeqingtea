@@ -519,11 +519,11 @@
 				dataType: 'json',
 				cache: false,
 				success: function(data) {
-					$('.num01').html('');
-					$('.num02').html('');
+					$('.num01').text('');
+					$('.num02').text('');
 					if (data != null) {
-						$('.num01').html(data.hongBaoCount);
-						$('.num02').html(data.prizePoolLevel);
+						$('.num01').text(data.hongBaoCount);
+						$('.num02').text(data.prizePoolLevel);
 					}
 				}
 			});
