@@ -61,9 +61,9 @@ public class PrizeController {
 		String userId = (String)session.getAttribute(WeiboAuthInterceptor.USER_ID);
 		Prize prize = new Prize();
 		if (StringUtils.isNotBlank(userId)) {
+			int i = prizeService.getPrizeChance(userId);
 			Reward reward = prizeService.getRewardCount(userId);
-			int prizeChance = reward.getPrizeChance();
-			if (prizeChance == 0) {
+			if (i <= 0) {
 				prize.setReason("NOT_HAVE_PRIZE_CHANCE");
 			} else if (reward.getPrizeCount() < MAX_NEXT_PRIZE) {
 				prize.setReason("HAVE_PRIZE_CHANCE");
