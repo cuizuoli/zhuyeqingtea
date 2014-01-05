@@ -24,4 +24,5 @@ public class Prize {
 	private int minJoinCount;
 	private double probability;
 	private String activeYn;
+	private String reason;
 }

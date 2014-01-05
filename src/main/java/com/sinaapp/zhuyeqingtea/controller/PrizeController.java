@@ -64,14 +64,15 @@ public class PrizeController {
 			Reward reward = prizeService.getRewardCount(userId);
 			int prizeChance = reward.getPrizeChance();
 			if (prizeChance == 0) {
-				prize.setActiveYn("O");
+				prize.setReason("NOT_HAVE_PRIZE_CHANCE");
 			} else if (reward.getPrizeCount() < MAX_NEXT_PRIZE) {
+				prize.setReason("HAVE_PRIZE_CHANCE");
 				prize = prizeService.nextPrize(userId);
 			} else {
-				prize.setActiveYn("Y");
+				prize.setReason("OVER_MAX_NEXT_PRIZE");
 			}
 		} else {
-			prize.setActiveYn("N");
+			prize.setReason("ERROR");
 		}
 		return prize;
 	}

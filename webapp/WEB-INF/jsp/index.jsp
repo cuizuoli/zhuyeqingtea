@@ -352,12 +352,12 @@
 					dataType: 'json',
 					cache: false,
 					success: function(data) {
-						if (data.prizeName == null && data.activeYn == 'N') {
+						if (data.reason == 'ERROR') {
 							alert('请刷新页面，重新登录！');
-						} else if(data.prizeName == null && data.activeYn == 'Y') {
+						} else if(data.reason == 'OVER_MAX_NEXT_PRIZE') {
 							alert('每人每天有5次抽奖机会！');
 							_this._initPrizePool();
-						} else if(data.prizeName == null && data.activeYn == 'O') {
+						} else if(data.reason == 'NOT_HAVE_PRIZE_CHANCE') {
 							alert('你的抽奖机会不足，快去做游戏获得红包吧！');
 							_this._initGame();
 						} else {
