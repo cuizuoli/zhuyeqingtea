@@ -134,10 +134,6 @@
 
 <!--====headerArea====-->
 <div id="headerArea">
-<h1><img src="images/title.gif" alt="绿茶生活，拒绝雾霾，远离烟花" /></h1>
-<div class="explan">
-<p><img src="images/txt_info.gif" alt="" /></p>
-</div>
 <div class="counter">
 <ul>
 <li></li>
@@ -171,13 +167,11 @@
 		_initIndex : function() {
 			var _this = this;
 			_this._headerArea.show();
-			_this._headerArea.find('.explan').show();
 			_this._contentsArea.hide();
 		},
 		// 销毁首页，初始化内容页
 		_destroyIndex : function() {
 			var _this = this;
-			_this._headerArea.find('.explan').fadeOut(4000);
 			_this._initGame();
 			_this._contentsArea.fadeIn(1000);
 		},

@@ -423,9 +423,6 @@ position:relative;
 padding-top:476px;
 z-index:1;
 }
-#headerArea h1{
-margin-left:200px;
-}
 .counter{
 position:absolute;
 right:25px;
@@ -451,6 +448,3 @@ text-align:center;
 background:url(../images/bg_counter.png) no-repeat 0 0;
 }
 .counter ul:after{content:"";display:block;height:0;clear:both;visibility:hidden}
-.explan{
-margin:5px 0 0 143px;
-}
