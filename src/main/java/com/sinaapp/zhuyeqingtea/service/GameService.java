@@ -7,6 +7,9 @@
 
 package com.sinaapp.zhuyeqingtea.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -14,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.sinaapp.zhuyeqingtea.repository.JoinHistRepository;
 import com.sinaapp.zhuyeqingtea.repository.WeiboUserRepository;
+import com.sinaapp.zhuyeqingtea.utils.AliasMethod;
 import com.weibo.api.Statuses;
 
 /**
@@ -51,7 +55,30 @@ public class GameService {
 	 */
 	public void shareWeibo(String userId, String text, String accessToken) {
 		weiboUserRepository.plusPrizeChance(userId);
-		statuses.update(text, accessToken);
+		statuses.upload(text, nextWeiboPic(), accessToken);
+	}
+	
+	/**
+	 * 随机取得微博图片
+	 * @return
+	 */
+	private String nextWeiboPic() {
+		String[] weiboPics = new String[] {
+			"wb_01.jpg",
+			"wb_02.jpg",
+			"wb_03.jpg",
+			"wb_04.jpg",
+			"wb_05.jpg"
+		};
+		List<Double> probabilities = new ArrayList<Double>();
+		probabilities.add(Double.valueOf("0.2"));
+		probabilities.add(Double.valueOf("0.2"));
+		probabilities.add(Double.valueOf("0.2"));
+		probabilities.add(Double.valueOf("0.2"));
+		probabilities.add(Double.valueOf("0.2"));
+		AliasMethod aliasMethod = new AliasMethod(probabilities);
+		int i = aliasMethod.next();
+		return weiboPics[i];
 	}
 
 }
