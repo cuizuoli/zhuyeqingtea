@@ -128,7 +128,8 @@
 <p class="close"><a href="#"><img src="images/btn_close01.png" alt="" /></a></p>
 </div>
 
-<p class="search"><a href="#"><img src="images/btn_search.gif" alt="查询获奖" /></a></p>
+<p class="search_left"><a href="javascript:void(0);"><img src="images/btn_search_left.gif" alt="获奖查询" /></a></p>
+<p class="search_right"><a href="javascript:void(0);"><img src="images/btn_search_right.gif" alt="查看奖池" /></a></p>
 </div>
 <!--====contentsArea end====-->
 
@@ -238,6 +239,7 @@
 			_this._bindLotteryEvent();
 			_this._bindPrizePoolEvent();
 			_this._bindSearchPrizeEvent();
+			_this._bindShowPrizePoolEvent();
 		},
 		// 绑定活动介绍事件
 		_bindIndexEvent : function() {
@@ -427,31 +429,31 @@
 					if (data.prizePoolLevel == 5) {
 						_this._contentsArea.find('.prizePool li.rating05 .bar img').css('width',percent);
 						_this._contentsArea.find('.prizePool li.rating05').attr('title','奖品：2份竹叶青12月量茶包。');
-						_this._contentsArea.find('.prizePool li.rating04').attr('title','奖品：10台车载净化器。'
-						_this._contentsArea.find('.prizePool li.rating03').attr('title','奖品：2000个3M环保口罩。'
-						_this._contentsArea.find('.prizePool li.rating02').attr('title','奖品：3000份竹叶青品饮小铁盒。'
-						_this._contentsArea.find('.prizePool li.rating01').attr('title','奖品：5000份绿色植物盆栽。';
+						_this._contentsArea.find('.prizePool li.rating04').attr('title','奖品：10台车载净化器。');
+						_this._contentsArea.find('.prizePool li.rating03').attr('title','奖品：2000个3M环保口罩。');
+						_this._contentsArea.find('.prizePool li.rating02').attr('title','奖品：3000份竹叶青品饮小铁盒。');
+						_this._contentsArea.find('.prizePool li.rating01').attr('title','奖品：5000份绿色植物盆栽。');
 					} else if (data.prizePoolLevel == 4) {
 						_this._contentsArea.find('.prizePool li.rating05').removeClass('on');
 						_this._contentsArea.find('.prizePool li.rating04 .bar img').css('width',percent);
 						_this._contentsArea.find('.prizePool li.rating04').attr('title','奖品：10台车载净化器，还差' + data.nextHongBaoCount + '人可打开下级奖池；未解锁第五级，2份竹叶青12月量茶包。');
-						_this._contentsArea.find('.prizePool li.rating03').attr('title','奖品：2000个3M环保口罩。'
-						_this._contentsArea.find('.prizePool li.rating02').attr('title','奖品：3000份竹叶青品饮小铁盒。'
-						_this._contentsArea.find('.prizePool li.rating01').attr('title','奖品：5000份绿色植物盆栽。';
+						_this._contentsArea.find('.prizePool li.rating03').attr('title','奖品：2000个3M环保口罩。');
+						_this._contentsArea.find('.prizePool li.rating02').attr('title','奖品：3000份竹叶青品饮小铁盒。');
+						_this._contentsArea.find('.prizePool li.rating01').attr('title','奖品：5000份绿色植物盆栽。');
 					} else if (data.prizePoolLevel == 3) {
 						_this._contentsArea.find('.prizePool li.rating04').removeClass('on');
 						_this._contentsArea.find('.prizePool li.rating05').removeClass('on');
 						_this._contentsArea.find('.prizePool li.rating03 .bar img').css('width',percent);
 						_this._contentsArea.find('.prizePool li.rating03').attr('title','奖品：2000个3M环保口罩，还差' + data.nextHongBaoCount + '人可打开下级奖池；未解锁第四级，奖品为10台车载净化器。');
-						_this._contentsArea.find('.prizePool li.rating02').attr('title','奖品：3000份竹叶青品饮小铁盒。'
-						_this._contentsArea.find('.prizePool li.rating01').attr('title','奖品：5000份绿色植物盆栽。';
+						_this._contentsArea.find('.prizePool li.rating02').attr('title','奖品：3000份竹叶青品饮小铁盒。');
+						_this._contentsArea.find('.prizePool li.rating01').attr('title','奖品：5000份绿色植物盆栽。');
 					} else if (data.prizePoolLevel == 2) {
 						_this._contentsArea.find('.prizePool li.rating03').removeClass('on');
 						_this._contentsArea.find('.prizePool li.rating04').removeClass('on');
 						_this._contentsArea.find('.prizePool li.rating05').removeClass('on');
 						_this._contentsArea.find('.prizePool li.rating02 .bar img').css('width',percent);
 						_this._contentsArea.find('.prizePool li.rating02').attr('title','奖品：3000份竹叶青品饮小铁盒，还差' + data.nextHongBaoCount + '人可打开下级奖池；未解锁第三级，奖品为2000个3M环保口罩。');
-						_this._contentsArea.find('.prizePool li.rating01').attr('title','奖品：5000份绿色植物盆栽。';
+						_this._contentsArea.find('.prizePool li.rating01').attr('title','奖品：5000份绿色植物盆栽。');
 					} else if (data.prizePoolLevel == 1) {
 						_this._contentsArea.find('.prizePool li.rating02').removeClass('on');
 						_this._contentsArea.find('.prizePool li.rating03').removeClass('on');
@@ -487,10 +489,10 @@
 				}
 			});
 		},
-		// 绑定查询奖品事件
+		// 绑定获奖查询事件
 		_bindSearchPrizeEvent : function() {
 			var _this = this;
-			_this._contentsArea.find('.search').click(function() {
+			_this._contentsArea.find('.search_left').click(function() {
 				$.ajax({
 					url: '/p/rpl',
 					type: 'get',
@@ -519,6 +521,13 @@
 						alert(prizeInfo);
 					}
 				});
+			});
+		},
+		// 绑定查看奖池事件
+		_bindShowPrizePoolEvent : function() {
+			var _this = this;
+			_this._contentsArea.find('.search_right').click(function() {
+				_this._initPrizePool();
 			});
 		},
 		_showWeiboCount : function () {

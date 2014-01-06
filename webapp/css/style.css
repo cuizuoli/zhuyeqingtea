@@ -34,26 +34,42 @@ display:none;
 .haze{
 background:url(../images/bg_haze.jpg) no-repeat 0 0;
 }
-.search{
+.search_left{
 position:absolute;
-left:657px;
+left:69px;
+top:181px;
+}
+.search_left a{
+width:42px;
+height:112px;
+display:block;
+}
+.search_left a:hover{
+background:url(../images/btn_search_left_on.gif) no-repeat 0 0;
+}
+.search_left a:hover img{
+display:none;
+}
+.search_right{
+position:absolute;
+left:654px;
 top:179px;
 }
-.search a{
-width:38px;
+.search_right a{
+width:42px;
 height:110px;
 display:block;
 }
-.search a:hover{
-background:url(../images/btn_search_on.gif) no-repeat 0 0;
+.search_right a:hover{
+background:url(../images/btn_search_right_on.gif) no-repeat 0 0;
 }
-.search a:hover img{
+.search_right a:hover img{
 display:none;
 }
 .scratch{
 position:absolute;
 left:157px;
-top:78px;
+top:80px;
 }
 .scratch p{
 position:absolute;
