@@ -50,7 +50,7 @@ INSERT INTO `prize` (`prize_id`,`prize_name`,`total_count`,`current_count`,`min_
 INSERT INTO `prize` (`prize_id`,`prize_name`,`total_count`,`current_count`,`min_join_count`,`probability`,`active_yn`) VALUES (3,'3M环保口罩',1000,1000,30000,0.04,'Y');
 INSERT INTO `prize` (`prize_id`,`prize_name`,`total_count`,`current_count`,`min_join_count`,`probability`,`active_yn`) VALUES (2,'竹叶青品饮小铁盒',4000,4000,10000,0.1,'Y');
 INSERT INTO `prize` (`prize_id`,`prize_name`,`total_count`,`current_count`,`min_join_count`,`probability`,`active_yn`) VALUES (1,'绿色植物盆栽',10000,10000,0,0.2,'Y');
-INSERT INTO `prize` (`prize_id`,`prize_name`,`total_count`,`current_count`,`min_join_count`,`probability`,`active_yn`) VALUES (100,'感谢您参与#绿茶生活，远离雾霾，拒绝烟花# 点击【再来一次】重新抽奖。',100000,100000,0,0.5,'Y');
+INSERT INTO `prize` (`prize_id`,`prize_name`,`total_count`,`current_count`,`min_join_count`,`probability`,`active_yn`) VALUES (100,'感谢您参与#绿茶生活，远离雾霾，拒绝烟花# 点击【再来一次】重新抽奖。',100000,100000,0,0.6,'Y');
 -- 奖赏表
 DROP TABLE IF EXISTS `reward`;
 CREATE TABLE `reward` (
