@@ -428,39 +428,39 @@
 					_this._contentsArea.find('.prizePool li .bar img').css('width',0);
 					if (data.prizePoolLevel == 5) {
 						_this._contentsArea.find('.prizePool li.rating05 .bar img').css('width',percent);
-						_this._contentsArea.find('.prizePool li.rating05').attr('title','奖品：2份竹叶青12月量茶包。');
-						_this._contentsArea.find('.prizePool li.rating04').attr('title','奖品：10台车载净化器。');
-						_this._contentsArea.find('.prizePool li.rating03').attr('title','奖品：2000个3M环保口罩。');
-						_this._contentsArea.find('.prizePool li.rating02').attr('title','奖品：3000份竹叶青品饮小铁盒。');
-						_this._contentsArea.find('.prizePool li.rating01').attr('title','奖品：5000份绿色植物盆栽。');
+						_this._contentsArea.find('.prizePool li.rating05').attr('title','奖品：2份竹叶青12月量茶包。\n茶弈基金5级奖池已全部打开！\n本活动结束后，竹叶青茶将为成都特定人群送上净化雾霾装备：\n6000份竹叶青品饮小铁盒，\n4000个3M环保口罩，\n20台车载空气净化器。');
+						_this._contentsArea.find('.prizePool li.rating04').attr('title','奖品：10台车载空气净化器。');
+						_this._contentsArea.find('.prizePool li.rating03').attr('title','奖品：1000个3M环保口罩。');
+						_this._contentsArea.find('.prizePool li.rating02').attr('title','奖品：4000份竹叶青品饮小铁盒。');
+						_this._contentsArea.find('.prizePool li.rating01').attr('title','奖品：10000份绿色植物盆栽。');
 					} else if (data.prizePoolLevel == 4) {
 						_this._contentsArea.find('.prizePool li.rating05').removeClass('on');
 						_this._contentsArea.find('.prizePool li.rating04 .bar img').css('width',percent);
-						_this._contentsArea.find('.prizePool li.rating04').attr('title','奖品：10台车载净化器，还差' + data.nextHongBaoCount + '人可打开下级奖池；未解锁第五级，2份竹叶青12月量茶包。');
-						_this._contentsArea.find('.prizePool li.rating03').attr('title','奖品：2000个3M环保口罩。');
-						_this._contentsArea.find('.prizePool li.rating02').attr('title','奖品：3000份竹叶青品饮小铁盒。');
-						_this._contentsArea.find('.prizePool li.rating01').attr('title','奖品：5000份绿色植物盆栽。');
+						_this._contentsArea.find('.prizePool li.rating04').attr('title','奖品：10台车载空气净化器。\n还剩' + data.nextHongBaoCount + '人可打开第五级奖池，奖品：2份竹叶青12月量茶包。');
+						_this._contentsArea.find('.prizePool li.rating03').attr('title','奖品：1000个3M环保口罩。');
+						_this._contentsArea.find('.prizePool li.rating02').attr('title','奖品：4000份竹叶青品饮小铁盒。');
+						_this._contentsArea.find('.prizePool li.rating01').attr('title','奖品：10000份绿色植物盆栽。');
 					} else if (data.prizePoolLevel == 3) {
 						_this._contentsArea.find('.prizePool li.rating04').removeClass('on');
 						_this._contentsArea.find('.prizePool li.rating05').removeClass('on');
 						_this._contentsArea.find('.prizePool li.rating03 .bar img').css('width',percent);
-						_this._contentsArea.find('.prizePool li.rating03').attr('title','奖品：2000个3M环保口罩，还差' + data.nextHongBaoCount + '人可打开下级奖池；未解锁第四级，奖品为10台车载净化器。');
-						_this._contentsArea.find('.prizePool li.rating02').attr('title','奖品：3000份竹叶青品饮小铁盒。');
-						_this._contentsArea.find('.prizePool li.rating01').attr('title','奖品：5000份绿色植物盆栽。');
+						_this._contentsArea.find('.prizePool li.rating03').attr('title','奖品：1000个3M环保口罩。\n还剩' + data.nextHongBaoCount + '人可打开第四级奖池，奖品：10台车载空气净化器。');
+						_this._contentsArea.find('.prizePool li.rating02').attr('title','奖品：4000份竹叶青品饮小铁盒。');
+						_this._contentsArea.find('.prizePool li.rating01').attr('title','奖品：10000份绿色植物盆栽。');
 					} else if (data.prizePoolLevel == 2) {
 						_this._contentsArea.find('.prizePool li.rating03').removeClass('on');
 						_this._contentsArea.find('.prizePool li.rating04').removeClass('on');
 						_this._contentsArea.find('.prizePool li.rating05').removeClass('on');
 						_this._contentsArea.find('.prizePool li.rating02 .bar img').css('width',percent);
-						_this._contentsArea.find('.prizePool li.rating02').attr('title','奖品：3000份竹叶青品饮小铁盒，还差' + data.nextHongBaoCount + '人可打开下级奖池；未解锁第三级，奖品为2000个3M环保口罩。');
-						_this._contentsArea.find('.prizePool li.rating01').attr('title','奖品：5000份绿色植物盆栽。');
+						_this._contentsArea.find('.prizePool li.rating02').attr('title','奖品：4000份竹叶青品饮小铁盒。\n还剩' + data.nextHongBaoCount + '人可打开第三级奖池，奖品：1000个3M环保口罩。');
+						_this._contentsArea.find('.prizePool li.rating01').attr('title','奖品：10000份绿色植物盆栽。');
 					} else if (data.prizePoolLevel == 1) {
 						_this._contentsArea.find('.prizePool li.rating02').removeClass('on');
 						_this._contentsArea.find('.prizePool li.rating03').removeClass('on');
 						_this._contentsArea.find('.prizePool li.rating04').removeClass('on');
 						_this._contentsArea.find('.prizePool li.rating05').removeClass('on');
 						_this._contentsArea.find('.prizePool li.rating01 .bar img').css('width',percent);
-						_this._contentsArea.find('.prizePool li.rating01').attr('title','奖品：5000份绿色植物盆栽，还差' + data.nextHongBaoCount + '人可打开下级奖池；未解锁第二级，奖品为3000份竹叶青品饮小铁盒。');
+						_this._contentsArea.find('.prizePool li.rating01').attr('title','奖品：10000份绿色植物盆栽。\n还剩' + data.nextHongBaoCount + '人可打开第二级奖池，奖品：4000份竹叶青品饮小铁盒。');
 					}
 				}
 			});

@@ -80,7 +80,7 @@ public class CounterService {
 		int nextHongBaoCount = 0;
 		int prizePoolLevel = 0;
 		double percent = 0;
-		if (count > 0
+		if (count >= 0
 			&& count <= PrizePool.FIRST.getMinJoinCount()) {
 			hongBaoCount = PrizePool.FIRST.getMinJoinCount() - count;
 			nextHongBaoCount = PrizePool.SECOND.getMinJoinCount() - count;
