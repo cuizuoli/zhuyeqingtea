@@ -19,11 +19,6 @@ $(document).ready(function() {
 <body>
 <!--=========wrapper=========-->
 <div id="wrapper">
-<!--====contentsArea====-->
-<div id="contentsArea">
-<p class="search"><a href="javascript:void(0);"><img src="images/btn_search.gif" alt="查询获奖" /></a></p>
-</div>
-<!--====contentsArea end====-->
 
 <!--====headerArea====-->
 <div id="headerArea">
