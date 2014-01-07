@@ -12,6 +12,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -53,17 +54,23 @@ public class GameService {
 	 * @param text
 	 * @param accessToken
 	 */
-	public void shareWeibo(String userId, String text, String accessToken) {
-		weiboUserRepository.plusPrizeChance(userId);
-		statuses.upload(text, nextWeiboPic(), accessToken);
+	public String shareWeibo(String userId, String text, String accessToken) {
+		String joinCount = joinHistRepository.selectTodayCount(userId);
+		if (StringUtils.isNotEmpty(joinCount) && Integer.valueOf(joinCount) < 5) {
+			weiboUserRepository.plusPrizeChance(userId);
+			statuses.upload(text, nextWeiboPic(), accessToken);
+			return "";
+		} else {
+			return "NOT_HAVE_SHARE_CHANCE";
+		}
 	}
-	
+
 	/**
 	 * 随机取得微博图片
 	 * @return
 	 */
 	private String nextWeiboPic() {
-		String[] weiboPics = new String[] {
+		String[] weiboPics = new String[]{
 			"wb_01.jpg",
 			"wb_02.jpg",
 			"wb_03.jpg",

@@ -8,4 +8,11 @@
 		SELECT COUNT(1)
 		FROM join_hist
 	</select>
+	<select id="selectTodayCount" resultType="string">
+		SELECT COUNT(1)
+		FROM join_hist
+		WHERE user_id = #{userId}
+		AND join_time BETWEEN DATE_FORMAT(NOW(),'%Y-%m-%d 00:00:00')
+		AND DATE_FORMAT(NOW(),'%Y-%m-%d 23:59:59')
+	</select>
 </mapper>

@@ -29,4 +29,11 @@ public interface JoinHistRepository {
 	 * @return
 	 */
 	int selectCount();
+
+	/**
+	 * selectTodayCount
+	 * @param userId
+	 * @return
+	 */
+	String selectTodayCount(@Param("userId") String userId);
 }

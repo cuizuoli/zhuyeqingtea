@@ -319,9 +319,14 @@
 					url: '/g/share',
 					type: 'post',
 					data: {'text':_this._contentsArea.find('#textCont').text()},
-					dataType: 'json',
-					success: function() {
-						_this._contentsArea.find('.success').show();
+					dataType: 'text',
+					success: function(data) {
+						if (data == 'NOT_HAVE_SHARE_CHANCE') {
+							alert('每天每人只能分享5次微博！');
+							_this._initPrizePool();
+						} else {
+							_this._contentsArea.find('.success').show();
+						}
 					},
 					error: function(jqXhr, textStatus, errorThrown) {
 						alert('请稍候再试！');
