@@ -129,7 +129,7 @@
 </div>
 
 <div class="prizeSearch">
-<p class="prizeTxt">恭喜你获得XXX奖品X份，请前往学校学习阿斯发达省份。请前往学校学习阿斯发达省份。</p>
+<p class="prizeTxt"></p>
 <ul class="btnList">
 <li><a id="prizeConfirmBtn" href="#"><img src="/images/btn_confirm03.gif" alt="确定" /></a></li>
 </ul>
@@ -322,10 +322,16 @@
 					dataType: 'text',
 					success: function(data) {
 						if (data == 'NOT_HAVE_SHARE_CHANCE') {
-							alert('每天每人只能分享5次微博！');
+							alert('每天每人只能有5次分享微博的机会，请明天再试！');
 							_this._initPrizePool();
 						} else {
 							_this._contentsArea.find('.success').show();
+							_this._contentsArea.find('.scratch').hide();
+							_this._contentsArea.find('.gamePop01').hide();
+							_this._contentsArea.find('.gamePop02').hide();
+							_this._contentsArea.find('.gamePop03').hide();
+							_this._contentsArea.find('.gamePop04').hide();
+							
 						}
 					},
 					error: function(jqXhr, textStatus, errorThrown) {
