@@ -280,7 +280,7 @@
 				height: 341,
 				image: '/images/img_scratch02.png',
 				image2: '/images/img_scratch01.png',
-				cursor: '/images/logo.ico',
+				cursor: '/images/logo.cur',
 				overlay: 'none',
 				size: 50,
 				scratchUp: function(e, percent) {
