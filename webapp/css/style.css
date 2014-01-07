@@ -7,7 +7,7 @@ a:hover {text-decoration: underline;}
 img,a img{border:none;vertical-align:top;}
 ul,li,ol{list-style:none;}
 input{border:0px;background:none;}
-#wrapper{width:760px;height:800px;position:relative;margin:0 auto;background:url(../images/bg_body.jpg) no-repeat 0 0;}
+#wrapper{width:760px;height:800px;position:relative;margin:0 auto;background:url(/images/bg_body.jpg) no-repeat 0 0;}
 /*contentsArea*/
 #contentsArea{
 width:760px;
@@ -32,7 +32,7 @@ display:block;
 display:none;
 }
 .haze{
-background:url(../images/bg_haze.jpg) no-repeat 0 0;
+background:url(/images/bg_haze.jpg) no-repeat 0 0;
 }
 .search_left{
 position:absolute;
@@ -45,7 +45,7 @@ height:112px;
 display:block;
 }
 .search_left a:hover{
-background:url(../images/btn_search_left_on.gif) no-repeat 0 0;
+background:url(/images/btn_search_left_on.gif) no-repeat 0 0;
 }
 .search_left a:hover img{
 display:none;
@@ -61,7 +61,7 @@ height:110px;
 display:block;
 }
 .search_right a:hover{
-background:url(../images/btn_search_right_on.gif) no-repeat 0 0;
+background:url(/images/btn_search_right_on.gif) no-repeat 0 0;
 }
 .search_right a:hover img{
 display:none;
@@ -82,7 +82,7 @@ left:131px;
 top:82px;
 width:500px;
 height:332px;
-background:url(../images/bg_game01.png) no-repeat 0 0;
+background:url(/images/bg_game01.png) no-repeat 0 0;
 }
 .gamePop01 .gameTxt{
 position:relative;
@@ -112,10 +112,10 @@ width:90px;
 height:29px;
 }
 .gamePop01 .btnList li a:hover{
-background:url(../images/btn_yes_on.png) no-repeat 0 0;
+background:url(/images/btn_yes_on.png) no-repeat 0 0;
 }
 .gamePop01 .btnList li:first-child a:hover{
-background:url(../images/btn_no_on.png) no-repeat 0 0;
+background:url(/images/btn_no_on.png) no-repeat 0 0;
 }
 
 
@@ -126,7 +126,7 @@ position:absolute;
 left:209px;
 top:162px;
 z-index:10;
-background:url(../images/bg_success.png) no-repeat 0 0;
+background:url(/images/bg_success.png) no-repeat 0 0;
 }
 .success p{
 margin:9px 0 11px 12px;
@@ -139,10 +139,10 @@ width:74px;
 height:24px;
 }
 .success .btnList li a:hover{
-background:url(../images/btn_confirm01_on.gif) no-repeat 0 0;
+background:url(/images/btn_confirm01_on.gif) no-repeat 0 0;
 }
 .success .btnList li:first-child a:hover{
-background:url(../images/btn_cancel_on.gif) no-repeat 0 0;
+background:url(/images/btn_cancel_on.gif) no-repeat 0 0;
 }
 .gamePop02{
 position:absolute;
@@ -150,7 +150,7 @@ left:131px;
 top:82px;
 width:500px;
 height:332px;
-background:url(../images/bg_game02.png) no-repeat 0 0;
+background:url(/images/bg_game02.png) no-repeat 0 0;
 }
 .gamePop02 .gameTxt{
 margin:101px 0 13px 124px;
@@ -163,7 +163,7 @@ width:74px;
 height:21px;
 }
 .gamePop02 .btnList li a:hover{
-background:url(../images/btn_confirm_on.gif) no-repeat 0 0;
+background:url(/images/btn_confirm_on.gif) no-repeat 0 0;
 }
 
 .gamePop03{
@@ -172,7 +172,7 @@ left:131px;
 top:82px;
 width:500px;
 height:332px;
-background:url(../images/bg_game03.png) no-repeat 0 0;
+background:url(/images/bg_game03.png) no-repeat 0 0;
 }
 .gamePop03 .btnList li{
 margin:0 0px 0 190px;
@@ -182,14 +182,14 @@ width:116px;
 height:25px;
 }
 .gamePop03 .btnList li a:hover{
-background:url(../images/btn_share01_on.png) no-repeat 0 0;
+background:url(/images/btn_share01_on.png) no-repeat 0 0;
 }
 .gamePop03 .textCont{
 width:296px;
 height:71px;
 text-align:center;
 margin:97px 0 10px 101px;
-background:url(../images/bg_text.png) no-repeat 0 0;
+background:url(/images/bg_text.png) no-repeat 0 0;
 }
 .gamePop03 .textCont textarea{
 width:286px;
@@ -219,7 +219,7 @@ height:22px;
 display:block;
 }
 .gamePop03 .weChat a:hover{
-background:url(../images/btn_wechat_on.png) no-repeat 0 0;
+background:url(/images/btn_wechat_on.png) no-repeat 0 0;
 }
 .gamePop03 .weChat a:hover img{
 display:none;
@@ -231,7 +231,7 @@ left:135px;
 top:82px;
 width:494px;
 height:282px;
-background:url(../images/bg_game04.png) no-repeat 0 0;
+background:url(/images/bg_game04.png) no-repeat 0 0;
 }
 .gamePop04 .weChat{
 position:absolute;
@@ -252,7 +252,7 @@ left:157px;
 top:76px;
 width:460px;
 height:345px;
-background:url(../images/bg_lottery.png) no-repeat 0 0;
+background:url(/images/bg_lottery.png) no-repeat 0 0;
 }
 .lottery .redPaper{
 zoom:1;
@@ -275,7 +275,7 @@ left:0px;
 top:0px;
 width:459px;
 height:345px;
-background:url(../images/bg_win.png) no-repeat 0 0;
+background:url(/images/bg_win.png) no-repeat 0 0;
 }
 .lottery .win .winTxt{
 margin:133px 0 23px 66px;
@@ -288,7 +288,7 @@ width:70px;
 height:22px;
 }
 .lottery .win .btnList li a:hover{
-background:url(../images/btn_win_on.gif) no-repeat 0 0;
+background:url(/images/btn_win_on.gif) no-repeat 0 0;
 }
 
 .lottery .notWin{
@@ -297,7 +297,7 @@ left:0px;
 top:0px;
 width:459px;
 height:345px;
-background:url(../images/bg_notwin.png) no-repeat 0 0;
+background:url(/images/bg_notwin.png) no-repeat 0 0;
 }
 .lottery .notWin .notwinTxt{
 margin:100px 0 5px 35px;
@@ -310,10 +310,10 @@ width:86px;
 height:27px;
 }
 .lottery .notWin .btnList li a:hover{
-background:url(../images/btn_again_on.gif) no-repeat 0 0;
+background:url(/images/btn_again_on.gif) no-repeat 0 0;
 }
 .lottery .notWin .btnList li:first-child a:hover{
-background:url(../images/btn_next_on.gif) no-repeat 0 0;
+background:url(/images/btn_next_on.gif) no-repeat 0 0;
 }
 .lottery .notWin .again{
 position:absolute;
@@ -321,7 +321,7 @@ left:15px;
 top:80px;
 width:422px;
 height:147px;
-background:url(../images/bg_again.png) no-repeat 0 0;
+background:url(/images/bg_again.png) no-repeat 0 0;
 }
 .lottery .notWin .again .againTxt{
 position:relative;
@@ -343,7 +343,7 @@ width:58px;
 height:18px;
 }
 .lottery .notWin .again .btnList li a:hover{
-background:url(../images/btn_confirm02_on.gif) no-repeat 0 0;
+background:url(/images/btn_confirm02_on.gif) no-repeat 0 0;
 }
 
 .prizePool{
@@ -360,7 +360,7 @@ height:300px;
 zoom:1;
 margin:22px;
 position:relative;
-background:url(../images/bg_rating.gif) no-repeat 0 0;
+background:url(/images/bg_rating.gif) no-repeat 0 0;
 }
 .prizePool .rating .icon{
 position:absolute;
@@ -376,23 +376,23 @@ vertical-align:top;
 }
 .prizePool .rating li.rating01.on{
 height:61px;
-background:url(../images/bg_rating01_on.gif) repeat-x 0 0;
+background:url(/images/bg_rating01_on.gif) repeat-x 0 0;
 }
 .prizePool .rating li.rating02.on{
 height:60px;
-background:url(../images/bg_rating02_on.gif) repeat-x 0 0;
+background:url(/images/bg_rating02_on.gif) repeat-x 0 0;
 }
 .prizePool .rating li.rating03.on{
 height:57px;
-background:url(../images/bg_rating03_on.gif) repeat-x 0 0;
+background:url(/images/bg_rating03_on.gif) repeat-x 0 0;
 }
 .prizePool .rating li.rating04.on{
 height:60px;
-background:url(../images/bg_rating04_on.gif) repeat-x 0 0;
+background:url(/images/bg_rating04_on.gif) repeat-x 0 0;
 }
 .prizePool .rating li.rating05.on{
 height:61px;
-background:url(../images/bg_rating05_on.gif) repeat-x 0 0;
+background:url(/images/bg_rating05_on.gif) repeat-x 0 0;
 }
 .prizePool .rating .ratingTtl{
 margin-left:38px;
@@ -437,7 +437,7 @@ left:162px;
 top:130px;
 width:439px;
 height:183px;
-background:url(../images/bg_prize.jpg) no-repeat 0 0;
+background:url(/images/bg_prize.jpg) no-repeat 0 0;
 }
 .prizeSearch .prizeTxt{
 margin:30px 0 13px 40px;
@@ -456,7 +456,7 @@ width:91px;
 height:29px;
 }
 .prizeSearch .btnList li a:hover{
-background:url(../images/btn_confirm03_on.gif) no-repeat 0 0;
+background:url(/images/btn_confirm03_on.gif) no-repeat 0 0;
 }
 
 /*headerArea*/
@@ -474,7 +474,7 @@ right:25px;
 bottom:8px;
 width:400px;
 height:40px;
-background:url(../images/bg_counter.gif) no-repeat 0 0;
+background:url(/images/bg_counter.gif) no-repeat 0 0;
 }
 .counter ul{
 padding-left:72px;
@@ -490,6 +490,6 @@ font-weight:bold;
 font-size:16px;
 font-family:'Courier New';
 text-align:center;
-background:url(../images/bg_counter.png) no-repeat 0 0;
+background:url(/images/bg_counter.png) no-repeat 0 0;
 }
 .counter ul:after{content:"";display:block;height:0;clear:both;visibility:hidden}

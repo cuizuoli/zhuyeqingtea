@@ -26,14 +26,19 @@ import com.sinaapp.zhuyeqingtea.security.interceptor.WeiboAuthInterceptor;
 @RequestMapping("/t")
 public class TopicIndexController {
 
-	@RequestMapping("")
+	@RequestMapping("i")
 	public ModelAndView index(HttpServletRequest request) {
 		AuthStatus authStatus = (AuthStatus)request.getAttribute(WeiboAuthInterceptor.AUTH_STATUS);
 		if (authStatus == AuthStatus.LOGIN) {
 			return new ModelAndView("index");
 		} else {
-			return new ModelAndView("redirect:/t/weibo/authorize");
+			return new ModelAndView("topic");
 		}
+	}
+
+	@RequestMapping("")
+	public ModelAndView topic(HttpServletRequest request) {
+		return new ModelAndView("topic");
 	}
 
 }

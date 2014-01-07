@@ -68,7 +68,7 @@ public class TopicWeiboController {
 			AccessToken accessToken = oAuth2.accessToken(code);
 			User user = users.show(accessToken.getUid(), accessToken.getAccessToken());
 			weiboService.addUser(user);
-			return new ModelAndView("redirect:/t?access_token=" + accessToken.getAccessToken() + "&user_id="
+			return new ModelAndView("redirect:/t/i?access_token=" + accessToken.getAccessToken() + "&user_id="
 				+ accessToken.getUid());
 		} else {
 			return new ModelAndView("redirect:/t/weibo/authorize");

@@ -21,77 +21,77 @@
 </div>
 <div class="gamePop01">
 <p class="gameTxt">
-<img src="images/txt_game01.png" alt="你已经成功为成都送出一个红包，感谢您的参与!再为成都送出XXX个红包即可打开茶弈基金第一关。是否邀请朋友继续参与活动或将活动分享到朋友圈" />
+<img src="/images/txt_game01.png" alt="你已经成功为成都送出一个红包，感谢您的参与!再为成都送出XXX个红包即可打开茶弈基金第一关。是否邀请朋友继续参与活动或将活动分享到朋友圈" />
 <span class="num01"></span>
 <span class="num02"></span>
 </p>
 <ul class="btnList">
-<li><a id="nextShareBtn" href="#"><img src="images/btn_no.png" alt="下次再说" /></a></li>
-<li><a id="shareBtn" href="#"><img src="images/btn_yes.png" alt="当然" /></a></li>
+<li><a id="nextShareBtn" href="#"><img src="/images/btn_no.png" alt="下次再说" /></a></li>
+<li><a id="shareBtn" href="#"><img src="/images/btn_yes.png" alt="当然" /></a></li>
 </ul>
 </div>
 
 <div class="success" style="display:none;">
-<p><img src="images/txt_success.png" alt="分享成功!您已获得一次抽奖机会，现在抽奖？" /></p>
+<p><img src="/images/txt_success.png" alt="分享成功!您已获得一次抽奖机会，现在抽奖？" /></p>
 <ul class="btnList">
-<li><a id="lotteryCancelBtn" href="#"><img src="images/btn_cancel.gif" alt="取消" /></a></li>
-<li><a id="lotteryOkBtn" href="#"><img src="images/btn_confirm01.gif" alt="确认" /></a></li>
+<li><a id="lotteryCancelBtn" href="#"><img src="/images/btn_cancel.gif" alt="取消" /></a></li>
+<li><a id="lotteryOkBtn" href="#"><img src="/images/btn_confirm01.gif" alt="确认" /></a></li>
 </ul>
 </div>
 
 <div class="gamePop02" style="display:none;">
-<p class="gameTxt"><img src="images/txt_game02.gif" alt="绿茶生活，远离雾霾，拒绝烟花 2014新年快乐" /></p>
+<p class="gameTxt"><img src="/images/txt_game02.gif" alt="绿茶生活，远离雾霾，拒绝烟花 2014新年快乐" /></p>
 <ul class="btnList">
-<li><a id="nextShareConfirmBtn" href="#"><img src="images/btn_confirm.gif" alt="确定" /></a></li>
+<li><a id="nextShareConfirmBtn" href="#"><img src="/images/btn_confirm.gif" alt="确定" /></a></li>
 </ul>
 </div>
 
 <div class="gamePop03" style="display:none;">
 <p class="textCont"><textarea name="textCont" rows="2" cols="" id="textCont"></textarea></p>
 <ul class="btnList">
-<li><a id="shareConfirmBtn" href="#"><img src="images/btn_share01.png" alt="分享到新浪微博" /></a></li>
+<li><a id="shareConfirmBtn" href="#"><img src="/images/btn_share01.png" alt="分享到新浪微博" /></a></li>
 </ul>
-<p class="weChat"><a id="weixinShareBtn" href="#"><img src="images/btn_wechat.png" alt="" /></a></p>
-<p class="close"><a id="closeShareBtn" href="#"><img src="images/btn_close.png" alt="" /></a></p>
+<p class="weChat"><a id="weixinShareBtn" href="#"><img src="/images/btn_wechat.png" alt="" /></a></p>
+<p class="close"><a id="closeShareBtn" href="#"><img src="/images/btn_close.png" alt="" /></a></p>
 </div>
 
 <div class="gamePop04" style="display:none;">
 <p class="weChat"><span id="qrcode"></span></p>
-<p class="close"><a id="closeWeixinShareBtn" href="#"><img src="images/btn_close.png" alt="" /></a></p>
+<p class="close"><a id="closeWeixinShareBtn" href="#"><img src="/images/btn_close.png" alt="" /></a></p>
 </div>
 
 <div class="lottery" style="display:none;">
 <ul class="redPaper">
-<li><a href="#"><img src="images/img_paper01.jpg" alt="" /></a></li>
-<li><a href="#"><img src="images/img_paper02.jpg" alt="" /></a></li>
-<li><a href="#"><img src="images/img_paper03.jpg" alt="" /></a></li>
-<li><a href="#"><img src="images/img_paper04.jpg" alt="" /></a></li>
-<li><a href="#"><img src="images/img_paper05.jpg" alt="" /></a></li>
-<li><a href="#"><img src="images/img_paper06.jpg" alt="" /></a></li>
-<li><a href="#"><img src="images/img_paper07.jpg" alt="" /></a></li>
-<li><a href="#"><img src="images/img_paper08.jpg" alt="" /></a></li>
-<li><a href="#"><img src="images/img_paper09.jpg" alt="" /></a></li>
+<li><a href="#"><img src="/images/img_paper01.jpg" alt="" /></a></li>
+<li><a href="#"><img src="/images/img_paper02.jpg" alt="" /></a></li>
+<li><a href="#"><img src="/images/img_paper03.jpg" alt="" /></a></li>
+<li><a href="#"><img src="/images/img_paper04.jpg" alt="" /></a></li>
+<li><a href="#"><img src="/images/img_paper05.jpg" alt="" /></a></li>
+<li><a href="#"><img src="/images/img_paper06.jpg" alt="" /></a></li>
+<li><a href="#"><img src="/images/img_paper07.jpg" alt="" /></a></li>
+<li><a href="#"><img src="/images/img_paper08.jpg" alt="" /></a></li>
+<li><a href="#"><img src="/images/img_paper09.jpg" alt="" /></a></li>
 </ul>
-<p class="close"><a href="#"><img src="images/btn_close01.png" alt="" /></a></p>
+<p class="close"><a href="#"><img src="/images/btn_close01.png" alt="" /></a></p>
 
 <div class="win" style="display:none;">
-<p class="winTxt"><img src="images/txt_win01.gif" alt="" /></p>
+<p class="winTxt"><img src="/images/txt_win01.gif" alt="" /></p>
 <ul class="btnList">
-<li><a id="prizeBtn" href="#"><img src="images/btn_win.gif" alt="领取奖品" /></a></li>
+<li><a id="prizeBtn" href="#"><img src="/images/btn_win.gif" alt="领取奖品" /></a></li>
 </ul>
 </div>
 
 <div class="notWin" style="display:none;">
-<p class="notwinTxt"><img src="images/txt_notwin.gif" alt="" /></p>
+<p class="notwinTxt"><img src="/images/txt_notwin.gif" alt="" /></p>
 <ul class="btnList">
-<li><a id="nextBtn" href="#"><img src="images/btn_next.gif" alt="下次吧" /></a></li>
-<li><a id="againBtn" href="#"><img src="images/btn_again.gif" alt="再来一次" /></a></li>
+<li><a id="nextBtn" href="#"><img src="/images/btn_next.gif" alt="下次吧" /></a></li>
+<li><a id="againBtn" href="#"><img src="/images/btn_again.gif" alt="再来一次" /></a></li>
 </ul>
 
 <div class="again" style="display:none;">
-<p class="againTxt"><img src="images/txt_again.gif" alt="" /><span class="num"></span></p>
+<p class="againTxt"><img src="/images/txt_again.gif" alt="" /><span class="num"></span></p>
 <ul class="btnList">
-<li><a id="againConfirmBtn" href="#"><img src="images/btn_confirm02.gif" alt="确定" /></a></li>
+<li><a id="againConfirmBtn" href="#"><img src="/images/btn_confirm02.gif" alt="确定" /></a></li>
 </ul>
 </div>
 </div>
@@ -100,43 +100,43 @@
 <div class="prizePool" style="display:none;">
 <ul class="rating">
 <li class="rating01">
-<p class="ratingTtl"><img src="images/ttl_rating01.png" alt="" /></p>
-<p class="bar"><img src="images/img_bar.png" alt="" /></p>
-<p class="icon"><img src="images/icon01.png" alt="" /></p>
+<p class="ratingTtl"><img src="/images/ttl_rating01.png" alt="" /></p>
+<p class="bar"><img src="/images/img_bar.png" alt="" /></p>
+<p class="icon"><img src="/images/icon01.png" alt="" /></p>
 </li>
 <li class="rating02">
-<p class="ratingTtl"><img src="images/ttl_rating02.png" alt="" /></p>
-<p class="bar"><img src="images/img_bar.png" alt="" /></p>
-<p class="icon"><img src="images/icon02.png" alt="" /></p>
+<p class="ratingTtl"><img src="/images/ttl_rating02.png" alt="" /></p>
+<p class="bar"><img src="/images/img_bar.png" alt="" /></p>
+<p class="icon"><img src="/images/icon02.png" alt="" /></p>
 </li>
 <li class="rating03">
-<p class="ratingTtl"><img src="images/ttl_rating03.png" alt="" /></p>
-<p class="bar"><img src="images/img_bar.png" alt="" /></p>
-<p class="icon"><img src="images/icon03.png" alt="" /></p>
+<p class="ratingTtl"><img src="/images/ttl_rating03.png" alt="" /></p>
+<p class="bar"><img src="/images/img_bar.png" alt="" /></p>
+<p class="icon"><img src="/images/icon03.png" alt="" /></p>
 </li>
 <li class="rating04">
-<p class="ratingTtl"><img src="images/ttl_rating04.png" alt="" /></p>
-<p class="bar"><img src="images/img_bar.png" alt="" /></p>
-<p class="icon"><img src="images/icon04.png" alt="" /></p>
+<p class="ratingTtl"><img src="/images/ttl_rating04.png" alt="" /></p>
+<p class="bar"><img src="/images/img_bar.png" alt="" /></p>
+<p class="icon"><img src="/images/icon04.png" alt="" /></p>
 </li>
 <li class="rating05">
-<p class="ratingTtl"><img src="images/ttl_rating05.png" alt="" /></p>
-<p class="bar"><img src="images/img_bar.png" alt="" /></p>
-<p class="icon"><img src="images/icon05.png" alt="" /></p>
+<p class="ratingTtl"><img src="/images/ttl_rating05.png" alt="" /></p>
+<p class="bar"><img src="/images/img_bar.png" alt="" /></p>
+<p class="icon"><img src="/images/icon05.png" alt="" /></p>
 </li>
 </ul>
-<p class="close"><a href="#"><img src="images/btn_close01.png" alt="" /></a></p>
+<p class="close"><a href="#"><img src="/images/btn_close01.png" alt="" /></a></p>
 </div>
 
 <div class="prizeSearch">
 <p class="prizeTxt">恭喜你获得XXX奖品X份，请前往学校学习阿斯发达省份。请前往学校学习阿斯发达省份。</p>
 <ul class="btnList">
-<li><a id="prizeConfirmBtn" href="#"><img src="images/btn_confirm03.gif" alt="确定" /></a></li>
+<li><a id="prizeConfirmBtn" href="#"><img src="/images/btn_confirm03.gif" alt="确定" /></a></li>
 </ul>
 </div>
 
-<p class="search_left"><a href="javascript:void(0);"><img src="images/btn_search_left.gif" alt="获奖查询" /></a></p>
-<p class="search_right"><a href="javascript:void(0);"><img src="images/btn_search_right.gif" alt="查看奖池" /></a></p>
+<p class="search_left"><a href="javascript:void(0);"><img src="/images/btn_search_left.gif" alt="获奖查询" /></a></p>
+<p class="search_right"><a href="javascript:void(0);"><img src="/images/btn_search_right.gif" alt="查看奖池" /></a></p>
 </div>
 <!--====contentsArea end====-->
 
@@ -278,9 +278,9 @@
 			_this._sp = _this._contentsArea.find('.scratch').wScratchPad({
 				width: 456,
 				height: 341,
-				image: 'images/img_scratch02.png',
-				image2: 'images/img_scratch01.png',
-				cursor: 'images/logo.cur',
+				image: '/images/img_scratch02.png',
+				image2: '/images/img_scratch01.png',
+				cursor: '/images/logo.cur',
 				overlay: 'none',
 				size: 50,
 				scratchUp: function(e, percent) {
@@ -385,15 +385,15 @@
 							} else {
 								var imgUrl = '';
 								if (data.prizeId == 1) {
-									imgUrl = 'images/txt_win01.gif';
+									imgUrl = '/images/txt_win01.gif';
 								} else if (data.prizeId == 2) {
-									imgUrl = 'images/txt_win02.gif';
+									imgUrl = '/images/txt_win02.gif';
 								} else if (data.prizeId == 3) {
-									imgUrl = 'images/txt_win03.gif';
+									imgUrl = '/images/txt_win03.gif';
 								} else if (data.prizeId == 4) {
-									imgUrl = 'images/txt_win04.gif';
+									imgUrl = '/images/txt_win04.gif';
 								} else if (data.prizeId == 5) {
-									imgUrl = 'images/txt_win05.gif';
+									imgUrl = '/images/txt_win05.gif';
 								}
 								_this._contentsArea.find('.lottery .win .winTxt img').attr('src',imgUrl);
 								_this._contentsArea.find('.lottery .win').show();
