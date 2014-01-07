@@ -1,6 +1,6 @@
 /*common*/
 *{margin:0;padding:0;cursor:url(http://zhuyeqingtea.sinaapp.com/images/logo.cur),auto;}
-body{margin:0;padding:0;font-size:12px;color:#a93331;font-family:'Arial','方正剪纸简体','Simsun','Verdana','Helvetica',sans-serif,'微软雅黑';}
+body{margin:0;padding:0;font-size:12px;color:#a93331;font-family:'Arial','宋体','Simsun','Verdana','Helvetica',sans-serif,'微软雅黑';}
 em{font-style:normal;}
 a{color:#a93331;text-decoration:none;}
 a:hover {text-decoration: underline;}
@@ -90,19 +90,19 @@ margin:57px 0 22px 16px;
 }
 .gamePop01 .gameTxt span{
 position:absolute;
-font-size:25px;
+font-size:20px;
 color:#fce2a4;
-font-family:"方正剪纸简体";
+font-family:'Courier New';
 }
 .gamePop01 .gameTxt span.num01{
 width:42px;
 text-align:center;
 left:50px;
-top:78px;
+top:83px;
 }
 .gamePop01 .gameTxt span.num02{
-left:243px;
-top:78px;
+left:245px;
+top:83px;
 }
 .gamePop01 .btnList li{
 margin:0 56px 0 87px;
@@ -331,12 +331,12 @@ margin:36px 0 7px 114px;
 position:absolute;
 font-size:20px;
 color:#dd0909;
-font-family:"方正剪纸简体";
+font-family:'Courier New';
 left:72px;
 top:0px;
 }
 .lottery .notWin .again .btnList li{
-margin:0 0px 0 179px;
+margin:0 0px 0 174px;
 }
 .lottery .notWin .again .btnList li a{
 width:58px;
@@ -430,6 +430,35 @@ position:absolute;
 left:475px;
 top:4px;
 }
+
+.prizeSearch{
+position:absolute;
+left:162px;
+top:130px;
+width:439px;
+height:183px;
+background:url(../images/bg_prize.jpg) no-repeat 0 0;
+}
+.prizeSearch .prizeTxt{
+margin:30px 0 13px 40px;
+height:90px;
+width:360px;
+font-size:16px;
+font-family:'宋体';
+color:#FCE2A4;
+font-weight:bold;
+}
+.prizeSearch .btnList li{
+margin:0 0 0 180px;
+}
+.prizeSearch .btnList li a{
+width:91px;
+height:29px;
+}
+.prizeSearch .btnList li a:hover{
+background:url(../images/btn_confirm03_on.gif) no-repeat 0 0;
+}
+
 /*headerArea*/
 #headerArea{
 width:760px;
@@ -459,7 +488,7 @@ line-height:42px;
 color:#ff0606;
 font-weight:bold;
 font-size:16px;
-font-family:"方正剪纸简体";
+font-family:'Courier New';
 text-align:center;
 background:url(../images/bg_counter.png) no-repeat 0 0;
 }

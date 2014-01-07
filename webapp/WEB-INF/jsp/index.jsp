@@ -128,6 +128,13 @@
 <p class="close"><a href="#"><img src="images/btn_close01.png" alt="" /></a></p>
 </div>
 
+<div class="prizeSearch">
+<p class="prizeTxt">恭喜你获得XXX奖品X份，请前往学校学习阿斯发达省份。请前往学校学习阿斯发达省份。</p>
+<ul class="btnList">
+<li><a id="prizeConfirmBtn" href="#"><img src="images/btn_confirm03.gif" alt="确定" /></a></li>
+</ul>
+</div>
+
 <p class="search_left"><a href="javascript:void(0);"><img src="images/btn_search_left.gif" alt="获奖查询" /></a></p>
 <p class="search_right"><a href="javascript:void(0);"><img src="images/btn_search_right.gif" alt="查看奖池" /></a></p>
 </div>
@@ -181,6 +188,7 @@
 			var _this = this;
 			_this._destroyLottery();
 			_this._destroyPrizePool();
+			_this._destroyPrizeSearch();
 			_this._contentsArea.find('.scratch').show();
 			_this._contentsArea.find('.gamePop01').hide();
 			_this._contentsArea.find('.gamePop02').hide();
@@ -204,6 +212,7 @@
 			var _this = this;
 			_this._destroyGame();
 			_this._destroyPrizePool();
+			_this._destroyPrizeSearch();
 			_this._contentsArea.find('.lottery').show();
 			_this._contentsArea.find('.lottery .win').hide();
 			_this._contentsArea.find('.lottery .notWin').hide();
@@ -224,12 +233,26 @@
 			_this._destroyGame();
 			_this._destroyLottery();
 			_this._loadPrizePool();
+			_this._destroyPrizeSearch();
 			_this._contentsArea.find('.prizePool').show();
 		},
 		// 销毁奖池页
 		_destroyPrizePool : function() {
 			var _this = this;
 			_this._contentsArea.find('.prizePool').hide();
+		},
+		// 初始化获奖查询页
+		_initPrizeSearch : function() {
+			var _this = this;
+			_this._destroyGame();
+			_this._destroyLottery();
+			_this._destroyPrizePool();
+			_this._contentsArea.find('.prizeSearch').show();
+		},
+		// 销毁获奖查询页
+		_destroyPrizeSearch : function() {
+			var _this = this;
+			_this._contentsArea.find('.prizeSearch').hide();
 		},
 		// 绑定事件
 		_bindEvent : function() {
@@ -504,23 +527,28 @@
 							var isFirst = true;
 							$(data).each(function(i,e) {
 								if (isFirst) {
-									prizeInfo += ('恭喜您已获得' + e.prizeName + '奖品' + e.prizeCount + '份，\n');
+									prizeInfo += ('恭喜您已获得' + e.prizeName + '奖品' + e.prizeCount + '份，');
 									isFirst = false;
 								} else {
-									prizeInfo += (e.prizeName + '奖品' + e.prizeCount + '份，\n');
+									prizeInfo += (e.prizeName + '奖品' + e.prizeCount + '份，');
 								}
 							});
-							prizeInfo += '请前往竹叶青茶指定店铺领取奖品。\n';
-							prizeInfo += '我们将通过\n';
-							prizeInfo += '1、您的获奖截图；\n';
-							prizeInfo += '2、中奖查询页面。\n';
+							prizeInfo += '请前往竹叶青茶指定店铺领取奖品。';
+							prizeInfo += '我们将通过';
+							prizeInfo += '1、您的获奖截图；';
+							prizeInfo += '2、中奖查询页面。';
 							prizeInfo += '来核实您的获奖信息。';
 						} else {
 							prizeInfo = '未查到您的获奖信息。'
 						}
-						alert(prizeInfo);
+						_this._contentsArea.find('.prizeSearch .prizeTxt').text(prizeInfo);
+						_this._initPrizeSearch();
 					}
 				});
+			});
+			_this._contentsArea.find('.prizeSearch #prizeConfirmBtn').click(function() {
+				_this._initIndex();
+				_this._bindIndexEvent();
 			});
 		},
 		// 绑定查看奖池事件
