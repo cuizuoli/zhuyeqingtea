@@ -179,6 +179,23 @@
 					//console.log('images all loaded.');
 				}
 			});
+			$.imgpreload([
+				'/images/btn_search_left_on.gif',
+				'/images/btn_search_right_on.gif',
+				'/images/btn_yes_on.png',
+				'/images/btn_no_on.png',
+				'/images/btn_confirm01_on.gif',
+				'/images/btn_cancel_on.gif',
+				'/images/btn_confirm_on.gif',
+				'/images/btn_share01_on.png',
+				'/images/btn_wechat_on.png',
+				'/images/btn_win_on.gif',
+				'/images/btn_again_on.gif',
+				'/images/btn_next_on.gif',
+				'/images/btn_confirm02_on.gif',
+				'/images/btn_confirm03_on.gif'], function() {
+				
+			});
 		},
 		// 初始化首页
 		_initIndex : function() {
