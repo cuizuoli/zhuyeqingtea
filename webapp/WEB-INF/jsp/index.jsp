@@ -385,6 +385,11 @@
 		// 绑定抽奖事件
 		_bindLotteryEvent : function() {
 			var _this = this;
+			_this._contentsArea.find('.lottery .redPaper li').hover(function() {
+				$(this).find('a img').animate({opacity:0.5},100);
+			},function() {
+				$(this).find('a img').animate({opacity:1},100);
+			});
 			_this._contentsArea.find('.lottery .redPaper li').click(function() {
 				$.ajax({
 					url: '/p/p',
