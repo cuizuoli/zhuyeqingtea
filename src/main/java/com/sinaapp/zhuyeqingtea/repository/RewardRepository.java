@@ -41,4 +41,18 @@ public interface RewardRepository {
 	 * @return
 	 */
 	Reward select(@Param("userId") String userId);
+	
+	/**
+	 * selectRewardItemCountToday
+	 * @param userId
+	 * @return
+	 */
+	int selectRewardItemCountToday(@Param("userId") String userId);
+	
+	/**
+	 * selectRewardItemCount
+	 * @param userId
+	 * @return
+	 */
+	int selectRewardItemCount(@Param("userId") String userId);
 }
