@@ -15,10 +15,9 @@
 <!--=========wrapper=========-->
 <div id="wrapper">
 <!--====contentsArea====-->
-<div id="contentsArea" class="haze">
+<div id="contentsArea">
 
 <div class="scratch" style="display:none;">
-
 </div>
 <div class="gamePop01">
 <p class="gameTxt">
@@ -63,15 +62,15 @@
 
 <div class="lottery" style="display:none;">
 <ul class="redPaper">
-<li><a href="#"><img src="/images/img_paper01.jpg" alt="" /></a></li>
-<li><a href="#"><img src="/images/img_paper02.jpg" alt="" /></a></li>
-<li><a href="#"><img src="/images/img_paper03.jpg" alt="" /></a></li>
-<li><a href="#"><img src="/images/img_paper04.jpg" alt="" /></a></li>
-<li><a href="#"><img src="/images/img_paper05.jpg" alt="" /></a></li>
-<li><a href="#"><img src="/images/img_paper06.jpg" alt="" /></a></li>
-<li><a href="#"><img src="/images/img_paper07.jpg" alt="" /></a></li>
-<li><a href="#"><img src="/images/img_paper08.jpg" alt="" /></a></li>
-<li><a href="#"><img src="/images/img_paper09.jpg" alt="" /></a></li>
+<li style="width:134px;height:103px;"><a href="#"><img src="/images/img_paper01.jpg" alt="" /></a></li>
+<li style="width:151px;height:103px;"><a href="#"><img src="/images/img_paper02.jpg" alt="" /></a></li>
+<li style="width:136px;height:103px;"><a href="#"><img src="/images/img_paper03.jpg" alt="" /></a></li>
+<li style="width:134px;height:106px;"><a href="#"><img src="/images/img_paper04.jpg" alt="" /></a></li>
+<li style="width:151px;height:106px;"><a href="#"><img src="/images/img_paper05.jpg" alt="" /></a></li>
+<li style="width:136px;height:106px;"><a href="#"><img src="/images/img_paper06.jpg" alt="" /></a></li>
+<li style="width:134px;height:102px;"><a href="#"><img src="/images/img_paper07.jpg" alt="" /></a></li>
+<li style="width:151px;height:102px;"><a href="#"><img src="/images/img_paper08.jpg" alt="" /></a></li>
+<li style="width:136px;height:102px;"><a href="#"><img src="/images/img_paper09.jpg" alt="" /></a></li>
 </ul>
 <p class="close"><a href="#"><img src="/images/btn_close01.png" alt="" /></a></p>
 
@@ -466,6 +465,11 @@
 		// 奖池的进度条以及背景
 		_loadPrizePool : function() {
 			var _this = this;
+			_this._contentsArea.find('.prizePool li').hover(function() {
+				$(this).find('.ratingTtl img').animate({opacity:0.7},100);
+			}, function() {
+				$(this).find('.ratingTtl img').animate({opacity:1},100);
+			});
 			$.ajax({
 				url: '/p/pp',
 				type: 'get',
