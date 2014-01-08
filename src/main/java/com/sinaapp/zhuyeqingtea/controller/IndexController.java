@@ -60,7 +60,9 @@ public class IndexController {
 			String subAppkey = request.getParameter("sub_appkey");
 			String tokenString = request.getParameter("tokenString");
 			if (StringUtils.isBlank(subAppkey)) {
-				return new ModelAndView("redirect:" + redirectUri);
+				return new ModelAndView("login")
+					.addObject("appKey", appKey)
+					.addObject("redirectUri", redirectUri);
 			} else if (tokenString == null) {
 				return new ModelAndView("login")
 					.addObject("appKey", subAppkey)
