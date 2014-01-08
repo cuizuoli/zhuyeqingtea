@@ -8,6 +8,7 @@
 <script type="text/javascript" src="/js/jquery.class.support.js"></script>
 <script type="text/javascript" src="/js/jquery.qrcode.min.js"></script>
 <script type="text/javascript" src="/js/wScratchPad.js"></script>
+<script type="text/javascript" src="/js/jquery.imgpreload.min.js"></script>
 <link rel="stylesheet" type="text/css" href="/css/style.css"/>
 </head>
 <body>
@@ -170,6 +171,15 @@
 			_this._bindEvent();
 			_this._initIndex();
 			_this._initCounter();
+			$('img').imgpreload ({
+				each: function() {
+					//var status = $(this).data('loaded')?'success':'error';
+					//console.log($(this).attr('src') + ' loaded ' + status);
+				},
+				all: function() {
+					//console.log('images all loaded.');
+				}
+			});
 		},
 		// 初始化首页
 		_initIndex : function() {
