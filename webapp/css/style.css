@@ -68,8 +68,8 @@ display:none;
 }
 .scratch{
 position:absolute;
-left:115px;
-top:53px;
+left:116px;
+top:52px;
 }
 .gamePop01{
 position:absolute;
@@ -406,24 +406,32 @@ width:100%;
 height:61px;
 }
 .prizePool .rating .rating01 .bar img{
-width:100%;
+width:0%;
 }
 .prizePool .rating .rating02 .bar img{
-width:50%;
+width:0%;
 }
 .prizePool .rating .rating03 .bar img{
-width:50%;
+width:0%;
 }
 .prizePool .rating .rating04 .bar img{
-width:50%;
+width:0%;
 }
 .prizePool .rating .rating05 .bar img{
-width:50%;
+width:0%;
 }
 .prizePool .close{
 position:absolute;
 left:475px;
 top:4px;
+}
+
+.prizePool .desc{
+position:absolute;
+left:335px;
+top:325px;
+font-weight:bold;
+font-family:'黑体';
 }
 
 .prizeSearch{

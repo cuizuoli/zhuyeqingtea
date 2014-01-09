@@ -125,6 +125,7 @@
 <p class="icon"><img src="/images/icon05.png" alt="" /></p>
 </li>
 </ul>
+<p class="desc">*所有奖品均以实物为准</p>
 <p class="close"><a href="#"><img src="/images/btn_close01.png" alt="" /></a></p>
 </div>
 
@@ -302,8 +303,8 @@
 		_bindGameEvent : function() {
 			var _this = this;
 			_this._sp = _this._contentsArea.find('.scratch').wScratchPad({
-				width: 456,
-				height: 341,
+				width: 533,
+				height: 360,
 				image: '/images/img_scratch02.png',
 				image2: '/images/img_scratch01.png',
 				cursor: '/images/logo.ico',
