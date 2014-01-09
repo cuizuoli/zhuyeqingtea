@@ -501,7 +501,7 @@
 					_this._contentsArea.find('.prizePool li .bar img').css('width',0);
 					if (data.prizePoolLevel == 5) {
 						_this._contentsArea.find('.prizePool li.rating05 .bar img').css('width',percent);
-						_this._contentsArea.find('.prizePool li.rating05').attr('title','奖品：2份竹叶青12月量茶包。\n茶弈基金5级奖池已全部打开，\n竹叶青茶将为成都特定人群送上净化雾霾装备：\n6000份竹叶青品饮小铁盒，\n4000个3M环保口罩，\n20台车载空气净化器。');
+						_this._contentsArea.find('.prizePool li.rating05').attr('title','奖品：2份竹叶青12月量茶包。\n茶弈基金5级奖池已全部打开，\n@竹叶青茶 将为成都特定人群送上净化雾霾装备：\n6000份竹叶青品饮小铁盒，\n4000个3M环保口罩，\n20台车载空气净化器。');
 						_this._contentsArea.find('.prizePool li.rating04').attr('title','奖品：10台车载空气净化器。');
 						_this._contentsArea.find('.prizePool li.rating03').attr('title','奖品：1000个3M环保口罩。');
 						_this._contentsArea.find('.prizePool li.rating02').attr('title','奖品：4000份竹叶青品饮小铁盒。');
