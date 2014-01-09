@@ -457,12 +457,18 @@
 					cache: false,
 					success: function(data) {
 						_this._contentsArea.find('.num').html(data);
+						if (data == 0) {
+							_this._contentsArea.find('.again .btnList #againConfirmBtn').click(function() {
+								_this._initGame();
+							});
+						} else {
+							_this._contentsArea.find('.again .btnList #againConfirmBtn').click(function() {
+								_this._initLottery();
+							});
+						}
 					}
 				});
 				_this._contentsArea.find('.again').show();
-			});
-			_this._contentsArea.find('.again .btnList #againConfirmBtn').click(function() {
-				_this._initLottery();
 			});
 			_this._contentsArea.find('.win .btnList #prizeBtn').click(function() {
 				_this._initPrizePool();
