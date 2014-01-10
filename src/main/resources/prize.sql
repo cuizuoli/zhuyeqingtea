@@ -7,6 +7,12 @@ UPDATE prize
 SET active_yn = 'N'
 WHERE prize_id IN(2,3,4,5);
 
+UPDATE prize SET probability = 0.1 WHERE prize_id = 1;
+UPDATE prize SET probability = 0.05 WHERE prize_id = 2;
+UPDATE prize SET probability = 0.04 WHERE prize_id = 3;
+UPDATE prize SET probability = 0.02 WHERE prize_id = 4;
+UPDATE prize SET probability = 0.01 WHERE prize_id = 5;
+
 SELECT
 u.user_id,
 u.user_name,
