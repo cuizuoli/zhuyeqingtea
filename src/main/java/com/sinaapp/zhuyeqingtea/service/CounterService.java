@@ -54,48 +54,42 @@ public class CounterService {
 	public WeiboCount getWeiboCount() {
 		int count = getCount();
 		int hongBaoCount = 0;
-		int nextHongBaoCount = 0;
 		int prizePoolLevel = 0;
 		double percent = 0;
-		if (count >= 0
-			&& count <= PrizePool.FIRST.getMinJoinCount()) {
-			hongBaoCount = PrizePool.FIRST.getMinJoinCount() - count;
-			nextHongBaoCount = PrizePool.SECOND.getMinJoinCount() - count;
-			prizePoolLevel = 1;
-			percent = BigDecimal.valueOf(count).divide(BigDecimal.valueOf(PrizePool.FIRST.getMinJoinCount()), 2, RoundingMode.DOWN).doubleValue();
-		} else if (count > PrizePool.FIRST.getMinJoinCount()
-			&& count < PrizePool.SECOND.getMinJoinCount()) {
+		if (count >= PrizePool.FIRST.getMinJoinCount()
+			&& count <= PrizePool.SECOND.getMinJoinCount()) {
 			hongBaoCount = PrizePool.SECOND.getMinJoinCount() - count;
-			nextHongBaoCount = PrizePool.THIRD.getMinJoinCount() - count;
-			prizePoolLevel = 2;
+			prizePoolLevel = 1;
 			percent = BigDecimal.valueOf(count).divide(BigDecimal.valueOf(PrizePool.SECOND.getMinJoinCount()), 2, RoundingMode.DOWN).doubleValue();
 		} else if (count > PrizePool.SECOND.getMinJoinCount()
 			&& count < PrizePool.THIRD.getMinJoinCount()) {
 			hongBaoCount = PrizePool.THIRD.getMinJoinCount() - count;
-			nextHongBaoCount = PrizePool.FOURTH.getMinJoinCount() - count;
-			prizePoolLevel = 3;
+			prizePoolLevel = 2;
 			percent = BigDecimal.valueOf(count).divide(BigDecimal.valueOf(PrizePool.THIRD.getMinJoinCount()), 2, RoundingMode.DOWN).doubleValue();
 		} else if (count > PrizePool.THIRD.getMinJoinCount()
 			&& count < PrizePool.FOURTH.getMinJoinCount()) {
 			hongBaoCount = PrizePool.FOURTH.getMinJoinCount() - count;
-			nextHongBaoCount = PrizePool.FIFTH.getMinJoinCount() - count;
-			prizePoolLevel = 4;
+			prizePoolLevel = 3;
 			percent = BigDecimal.valueOf(count).divide(BigDecimal.valueOf(PrizePool.FOURTH.getMinJoinCount()), 2, RoundingMode.DOWN).doubleValue();
 		} else if (count > PrizePool.FOURTH.getMinJoinCount()
 			&& count < PrizePool.FIFTH.getMinJoinCount()) {
 			hongBaoCount = PrizePool.FIFTH.getMinJoinCount() - count;
-			prizePoolLevel = 5;
+			prizePoolLevel = 4;
 			percent = BigDecimal.valueOf(count).divide(BigDecimal.valueOf(PrizePool.FIFTH.getMinJoinCount()), 2, RoundingMode.DOWN).doubleValue();
+		} else if (count > PrizePool.FIFTH.getMinJoinCount()
+			&& count < PrizePool.MAX.getMinJoinCount()) {
+			hongBaoCount = 0;
+			prizePoolLevel = 5;
+			percent = BigDecimal.valueOf(count).divide(BigDecimal.valueOf(PrizePool.MAX.getMinJoinCount()), 2, RoundingMode.DOWN).doubleValue();
 		} else {
 			hongBaoCount = 0;
 			prizePoolLevel = 5;
-			percent = 0;
+			percent = 1;
 		}
 		int i = weiboService.nextWeiboId();
 		WeiboCount weiboCount = new WeiboCount();
 		weiboCount.setCount(count);
 		weiboCount.setHongBaoCount(hongBaoCount);
-		weiboCount.setNextHongBaoCount(nextHongBaoCount);
 		weiboCount.setPrizePoolLevel(prizePoolLevel);
 		weiboCount.setPercent(percent);
 		weiboCount.setWeiboId(i);

@@ -14,11 +14,12 @@ package com.sinaapp.zhuyeqingtea.enums;
  * @date 2014年1月2日
  */
 public enum PrizePool {
-	FIRST(10000),
-	SECOND(30000),
-	THIRD(50000),
-	FOURTH(100000),
-	FIFTH(150000);
+	FIRST(0),
+	SECOND(10000),
+	THIRD(30000),
+	FOURTH(50000),
+	FIFTH(100000),
+	MAX(150000);
 	private final int minJoinCount;
 
 	private PrizePool(int minJoinCount) {
