@@ -335,6 +335,7 @@
 					dataType: 'json',
 					cache: false,
 					success: function(data) {
+						_this._weiboId = data.weiboId;
 						_this._contentsArea.find('#textCont').text(data.weiboContent);
 						_this._contentsArea.find('.gamePop03').show();
 					}
@@ -345,7 +346,7 @@
 				$.ajax({
 					url: '/g/share',
 					type: 'post',
-					data: {'text':_this._contentsArea.find('#textCont').text()},
+					data: {'text':_this._contentsArea.find('#textCont').text(),'weiboId':_this._weiboId},
 					dataType: 'text',
 					success: function(data) {
 						if (data == 'NOT_HAVE_SHARE_CHANCE') {

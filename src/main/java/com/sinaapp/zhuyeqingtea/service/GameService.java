@@ -7,9 +7,6 @@
 
 package com.sinaapp.zhuyeqingtea.service;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.annotation.Resource;
 
 import org.apache.commons.lang.StringUtils;
@@ -18,7 +15,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.sinaapp.zhuyeqingtea.repository.JoinHistRepository;
 import com.sinaapp.zhuyeqingtea.repository.WeiboUserRepository;
-import com.sinaapp.zhuyeqingtea.utils.AliasMethod;
 import com.weibo.api.Statuses;
 
 /**
@@ -54,11 +50,11 @@ public class GameService {
 	 * @param text
 	 * @param accessToken
 	 */
-	public String shareWeibo(String userId, String text, String accessToken) {
+	public String shareWeibo(String userId, String text, int weiboId, String accessToken) {
 		String joinCount = joinHistRepository.selectTodayCount(userId);
 		if (StringUtils.isNotEmpty(joinCount) && Integer.valueOf(joinCount) < 5) {
 			weiboUserRepository.plusPrizeChance(userId);
-			statuses.upload(text, nextWeiboPic(), accessToken);
+			statuses.upload(text, getWeiboPicName(weiboId), accessToken);
 			return "";
 		} else {
 			return "NOT_HAVE_SHARE_CHANCE";
@@ -66,10 +62,11 @@ public class GameService {
 	}
 
 	/**
-	 * 随机取得微博图片
+	 * 取得微博图片
+	 * @param weiboId
 	 * @return
 	 */
-	private String nextWeiboPic() {
+	private String getWeiboPicName(int weiboId) {
 		String[] weiboPics = new String[]{
 			"wb_01.jpg",
 			"wb_02.jpg",
@@ -77,15 +74,7 @@ public class GameService {
 			"wb_04.jpg",
 			"wb_05.jpg"
 		};
-		List<Double> probabilities = new ArrayList<Double>();
-		probabilities.add(Double.valueOf("0.2"));
-		probabilities.add(Double.valueOf("0.2"));
-		probabilities.add(Double.valueOf("0.2"));
-		probabilities.add(Double.valueOf("0.2"));
-		probabilities.add(Double.valueOf("0.2"));
-		AliasMethod aliasMethod = new AliasMethod(probabilities);
-		int i = aliasMethod.next();
-		return weiboPics[i];
+		return weiboPics[weiboId];
 	}
 
 }

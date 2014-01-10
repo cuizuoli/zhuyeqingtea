@@ -63,11 +63,11 @@ public class GameController {
 
 	@RequestMapping("share")
 	@ResponseBody
-	public String share(HttpServletRequest request, @RequestParam String text) {
+	public String share(HttpServletRequest request, @RequestParam String text, @RequestParam int weiboId) {
 		HttpSession session = request.getSession();
 		String accessToken = (String)session.getAttribute(WeiboAuthInterceptor.ACCESS_TOKEN);
 		String userId = (String)session.getAttribute(WeiboAuthInterceptor.USER_ID);
-		return gameService.shareWeibo(userId, text, accessToken);
+		return gameService.shareWeibo(userId, text, weiboId, accessToken);
 	}
 
 }

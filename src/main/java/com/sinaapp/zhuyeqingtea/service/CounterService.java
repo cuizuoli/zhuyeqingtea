@@ -9,8 +9,6 @@ package com.sinaapp.zhuyeqingtea.service;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.annotation.Resource;
 
@@ -20,7 +18,6 @@ import com.sinaapp.zhuyeqingtea.enums.PrizePool;
 import com.sinaapp.zhuyeqingtea.model.WeiboCount;
 import com.sinaapp.zhuyeqingtea.repository.JoinConfigRepository;
 import com.sinaapp.zhuyeqingtea.repository.JoinHistRepository;
-import com.sinaapp.zhuyeqingtea.utils.AliasMethod;
 
 /**
  * DaLian Software zhuyeqingtea
@@ -37,6 +34,9 @@ public class CounterService {
 	@Resource
 	private JoinHistRepository joinHistRepository;
 
+	@Resource
+	private WeiboService weiboService;
+
 	/**
 	 * getCount - 取得记数器数量
 	 * @return
@@ -45,29 +45,6 @@ public class CounterService {
 		int configCount = joinConfigRepository.selectCount();
 		int count = joinHistRepository.selectCount();
 		return configCount + count;
-	}
-
-	/**
-	 * 随机取得微博内容
-	 * @return
-	 */
-	private String nextWeiboCount() {
-		String[] weiboContents = new String[]{
-			"#绿茶生活 远离雾霾 拒绝烟花#为成都送红包啦！动动鼠标，马上减少4立方米雾霾，还有机会获得“干净”好礼一份！雾霾影响我们每个人，赶快来参加吧！猛戳这里：http://t.cn/8F7uLLS",
-			"#绿茶生活 远离雾霾 拒绝烟花#动动鼠标就是一次公益之举，动动鼠标就能清除4立方米雾霾。你还等什么？和我一起为成都送“干净”红包，抢“干净”好礼！http://t.cn/8F7uLLS",
-			"#绿茶生活 远离雾霾 拒绝烟花#动动鼠标，我已经为成都清除了4立方米雾霾！小伙伴们 ，来和我一起清除雾霾，刷新成都空气吧！点击马上参加：http://t.cn/8F7uLLS",
-			"#绿茶生活 远离雾霾 拒绝烟花#我刚刚为成都清除了4立方米的雾霾，就等你加入进来。成都人，和我一起清除雾霾，共同呼吸“成都好空气”！动鼠标，除雾霾，点右立刻加入：http://t.cn/8F7uLLS",
-			"#绿茶生活 远离雾霾 拒绝烟花#我刚刚“亲手”为成都清除了4立方米的雾霾，你也来试试吧！很神奇，动动鼠标就可以。点这里：http://t.cn/8F7uLLS"
-		};
-		List<Double> probabilities = new ArrayList<Double>();
-		probabilities.add(Double.valueOf("0.2"));
-		probabilities.add(Double.valueOf("0.2"));
-		probabilities.add(Double.valueOf("0.2"));
-		probabilities.add(Double.valueOf("0.2"));
-		probabilities.add(Double.valueOf("0.2"));
-		AliasMethod aliasMethod = new AliasMethod(probabilities);
-		int i = aliasMethod.next();
-		return weiboContents[i];
 	}
 
 	/**
@@ -114,13 +91,16 @@ public class CounterService {
 			prizePoolLevel = 5;
 			percent = 0;
 		}
+		int i = weiboService.nextWeiboId();
 		WeiboCount weiboCount = new WeiboCount();
 		weiboCount.setCount(count);
 		weiboCount.setHongBaoCount(hongBaoCount);
 		weiboCount.setNextHongBaoCount(nextHongBaoCount);
 		weiboCount.setPrizePoolLevel(prizePoolLevel);
 		weiboCount.setPercent(percent);
-		weiboCount.setWeiboContent(nextWeiboCount());
+		weiboCount.setWeiboId(i);
+		weiboCount.setWeiboContent(weiboService.getWeiboContent(i));
 		return weiboCount;
 	}
+
 }

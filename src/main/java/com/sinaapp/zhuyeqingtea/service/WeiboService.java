@@ -7,6 +7,9 @@
 
 package com.sinaapp.zhuyeqingtea.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -14,6 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.sinaapp.zhuyeqingtea.model.WeiboUser;
 import com.sinaapp.zhuyeqingtea.repository.WeiboUserRepository;
+import com.sinaapp.zhuyeqingtea.utils.AliasMethod;
 import com.weibo.model.User;
 
 /**
@@ -24,6 +28,22 @@ import com.weibo.model.User;
  */
 @Service
 public class WeiboService {
+
+	private final static String[] WEIBO_CONTENTS = new String[]{
+		"我在#绿茶生活 远离雾霾 拒绝烟花#活动中为成都清除了4立方米雾霾，荣获“清除雾霾先进个人”称号，小伙伴们 ，来和我一起清除雾霾，刷新成都空气吧！点右马上参加：http://zhuyeqingtea.sinaapp.com/",
+		"我在#绿茶生活 远离雾霾 拒绝烟花#活动中为成都清除了4立方米雾霾，被评为“除霾达人”。雾霾影响我们每个人，赶快来参加吧，还有机会获得“干净”好礼一份！猛戳这里：http://zhuyeqingtea.sinaapp.com/",
+		"我在#绿茶生活 远离雾霾 拒绝烟花#活动中为成都清除了4立方米雾霾，赢得“雾霾终结者”称号。你还等什么？来和我一起，为成都送“干净”红包，抢“干净”好礼！点右进入：http://zhuyeqingtea.sinaapp.com/",
+		"我在#绿茶生活 远离雾霾 拒绝烟花#活动中为成都清除了4立方米雾霾，赢得“成都空气卫士”称号。动鼠标，除雾霾，赢“干净”大礼！就等你的加入！点右加入我吧：http://zhuyeqingtea.sinaapp.com/",
+		"我在#绿茶生活 远离雾霾 拒绝烟花#活动中“亲手”为成都清除了4立方米的雾霾，获得了“清除雾霾之星”称号，你也来试试吧！很神奇，动动鼠标就可以。点这里：http://zhuyeqingtea.sinaapp.com/"
+	};
+
+	private final static String[] WEIBO_PICS = new String[]{
+		"wb_01.jpg",
+		"wb_02.jpg",
+		"wb_03.jpg",
+		"wb_04.jpg",
+		"wb_05.jpg"
+	};
 
 	@Resource
 	private WeiboUserRepository weiboUserRepository;
@@ -56,6 +76,39 @@ public class WeiboService {
 	 */
 	public WeiboUser getUser(String userId) {
 		return weiboUserRepository.select(userId);
+	}
+
+	/**
+	 * nextWeiboId
+	 * @return
+	 */
+	public int nextWeiboId() {
+		List<Double> probabilities = new ArrayList<Double>();
+		probabilities.add(Double.valueOf("0.2"));
+		probabilities.add(Double.valueOf("0.2"));
+		probabilities.add(Double.valueOf("0.2"));
+		probabilities.add(Double.valueOf("0.2"));
+		probabilities.add(Double.valueOf("0.2"));
+		AliasMethod aliasMethod = new AliasMethod(probabilities);
+		return aliasMethod.next();
+	}
+
+	/**
+	 * getWeiboContent
+	 * @param i
+	 * @return
+	 */
+	public String getWeiboContent(int i) {
+		return WEIBO_CONTENTS[i];
+	}
+
+	/**
+	 * getWeiboPic
+	 * @param i
+	 * @return
+	 */
+	public String getWeiboPic(int i) {
+		return WEIBO_PICS[i];
 	}
 
 }
