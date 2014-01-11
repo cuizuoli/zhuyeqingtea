@@ -23,4 +23,5 @@ INNER JOIN weibo_user u
 ON u.user_id = r.user_id
 INNER JOIN prize p
 ON p.prize_id = r.prize_id
+AND p.prize_id <> 100
 GROUP BY r.user_id,r.prize_id

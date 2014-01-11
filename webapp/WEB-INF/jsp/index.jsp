@@ -305,8 +305,8 @@
 			_this._sp = _this._contentsArea.find('.scratch').wScratchPad({
 				width: 533,
 				height: 360,
-				image: '/images/img_scratch02.png',
-				image2: '/images/img_scratch01.png',
+				image: '/images/img_scratch02.jpg',
+				image2: '/images/img_scratch01.jpg',
 				cursor: '/images/logo.ico',
 				overlay: 'none',
 				size: 50,
