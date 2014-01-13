@@ -3,7 +3,7 @@
 body{margin:0;padding:0;font-size:12px;color:#a93331;font-family:'Arial','宋体','Simsun','Verdana','Helvetica',sans-serif,'微软雅黑';}
 em{font-style:normal;}
 a{color:#a93331;text-decoration:none;}
-a:hover {text-decoration: underline;}
+a:hover {text-decoration: underline;cursor:pointer;}
 img,a img{border:none;vertical-align:top;}
 ul,li,ol{list-style:none;}
 input{border:0px;background:none;}
