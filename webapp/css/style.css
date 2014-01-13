@@ -496,3 +496,4 @@ text-align:center;
 background:url(/images/bg_counter.png) no-repeat 0 0;
 }
 .counter ul:after{content:"";display:block;height:0;clear:both;visibility:hidden}
+.close img{cursor:pointer;}
