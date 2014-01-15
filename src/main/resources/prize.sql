@@ -13,6 +13,9 @@ UPDATE prize SET probability = 0.04 WHERE prize_id = 3;
 UPDATE prize SET probability = 0.02 WHERE prize_id = 4;
 UPDATE prize SET probability = 0.01 WHERE prize_id = 5;
 
+UPDATE prize SET total_count = 100, current_count = 100 WHERE prize_id = 3;
+UPDATE prize SET total_count = total_count + 7000, current_count = current_count + 7000 WHERE prize_id = 1;
+
 SELECT
 u.user_id,
 u.user_name,
