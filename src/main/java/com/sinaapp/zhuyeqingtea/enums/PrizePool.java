@@ -18,7 +18,7 @@ public enum PrizePool {
 	SECOND(10000),
 	THIRD(30000),
 	FOURTH(50000),
-	FIFTH(100000),
+	FIFTH(80000),
 	MAX(150000);
 	private final int minJoinCount;
 
